@@ -1,0 +1,14 @@
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\bin\Release\TehGaren - Demacia's Heart.exe.config
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\bin\Release\TehGaren - Demacia's Heart.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\bin\Release\TehGaren - Demacia's Heart.pdb
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\bin\Release\LeagueSharp.Common.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\bin\Release\LeagueSharp.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\bin\Release\SharpDX.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\bin\Release\SharpDX.Direct3D9.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\bin\Release\SharpDX.Toolkit.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\bin\Release\SharpDX.Toolkit.Graphics.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\bin\Release\LeagueSharp.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\bin\Release\SharpDX.Toolkit.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\bin\Release\SharpDX.Toolkit.Graphics.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\obj\Debug\TehGaren - Demacia's Heart.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehGaren - Demacia's Heart\TehGaren - Demacia's Heart\obj\Debug\TehGaren - Demacia's Heart.pdb
