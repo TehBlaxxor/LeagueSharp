@@ -1,0 +1,15 @@
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\bin\Release\LeagueSharp.Common.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\bin\Release\LeagueSharp.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\bin\Release\SharpDX.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\bin\Release\SharpDX.Direct3D9.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\bin\Release\SharpDX.Toolkit.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\bin\Release\SharpDX.Toolkit.Graphics.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\bin\Release\LeagueSharp.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\bin\Release\SharpDX.Toolkit.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\bin\Release\SharpDX.Toolkit.Graphics.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\obj\Debug\TehRyze - The Dark Mage.csprojResolveAssemblyReference.cache
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\bin\Release\TehRyze - The Dark Mage.exe.config
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\bin\Release\TehRyze - The Dark Mage.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\bin\Release\TehRyze - The Dark Mage.pdb
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\obj\Debug\TehRyze - The Dark Mage.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\ConsoleApplication3\ConsoleApplication3\obj\Debug\TehRyze - The Dark Mage.pdb
