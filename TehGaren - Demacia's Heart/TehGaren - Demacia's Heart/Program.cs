@@ -113,7 +113,7 @@ namespace TehGaren___Demacia_s_Heart
 
         public static void Combo()
         {
-            var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Magical);
+            var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Physical);
             if (target == null) return;
             bool qcasted = false;
 
@@ -139,7 +139,7 @@ namespace TehGaren___Demacia_s_Heart
         }
         public static void Escape()
         {
-            var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Magical);
+            var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Physical);
             if (target == null) return;
 
             Player.IssueOrder(GameObjectOrder.MoveTo, Game.CursorPos);
@@ -156,7 +156,7 @@ namespace TehGaren___Demacia_s_Heart
 
         public static void Harass()
         {
-            var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Magical);
+            var target = TargetSelector.GetTarget(Q.Range, TargetSelector.DamageType.Physical);
             if (target == null) return;
 
             if (target.IsValidTarget(E.Range) && E.IsReady() && menu.SubMenu("Harass").Item("harE").GetValue<bool>() == true)
