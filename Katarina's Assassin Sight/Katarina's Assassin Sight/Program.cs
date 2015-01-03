@@ -35,7 +35,7 @@ namespace Katarina_s_Assassin_Sight
 
             Game.OnGameUpdate += Game_OnGameUpdate; // adds OnGameUpdate (Same as onTick in bol)
 
-            Game.PrintChat("<font color='#881df2'>Teh" + ChampName + " version " + version + "</font> loaded successfully!");
+            Game.PrintChat("<font color='#881df2'>Katarina's Assassin Sight</font> loaded successfully!");
         }
 
         static void Game_OnGameUpdate(EventArgs args)
