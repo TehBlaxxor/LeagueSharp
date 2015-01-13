@@ -1,0 +1,16 @@
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\Blitzcrank - The Iron Golem.exe.config
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\Blitzcrank - The Iron Golem.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\Blitzcrank - The Iron Golem.pdb
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\LeagueSharp.Common.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\LeagueSharp.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\SharpDX.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\SharpDX.Direct3D9.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\SharpDX.Toolkit.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\SharpDX.Toolkit.Graphics.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\clipper_library.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\LeagueSharp.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\SharpDX.Toolkit.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\bin\Release\SharpDX.Toolkit.Graphics.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\obj\Debug\Blitzcrank - The Iron Golem.csprojResolveAssemblyReference.cache
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\obj\Debug\Blitzcrank - The Iron Golem.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Blitzcrank - The Iron Golem\Blitzcrank - The Iron Golem\obj\Debug\Blitzcrank - The Iron Golem.pdb
