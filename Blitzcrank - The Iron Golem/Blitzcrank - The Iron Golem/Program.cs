@@ -71,13 +71,37 @@ namespace Blitzcrank___The_Iron_Golem
             Config.AddSubMenu(new Menu("Misc", "Misc"));
             Config.SubMenu("Misc").AddItem(new MenuItem("Packets", "Packets")).SetValue(true);
 
+            Config.AddSubMenu(new Menu("KillSteal", "KillSteal"));
+            Config.SubMenu("KillSteal").AddItem(new MenuItem("Using R", "Using R")).SetValue(true);
+            Config.SubMenu("KillSteal").AddItem(new MenuItem("Steal Kills?", "Steal Kills?")).SetValue(false);
+
             Config.AddSubMenu(new Menu("Drawings", "Drawings"));
             Config.SubMenu("Drawings").AddItem(new MenuItem("Enable Drawings", "Enable Drawings").SetValue(true));
             Config.SubMenu("Drawings").AddItem(new MenuItem("DrawQ", "Draw Q")).SetValue(true);
             Config.SubMenu("Drawings").AddItem(new MenuItem("DrawR", "Draw R")).SetValue(true);
+            Config.SubMenu("Drawings").AddItem(new MenuItem("AArange", "Draw AA")).SetValue(true);
 
             Config.AddToMainMenu();
 
+        }
+
+        public static void KS()
+        {
+            foreach (
+                var enemy in
+                    ObjectManager.Get<Obj_AI_Hero>()
+                        .Where(enemy => enemy.Team != Player.Team)
+                        .Where(
+                            enemy =>
+                                !enemy.HasBuff("UndyingRage") && !enemy.HasBuff("JudicatorIntervention") &&
+                                enemy.IsValidTarget(R.Range))
+                )
+            {
+                if (enemy.Health + 50 < R.GetDamage(enemy) && enemy.IsValidTarget(R.Range) && Config.SubMenu("KillSteal").Item("Using R").GetValue<bool>() == true)
+                {
+                    R.Cast();
+                }
+            }
         }
 
         private static void OnDraw(EventArgs args)
@@ -93,6 +117,11 @@ namespace Blitzcrank___The_Iron_Golem
                 if (Config.Item("DrawR").GetValue<bool>())
                 {
                     Drawing.DrawCircle(Player.Position, 600f, Color.Red);
+                }
+
+                if (Config.Item("AArange").GetValue<bool>())
+                {
+                    Drawing.DrawCircle(Player.Position, Player.AttackRange, Color.Green);
                 }
 
             }
@@ -124,6 +153,11 @@ namespace Blitzcrank___The_Iron_Golem
                 Chase();
             }
 
+            if (Config.SubMenu("KillSteal").Item("Steal Kills?").GetValue<bool>() == true)
+            {
+                KS();
+            }
+
             switch (Orbwalker.ActiveMode)
             {
                 case Orbwalking.OrbwalkingMode.None:
@@ -149,6 +183,13 @@ namespace Blitzcrank___The_Iron_Golem
             }
 
             if (E.IsReady() && target.IsValidTarget(Q.Range) && target.HasBuff("RocketGrab") && Config.SubMenu("Combo").Item("Use E").GetValue<bool>() == true)
+            {
+                E.Cast();
+                Orbwalking.ResetAutoAttackTimer();
+                Player.IssueOrder(GameObjectOrder.AttackUnit, target);
+            }
+
+            if (E.IsReady() && target.IsValidTarget(Player.AttackRange) && Config.SubMenu("Combo").Item("Use E").GetValue<bool>() == true)
             {
                 E.Cast();
                 Orbwalking.ResetAutoAttackTimer();
