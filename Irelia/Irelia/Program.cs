@@ -62,8 +62,8 @@ namespace Irelia
             TargetSelector.AddToMenu(targetSelectorMenu);
 
             Config.AddSubMenu(targetSelectorMenu);
-            Config.AddSubMenu(new Menu("Orbwalking", "Orbwalking"));
-            Orbwalker = new Orbwalking.Orbwalker(Config.SubMenu("Orbwalking"));
+            Config.AddSubMenu(new Menu("Orbwalker", "Orbwalker"));
+            Orbwalker = new Orbwalking.Orbwalker(Config.SubMenu("Orbwalker"));
 
             Config.AddSubMenu(new Menu("Combo", "Combo"));
             Config.SubMenu("Combo").AddItem(new MenuItem("comboQ", "Use Q")).SetValue(true);
@@ -75,20 +75,20 @@ namespace Irelia
             Config.SubMenu("Combo").AddItem(new MenuItem("Combo", "Combo").SetValue(new KeyBind(32, KeyBindType.Press)));
 
             Config.AddSubMenu(new Menu("Lane Clear", "Lane Clear"));
-            Config.SubMenu("Escape/Chase").AddItem(new MenuItem("laneQ", "Use Q")).SetValue(true);
-            Config.SubMenu("Escape/Chase").AddItem(new MenuItem("laneE", "Use E")).SetValue(true);
-            Config.SubMenu("Escape/Chase").AddItem(new MenuItem("Lane Clear", "Lane Clear").SetValue(new KeyBind(86, KeyBindType.Press)));
+            Config.SubMenu("Lane Clear").AddItem(new MenuItem("laneQ", "Use Q")).SetValue(true);
+            Config.SubMenu("Lane Clear").AddItem(new MenuItem("laneE", "Use E")).SetValue(true);
+            Config.SubMenu("Lane Clear").AddItem(new MenuItem("Lane Clear", "Lane Clear").SetValue(new KeyBind(86, KeyBindType.Press)));
 
             Config.AddSubMenu(new Menu("Chase", "Chase"));
-            Config.SubMenu("Escape/Chase").AddItem(new MenuItem("chaseQ", "Use Q")).SetValue(true);
-            Config.SubMenu("Escape/Chase").AddItem(new MenuItem("chaseE", "Use E")).SetValue(true);
-            Config.SubMenu("Escape/Chase").AddItem(new MenuItem("Chase", "Chase").SetValue(new KeyBind(71, KeyBindType.Press)));
+            Config.SubMenu("Chase").AddItem(new MenuItem("chaseQ", "Use Q")).SetValue(true);
+            Config.SubMenu("Chase").AddItem(new MenuItem("chaseE", "Use E")).SetValue(true);
+            Config.SubMenu("Chase").AddItem(new MenuItem("Chase", "Chase").SetValue(new KeyBind(71, KeyBindType.Press)));
 
             Config.AddSubMenu(new Menu("Harass", "Harass"));
-            Config.SubMenu("Escape/Chase").AddItem(new MenuItem("harE", "Auto Harras w/ E")).SetValue(true);
+            Config.SubMenu("Harass").AddItem(new MenuItem("harE", "Auto Harras w/ E")).SetValue(true);
 
             Config.AddSubMenu(new Menu("Gapcloser", "Gapcloser"));
-            Config.SubMenu("Escape/Chase").AddItem(new MenuItem("gapcloserE", "Gapclose with E")).SetValue(true);
+            Config.SubMenu("Gapcloser").AddItem(new MenuItem("gapcloserE", "Gapclose with E")).SetValue(true);
 
 
             Config.AddSubMenu(new Menu("Misc", "Misc"));
@@ -138,7 +138,8 @@ namespace Irelia
             var packets = Config.Item("Packets").GetValue<bool>();
             var target = TargetSelector.GetTarget(R.Range, TargetSelector.DamageType.Physical);
 
-            if (target.HasBuffOfType(BuffType.Invulnerability)) return;
+            if (target.HasBuffOfType(BuffType.Invulnerability))
+            { return; }
 
             minionGapclose(target);
 
@@ -149,7 +150,7 @@ namespace Irelia
                     E.Cast(target, packets);
                 }
             }
-            else if (Config.Item("comboErestrict").GetValue<bool>() == false)
+            if (Config.Item("comboErestrict").GetValue<bool>() == false)
             {
                 if (E.IsReady() && target.IsValidTarget(E.Range) && Config.Item("comboE").GetValue<bool>() == true)
                 {
@@ -173,7 +174,7 @@ namespace Irelia
                     R.Cast(target, packets);
                 }
             }
-            else if (Config.Item("comboRrestrict").GetValue<bool>() == false)
+            if (Config.Item("comboRrestrict").GetValue<bool>() == false)
             {
                 if (R.IsReady() && target.IsValidTarget(R.Range) && Config.Item("comboR").GetValue<bool>() == true)
                 {
@@ -276,7 +277,7 @@ namespace Irelia
                 E.Cast(target, packets);
             }
         }
-        private static void OnDraw(EventArgs args)
+        public static void OnDraw(EventArgs args)
         {
             if (Config.Item("Enable Drawings").GetValue<bool>())
             {
@@ -304,7 +305,7 @@ namespace Irelia
             }
         }
 
-        private static void Game_OnGameUpdate(EventArgs args)
+        public static void Game_OnGameUpdate(EventArgs args)
         {
             if (Config.Item("Combo").GetValue<KeyBind>().Active)
             {
@@ -326,7 +327,7 @@ namespace Irelia
                 Farm();
             } 
             
-            if (Config.SubMenu("Chase").Item("Active").GetValue<KeyBind>().Active)
+            if (Config.SubMenu("Chase").Item("Chase").GetValue<KeyBind>().Active)
             {
                 Chase();
             }
@@ -339,7 +340,14 @@ namespace Irelia
             switch (Orbwalker.ActiveMode)
             {
                 case Orbwalking.OrbwalkingMode.None:
-                    if (Config.SubMenu("Escape/Chase").Item("Active").GetValue<KeyBind>().Active)
+                    if (Config.SubMenu("Chase").Item("Chase").GetValue<KeyBind>().Active)
+                    {
+                        Flee();
+                    }
+                    break;
+
+                case Orbwalking.OrbwalkingMode.Combo:
+                    if (Config.SubMenu("Combo").Item("Combo").GetValue<KeyBind>().Active)
                     {
                         Flee();
                     }
