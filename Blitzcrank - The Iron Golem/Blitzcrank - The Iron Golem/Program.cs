@@ -70,6 +70,8 @@ namespace Blitzcrank___The_Iron_Golem
 
             Config.AddSubMenu(new Menu("Misc", "Misc"));
             Config.SubMenu("Misc").AddItem(new MenuItem("Packets", "Packets")).SetValue(true);
+//          Config.SubMenu("Misc").AddItem(new MenuItem("Use Spells if Mana >", "Use Spells if Mana >")).SetValue(new Slider(0, 0, 100));
+
 
             Config.AddSubMenu(new Menu("KillSteal", "KillSteal"));
             Config.SubMenu("KillSteal").AddItem(new MenuItem("Using R", "Using R")).SetValue(true);
@@ -84,6 +86,22 @@ namespace Blitzcrank___The_Iron_Golem
             Config.AddToMainMenu();
 
         }
+
+        /*public static int GetManaRestriction()
+        {
+            var manarestriction = Config.Item("Use Spells if Mana >").GetValue<Slider>().Value;
+            return manarestriction;
+        }
+
+        public static bool CheckForManaRestriction(Obj_AI_Hero me)
+        {
+            if (me.ManaPercentage <= Config.Item("Use Spells if Mana >").GetValue<Slider>().Value)
+            {
+                return false;
+            }
+            return true;
+        }*/
+
 
         public static void KS()
         {
@@ -196,7 +214,7 @@ namespace Blitzcrank___The_Iron_Golem
                 Player.IssueOrder(GameObjectOrder.AttackUnit, target);
             }
 
-            if (R.IsReady() && target.IsValidTarget(R.Range) && Config.SubMenu("Combo").Item("Use R").GetValue<bool>() == true && Player.CountEnemysInRange(R.Range) >= minR)
+            if (R.IsReady() && target.IsValidTarget(R.Range) && Config.SubMenu("Combo").Item("Use R").GetValue<bool>() == true && Player.CountEnemiesInRange(R.Range) >= minR)
             {
                 R.Cast(target, packets);
             }
