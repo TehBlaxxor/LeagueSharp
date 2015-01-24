@@ -22,6 +22,11 @@ namespace TopOrAFK
                     Game.PrintChat("<font color='#FF00BF'>[TOPORAFK] : Aatrox | By TehBlaxxor</font>", ChampionSwitch);
                     break;
 
+                case "annie":
+                    new Annie();
+                    Game.PrintChat("<font color='#FF00BF'>[TOPORAFK] : Annie | By TehBlaxxor</font>", ChampionSwitch);
+                    break;
+
                 default:
                     Game.PrintChat("[TOPORAFK] Failed to load assembly for champion : NOT SUPPORTED!", ChampionSwitch);
                     break;

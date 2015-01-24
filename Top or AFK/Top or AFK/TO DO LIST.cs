@@ -1,6 +1,6 @@
 ﻿/* TOP OR AFK -- TO DO LIST
 ===============> CHAMPIONS <===============
- * Aatrox
+ * Aatrox - DONE;
  * Annie
  * Jax
  * Garen
@@ -18,7 +18,7 @@
 
 
 ===============> WIP <===============
- * Aatrox Plugin
+
 
 
 

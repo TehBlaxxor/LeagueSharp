@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Champions\Aatrox.cs" />
+    <Compile Include="Champions\Annie.cs" />
     <Compile Include="Champions\Template.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
