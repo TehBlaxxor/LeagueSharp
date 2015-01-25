@@ -64,7 +64,7 @@ namespace TopOrAFK.Champions
             Config.SubMenu("Combo").AddItem(new MenuItem("UseWCombo", "Use W")).SetValue(true);
             Config.SubMenu("Combo").AddItem(new MenuItem("UseRCombo", "Use R")).SetValue(true);
             Config.SubMenu("Combo").AddItem(new MenuItem("Rrestrict2", "Use R only if stuns")).SetValue(true);
-            Config.SubMenu("Combo").AddItem(new MenuItem("Rrestrict", "Use R if stuns ")).SetValue(new Slider(1,0,5));
+            Config.SubMenu("Combo").AddItem(new MenuItem("Rrestrict", "Use R if stuns ")).SetValue(new Slider(1,1,5));
             Config.SubMenu("Combo").AddItem(new MenuItem("ActiveCombo", "Combo").SetValue(new KeyBind(32, KeyBindType.Press)));
 
             Config.AddSubMenu(new Menu("Harass", "Harass"));
@@ -132,11 +132,16 @@ namespace TopOrAFK.Champions
             else return false;
         }
 
+        private static int GetEnemiesAround(Obj_AI_Base unit, float range)
+        {
+            return unit.CountEnemiesInRange(range);
+        }
+
         private static void OnGameUpdate(EventArgs args)
         {
             {
                 if (Player.IsDead) return;
-
+                if (Player.IsRecalling()) return;
                 Player = ObjectManager.Player;
 
                 Orbwalker.SetAttack(true);
@@ -279,12 +284,12 @@ namespace TopOrAFK.Champions
 
             if (target.HasBuff("UndyingRage")) return;
 
-            if (Game.CursorPos.CountEnemiesInRange(200f) >= Config.Item("Rrestrict").GetValue<Slider>().Value && Config.Item("Rrestrict2").GetValue<bool>() == true)
+            if (GetEnemiesAround(target, 200f) >= Config.Item("Rrestrict").GetValue<Slider>().Value && Config.Item("Rrestrict2").GetValue<bool>() == true)
             {
 
                 if (CheckFor(R, target, R.Range, "UseRCombo") && HasStun())
                 {
-                    R.Cast(Game.CursorPos);
+                    R.Cast(target);
                 }
             }
             if (Config.Item("Rrestrict2").GetValue<bool>() == false)
