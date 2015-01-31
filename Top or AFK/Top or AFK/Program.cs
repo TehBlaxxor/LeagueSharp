@@ -25,6 +25,7 @@ namespace TopOrAFK
                 case "annie":
                     new Annie();
                     Game.PrintChat("<font color='#FF00BF'>[TOPORAFK] : Annie | By TehBlaxxor</font>", ChampionSwitch);
+                    //Game.PrintChat("[TOPORAFK] Annie is temporarily disabled! Check the forum post for more info!");
                     break;
 
                 default:

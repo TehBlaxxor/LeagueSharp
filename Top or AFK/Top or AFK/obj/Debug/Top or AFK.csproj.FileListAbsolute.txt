@@ -1,0 +1,15 @@
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\Top or AFK.exe.config
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\Top or AFK.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\Top or AFK.pdb
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\LeagueSharp.Common.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\LeagueSharp.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\SharpDX.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\SharpDX.Direct3D9.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\SharpDX.Toolkit.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\SharpDX.Toolkit.Graphics.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\clipper_library.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\LeagueSharp.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\SharpDX.Toolkit.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\bin\Release\SharpDX.Toolkit.Graphics.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\obj\Debug\Top or AFK.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Top or AFK\Top or AFK\obj\Debug\Top or AFK.pdb

@@ -190,27 +190,27 @@ namespace TopOrAFK.Champions
             {
                 if (Config.Item("BOTRK").GetValue<bool>())
                 {
-                    var botrk = Items.HasItem(ItemData.Blade_of_the_Ruined_King.Id);
-                    var cutlass = Items.HasItem(ItemData.Bilgewater_Cutlass.Id);
+                    var botrk = Items.HasItem((int)ItemId.Blade_of_the_Ruined_King);
+                    var cutlass = Items.HasItem((int)ItemId.Bilgewater_Cutlass);
                     var target = TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Physical);
 
-
+                    
                     if (botrk || cutlass)
                     {
                         if (botrk)
                         {
-                            Items.UseItem(ItemData.Blade_of_the_Ruined_King.Id, target);
+                            Items.UseItem((int)ItemId.Blade_of_the_Ruined_King, target);
                         }
                         else
                         {
-                            Items.UseItem(ItemData.Bilgewater_Cutlass.Id, target);
+                            Items.UseItem((int)ItemId.Bilgewater_Cutlass, target);
                         }
                     }
                 }
 
                 if (Config.Item("OMEN").GetValue<bool>())
                 {
-                    var omen = Items.HasItem(ItemData.Randuins_Omen.Id);
+                    var omen = Items.HasItem((int)ItemId.Randuins_Omen);
 
                     if (omen)
                     {
@@ -223,9 +223,9 @@ namespace TopOrAFK.Champions
 
                         if (champcount >= 1)
                         {
-                            if (Items.CanUseItem(ItemData.Randuins_Omen.Id))
+                            if (Items.CanUseItem((int)ItemId.Randuins_Omen))
                             {
-                                Items.UseItem(ItemData.Randuins_Omen.Id);
+                                Items.UseItem((int)ItemId.Randuins_Omen);
                             }
                         }
                     }
@@ -233,13 +233,13 @@ namespace TopOrAFK.Champions
 
                 if (Config.Item("GBLADE").GetValue<bool>())
                 {
-                    var gblade = Items.HasItem(ItemData.Youmuus_Ghostblade.ToString());
+                    var gblade = Items.HasItem((int)ItemId.Youmuus_Ghostblade);
 
                     if (gblade)
                     {
-                        if (Items.CanUseItem(ItemData.Youmuus_Ghostblade.ToString()))
+                        if (Items.CanUseItem((int)ItemId.Youmuus_Ghostblade))
                         {
-                            Items.UseItem(ItemData.Youmuus_Ghostblade.ToString());
+                            Items.UseItem((int)ItemId.Youmuus_Ghostblade);
                         }
                     }
                 }

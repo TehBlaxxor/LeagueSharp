@@ -64,7 +64,7 @@ namespace TopOrAFK.Champions
             Config.SubMenu("Combo").AddItem(new MenuItem("UseWCombo", "Use W")).SetValue(true);
             Config.SubMenu("Combo").AddItem(new MenuItem("UseRCombo", "Use R")).SetValue(true);
             Config.SubMenu("Combo").AddItem(new MenuItem("Rrestrict2", "Use R only if stuns")).SetValue(true);
-            Config.SubMenu("Combo").AddItem(new MenuItem("Rrestrict", "Use R if stuns ")).SetValue(new Slider(1,1,5));
+            Config.SubMenu("Combo").AddItem(new MenuItem("Rrestrict", "Use R if stuns X people in target's range: ")).SetValue(new Slider(1,1,5));
             Config.SubMenu("Combo").AddItem(new MenuItem("ActiveCombo", "Combo").SetValue(new KeyBind(32, KeyBindType.Press)));
 
             Config.AddSubMenu(new Menu("Harass", "Harass"));
@@ -106,6 +106,50 @@ namespace TopOrAFK.Champions
             Game.OnGameUpdate += OnGameUpdate;
             Drawing.OnDraw += OnDraw;
 
+
+        }
+
+        private static void Combo()
+        {
+            var target = TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Physical);
+
+            if (Config.Item("UseRCombo").GetValue<bool>())
+            {
+                if (Config.Item("Rrestrict2").GetValue<bool>() && HasStun())
+                {
+                    if (target.IsValidTarget(R.Range) && R.IsReady() && target.CountEnemiesInRange(200f) >= Config.Item("Rrestrict").GetValue<Slider>().Value)
+                    {
+                        R.Cast(target);
+                    }
+                }
+
+                if (!Config.Item("Rrestrict2").GetValue<bool>())
+                {
+                    if (target.IsValidTarget(R.Range) && R.IsReady())
+                    {
+                        R.Cast(target);
+                    }
+                }
+
+            }
+
+            if (Config.Item("UseWCombo").GetValue<bool>())
+            {
+                if (target.IsValidTarget(W.Range - 25) && W.IsReady())
+                {
+                    W.Cast(target);
+                }
+
+            }
+
+            if (Config.Item("UseQCombo").GetValue<bool>())
+            {
+                if (target.IsValidTarget(Q.Range) && Q.IsReady())
+                {
+                    Q.Cast(target);
+                }
+
+            }
 
         }
 
@@ -276,39 +320,6 @@ namespace TopOrAFK.Champions
                 if (missile.SpellCaster is Obj_AI_Hero && missile.SpellCaster.IsEnemy && missile.Target.IsMe)
                     E.Cast();
             }
-        }
-
-        private static void Combo()
-        {
-            var target = TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Physical);
-
-            if (target.HasBuff("UndyingRage")) return;
-
-            if (GetEnemiesAround(target, 200f) >= Config.Item("Rrestrict").GetValue<Slider>().Value && Config.Item("Rrestrict2").GetValue<bool>() == true)
-            {
-
-                if (CheckFor(R, target, R.Range, "UseRCombo") && HasStun())
-                {
-                    R.Cast(target);
-                }
-            }
-            if (Config.Item("Rrestrict2").GetValue<bool>() == false)
-            {
-                if (CheckFor(R, target, R.Range, "UseRCombo"))
-                {
-                    R.Cast(target);
-                }
-            }
-
-            if (CheckFor(Q, target, Q.Range, "UseQCombo"))
-            {
-                Q.Cast(target);
-            }
-            if (CheckFor(W, target, W.Range, "UseWCombo"))
-            {
-                W.Cast(target);
-            }
-            
         }
 
 
