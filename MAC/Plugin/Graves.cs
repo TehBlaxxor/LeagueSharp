@@ -54,21 +54,33 @@ namespace MAC.Plugin
             var p = Player.Position;
 
             if (GetBool("disableAll"))
+            {
                 return;
+            }
 
             if (drawQ)
+            {
                 Render.Circle.DrawCircle(p, Q.Range, Q.IsReady() ? System.Drawing.Color.Aqua : System.Drawing.Color.Red);
+            }
 
             if (drawW)
+            {
                 Render.Circle.DrawCircle(p, W.Range, W.IsReady() ? System.Drawing.Color.Aqua : System.Drawing.Color.Red);
 
+            }
+
             if (drawE)
+            {
                 Render.Circle.DrawCircle(p, E.Range, E.IsReady() ? System.Drawing.Color.Aqua : System.Drawing.Color.Red);
+            }
 
             if (drawR)
+            {
                 Render.Circle.DrawCircle(p, R.Range, R.IsReady() ? System.Drawing.Color.Aqua : System.Drawing.Color.Red);
+            }
 
             if (GetBool("drawComboType"))
+            {
                 switch (comboTypeIndex)
                 {
                     case 0:
@@ -81,6 +93,7 @@ namespace MAC.Plugin
                         Drawing.DrawText(wts[0] - 35, wts[1] + 10, System.Drawing.Color.Gold, "Automatic Combo");
                         break;
                 }
+            }
         }
 
         private void GameOnOnGameUpdate(EventArgs args)
@@ -297,12 +310,7 @@ namespace MAC.Plugin
 
         public int enemiesInRange(Obj_AI_Hero obj, float range)
         {
-            var nearEnemies =
-                    ObjectManager.Get<Obj_AI_Hero>()
-                        .Where(x => x.IsEnemy)
-                        .Where(x => !x.IsDead)
-                        .Where(x => x.Distance(obj.Position) <= range);
-            return nearEnemies.Count();
+            return obj.CountEnemiesInRange(range);
         }
 
         public override float GetComboDamage(Obj_AI_Hero enemy)
@@ -330,12 +338,8 @@ namespace MAC.Plugin
         }
         
         bool isUnderEnemyTurret(Vector3 Position)
-        {
-            foreach (var tur in ObjectManager.Get<Obj_AI_Turret>().Where(turr => turr.IsEnemy && (turr.Health != 0)))
-            {
-                if (tur.Distance(Position) <= 975f) return true;
-            }
-            return false;
+        { 
+            return Position.UnderTurret(true);
         }
 
 

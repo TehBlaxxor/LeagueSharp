@@ -40,10 +40,19 @@ namespace MAC.Plugin
 
             Game.OnGameUpdate += GameOnOnGameUpdate;
             Drawing.OnDraw += DrawingOnOnDraw;
-            Interrupter.OnPossibleToInterrupt += InterrupterOnOnPossibleToInterrupt;
+            Interrupter2.OnInterruptableTarget += InterrupterOnOnPossibleToInterrupt;
             AntiGapcloser.OnEnemyGapcloser += AntiGapcloserOnOnEnemyGapcloser;
 
             MiscControl.PrintChat(MiscControl.stringColor("Vayne Loaded", MiscControl.TableColor.Red));
+        }
+
+        private void InterrupterOnOnPossibleToInterrupt(Obj_AI_Hero sender, Interrupter2.InterruptableTargetEventArgs args)
+        {
+            if (!GetBool("interromperE") || args.DangerLevel != Interrupter2.DangerLevel.High || sender.Distance(ObjectManager.Player.Position) <= E.Range)
+                return;
+
+            E.Cast(Packets);
+        
         }
 
         private void DrawingOnOnDraw(EventArgs args)
@@ -58,15 +67,22 @@ namespace MAC.Plugin
             var p = Player.Position;
 
             if (GetBool("disableAll"))
+            {
                 return;
+            }
 
             if (drawQ)
+            {
                 Render.Circle.DrawCircle(p, Q.Range, Q.IsReady() ? System.Drawing.Color.Aqua : System.Drawing.Color.Red);
+            }
 
             if (drawE)
+            {
                 Render.Circle.DrawCircle(p, E.Range, E.IsReady() ? System.Drawing.Color.Aqua : System.Drawing.Color.Red);
+            }
 
             if (GetBool("drawComboType"))
+            {
                 switch (comboTypeIndex)
                 {
                     case 0:
@@ -78,8 +94,9 @@ namespace MAC.Plugin
                     case 2:
                         Drawing.DrawText(wts[0] - 35, wts[1] + 10, System.Drawing.Color.Gold, "OMG GOSU o.O");
                         break;
-                }
-
+                } 
+            }
+                
             if (GetBool("drawCondemnPosition"))
             {
                 var position = getCondemnPosition(target);
@@ -164,7 +181,7 @@ namespace MAC.Plugin
                     else
                     {
                         var postition = getCondemnPosition(target);
-                        if (postition == null)
+                        if (postition == Vector3.Zero)
                             return;
 
                         if (Player.Distance(postition) <= Q.Range && Q.IsReady())
@@ -231,7 +248,7 @@ namespace MAC.Plugin
                     else
                     {
                         var postition = getCondemnPosition(target);
-                        if (postition == null)
+                        if (postition == Vector3.Zero)
                             return;
 
                         if (Player.Distance(postition) <= Q.Range && Q.IsReady() && GetBool("comboQ"))
@@ -358,12 +375,7 @@ namespace MAC.Plugin
 
         public int enemiesInRange(Obj_AI_Hero obj, float range)
         {
-            var nearEnemies =
-                    ObjectManager.Get<Obj_AI_Hero>()
-                        .Where(x => x.IsEnemy)
-                        .Where(x => !x.IsDead)
-                        .Where(x => x.Distance(obj.Position) <= range);
-            return nearEnemies.Count();
+            return obj.CountEnemiesInRange(range);
         }
 
         public float calcularDanoAtaque(Obj_AI_Base target, bool autoAttack)
@@ -447,8 +459,7 @@ namespace MAC.Plugin
 
         bool isWall(Vector3 Pos)
         {
-            CollisionFlags cFlags = NavMesh.GetCollisionFlags(Pos);
-            return (cFlags == CollisionFlags.Wall);
+            return Pos.IsWall();
         }
 
         bool isUnderTurret(Vector3 Position)
@@ -462,11 +473,7 @@ namespace MAC.Plugin
 
         bool isUnderEnemyTurret(Vector3 Position)
         {
-            foreach (var tur in ObjectManager.Get<Obj_AI_Turret>().Where(turr => turr.IsEnemy && (turr.Health != 0)))
-            {
-                if (tur.Distance(Position) <= 975f) return true;
-            }
-            return false;
+            return Position.UnderTurret(true);
         }
 
         bool isFountain(Vector3 Position)
@@ -486,13 +493,6 @@ namespace MAC.Plugin
                             fountainRange);
         }
 
-        private void InterrupterOnOnPossibleToInterrupt(Obj_AI_Base unit, InterruptableSpell spell)
-        {
-            if (!GetBool("interromperE") || spell.DangerLevel != InterruptableDangerLevel.High || unit.Distance(ObjectManager.Player.Position) < R.Range)
-                return;
-
-            R.Cast(Packets);
-        }
 
         private void AntiGapcloserOnOnEnemyGapcloser(ActiveGapcloser gapcloser)
         {
