@@ -39,7 +39,7 @@ namespace MAC.Controller
 
             if (igniteKill)
             {
-                var igniteKillableEnemy = ObjectManager.Get<Obj_AI_Hero>().Find(x => x.IsValidTarget(IgniteRange) && ObjectManager.Player.GetSummonerSpellDamage(x, Damage.SummonerSpell.Ignite) > x.Health);
+                var igniteKillableEnemy = HeroManager.Enemies.Find(x => x.IsValidTarget(IgniteRange) && ObjectManager.Player.GetSummonerSpellDamage(x, Damage.SummonerSpell.Ignite) > x.Health);
                 if (igniteKillableEnemy == null)
                 {
                     return;
@@ -55,7 +55,7 @@ namespace MAC.Controller
             {
                 return;
             }
-            var enemy =ObjectManager.Get<Obj_AI_Hero>().Find(x => x.IsValidTarget(IgniteRange) &&  x.Health <= ObjectManager.Player.GetSummonerSpellDamage(x, Damage.SummonerSpell.Ignite) / 5);
+            var enemy = HeroManager.Enemies.Find(x => x.IsValidTarget(IgniteRange) &&  x.Health <= ObjectManager.Player.GetSummonerSpellDamage(x, Damage.SummonerSpell.Ignite) / 5);
             if (enemy != null)
             {
                 ObjectManager.Player.Spellbook.CastSpell(_igniteSlot, enemy);

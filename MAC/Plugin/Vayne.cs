@@ -411,7 +411,7 @@ namespace MAC.Plugin
                 target = null;
                 return false;
             }
-            foreach (var En in ObjectManager.Get<Obj_AI_Hero>().Where(hero => hero.IsEnemy && hero.IsValidTarget() && !GetBool("nC" + hero.ChampionName) && hero.Distance(Player.Position) <= E.Range))
+            foreach (var En in HeroManager.Enemies.Where(hero => hero.IsValidTarget() && !GetBool("nC" + hero.ChampionName) && hero.Distance(Player.Position) <= E.Range))
             {
                 var EPred = E.GetPrediction(En);
                 int pushDist = Menu.Item("PushDistance").GetValue<Slider>().Value;
@@ -440,7 +440,7 @@ namespace MAC.Plugin
             if(CondemnCheck(Player.Position, out target))
                 return Vector3.Zero;
 
-            for (int I = 0; I <= 360; I += 65)
+            for (var I = 0; I <= 360; I += 65)
             {
                 var F1 = new Vector2(Player.Position.X + (float)(300 * Math.Cos(I * (Math.PI / 180))), Player.Position.Y + (float)(300 * Math.Sin(I * (Math.PI / 180)))).To3D();
                 Obj_AI_Hero targ;
@@ -551,7 +551,7 @@ namespace MAC.Plugin
 
             var MiscNoCondemn = new Menu("Don't Condemn", "NoCondemn");
             {
-                foreach (var hero in ObjectManager.Get<Obj_AI_Hero>().Where(hero => hero.IsEnemy))
+                foreach (var hero in HeroManager.Enemies)
                 {
                     MiscNoCondemn.AddItem(new MenuItem("nC" + hero.ChampionName, hero.ChampionName).SetValue(false));
                 }
