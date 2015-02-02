@@ -10,7 +10,7 @@ namespace MAC.Util
 {
     class GameControl
     {
-        public static String version = "2 Revision 1";
+        public static String version = "i'm not good with versions :( - tehblaxxor";
         public static Obj_AI_Hero MyHero = ObjectManager.Player;
 
         public static void LoadPlugin()
@@ -36,7 +36,7 @@ namespace MAC.Util
             UnhandledExceptionEventArgs unhandledExceptionEventArgs)
         {
             Console.WriteLine(((Exception)unhandledExceptionEventArgs.ExceptionObject).Message);
-            Game.PrintChat("Fatal Error please report on forum / Erro critico por favor avise no fórum");
+            Game.PrintChat("Fatal error occured! Report on forum!");
         }
 
         public class EnemyInfo

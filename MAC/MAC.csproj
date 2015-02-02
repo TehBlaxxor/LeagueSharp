@@ -27,26 +27,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\Release</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LeagueSharp">
-      <HintPath>C:\LeagueSharp\\System\LeagueSharp.dll</HintPath>
+      <HintPath>D:\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\\System\LeagueSharp.dll</HintPath>
     </Reference>
     <Reference Include="LeagueSharp.Common">
-      <HintPath>C:\LeagueSharp\\System\LeagueSharp.Common.dll</HintPath>
+      <HintPath>D:\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\\System\LeagueSharp.Common.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
-      <HintPath>C:\LeagueSharp\\System\SharpDX.dll</HintPath>
+      <HintPath>D:\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\\System\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX.Direct3D9">
-      <HintPath>C:\LeagueSharp\\System\SharpDX.Direct3D9.dll</HintPath>
+      <HintPath>D:\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\\System\SharpDX.Direct3D9.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -66,6 +66,7 @@
     <Compile Include="Model\PluginModel.cs" />
     <Compile Include="Model\Utilitario.cs" />
     <Compile Include="Plugin\Graves.cs" />
+    <Compile Include="Plugin\Jinx.cs" />
     <Compile Include="Plugin\Vayne.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
