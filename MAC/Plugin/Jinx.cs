@@ -127,41 +127,49 @@ namespace MAC.Plugin
 
         public bool IsEnemyBeingRekt(Obj_AI_Hero hero)
         {
-            /*if (hero.HasBuffOfType(BuffType.Blind) || hero.HasBuffOfType(BuffType.Charm) || hero.HasBuffOfType(BuffType.Fear) || hero.HasBuffOfType(BuffType.Slow) || hero.HasBuffOfType(BuffType.Snare) || hero.HasBuffOfType(BuffType.Stun) || hero.HasBuffOfType(BuffType.Suppression) || hero.HasBuffOfType(BuffType.Taunt))
-            {
-                return true;
-            }
-            else return false;*/
+            
+            var comboTypeIndex = Menu.Item("comboType").GetValue<StringList>().SelectedIndex;
 
-            //Remake below for customization:
+            if (comboTypeIndex == 2 || comboTypeIndex == 0)
+            {
+                if (hero.HasBuffOfType(BuffType.Blind) || hero.HasBuffOfType(BuffType.Charm) || hero.HasBuffOfType(BuffType.Fear) || hero.HasBuffOfType(BuffType.Slow) || hero.HasBuffOfType(BuffType.Snare) || hero.HasBuffOfType(BuffType.Stun) || hero.HasBuffOfType(BuffType.Suppression) || hero.HasBuffOfType(BuffType.Taunt))
+                {
+                    return true;
+                }
+                else return false;
+            }
 
-            if (hero.HasBuffOfType(BuffType.Blind) && GetBool("Blind"))
+            else if (comboTypeIndex == 1)
             {
-                return true;
-            }
-            else if (hero.HasBuffOfType(BuffType.Fear) && GetBool("Fear"))
-            {
-                return true;
-            }
-            else if (hero.HasBuffOfType(BuffType.Slow) && GetBool("Slow"))
-            {
-                return true;
-            }
-            else if (hero.HasBuffOfType(BuffType.Snare) && GetBool("Snare"))
-            {
-                return true;
-            }
-            else if (hero.HasBuffOfType(BuffType.Stun) && GetBool("Stun"))
-            {
-                return true;
-            }
-            else if (hero.HasBuffOfType(BuffType.Suppression) && GetBool("Suppression"))
-            {
-                return true;
-            }
-            else if (hero.HasBuffOfType(BuffType.Taunt) && GetBool("Taunt"))
-            {
-                return true;
+                if (hero.HasBuffOfType(BuffType.Blind) && GetBool("Blind"))
+                {
+                    return true;
+                }
+                else if (hero.HasBuffOfType(BuffType.Fear) && GetBool("Fear"))
+                {
+                    return true;
+                }
+                else if (hero.HasBuffOfType(BuffType.Slow) && GetBool("Slow"))
+                {
+                    return true;
+                }
+                else if (hero.HasBuffOfType(BuffType.Snare) && GetBool("Snare"))
+                {
+                    return true;
+                }
+                else if (hero.HasBuffOfType(BuffType.Stun) && GetBool("Stun"))
+                {
+                    return true;
+                }
+                else if (hero.HasBuffOfType(BuffType.Suppression) && GetBool("Suppression"))
+                {
+                    return true;
+                }
+                else if (hero.HasBuffOfType(BuffType.Taunt) && GetBool("Taunt"))
+                {
+                    return true;
+                }
+                else return false;
             }
             else return false;
         }
