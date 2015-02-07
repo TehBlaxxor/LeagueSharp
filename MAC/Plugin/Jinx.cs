@@ -127,7 +127,39 @@ namespace MAC.Plugin
 
         public bool IsEnemyBeingRekt(Obj_AI_Hero hero)
         {
-            if (hero.HasBuffOfType(BuffType.Blind) || hero.HasBuffOfType(BuffType.Charm) || hero.HasBuffOfType(BuffType.Fear) || hero.HasBuffOfType(BuffType.Slow) || hero.HasBuffOfType(BuffType.Snare) || hero.HasBuffOfType(BuffType.Stun) || hero.HasBuffOfType(BuffType.Suppression) || hero.HasBuffOfType(BuffType.Taunt))
+            /*if (hero.HasBuffOfType(BuffType.Blind) || hero.HasBuffOfType(BuffType.Charm) || hero.HasBuffOfType(BuffType.Fear) || hero.HasBuffOfType(BuffType.Slow) || hero.HasBuffOfType(BuffType.Snare) || hero.HasBuffOfType(BuffType.Stun) || hero.HasBuffOfType(BuffType.Suppression) || hero.HasBuffOfType(BuffType.Taunt))
+            {
+                return true;
+            }
+            else return false;*/
+
+            //Remake below for customization:
+
+            if (hero.HasBuffOfType(BuffType.Blind) && GetBool("Blind"))
+            {
+                return true;
+            }
+            else if (hero.HasBuffOfType(BuffType.Fear) && GetBool("Fear"))
+            {
+                return true;
+            }
+            else if (hero.HasBuffOfType(BuffType.Slow) && GetBool("Slow"))
+            {
+                return true;
+            }
+            else if (hero.HasBuffOfType(BuffType.Snare) && GetBool("Snare"))
+            {
+                return true;
+            }
+            else if (hero.HasBuffOfType(BuffType.Stun) && GetBool("Stun"))
+            {
+                return true;
+            }
+            else if (hero.HasBuffOfType(BuffType.Suppression) && GetBool("Suppression"))
+            {
+                return true;
+            }
+            else if (hero.HasBuffOfType(BuffType.Taunt) && GetBool("Taunt"))
             {
                 return true;
             }
@@ -442,6 +474,20 @@ namespace MAC.Plugin
 
             config.AddSubMenu(MiscMSubMenu);
 
+            var EControl = new Menu("E Control - Buffs", "EControl");
+            {
+                EControl.AddItem(new MenuItem("Blind", "Blind").SetValue(true));
+                EControl.AddItem(new MenuItem("Charm", "Charm").SetValue(true));
+                EControl.AddItem(new MenuItem("Fear", "Fear").SetValue(true));
+                EControl.AddItem(new MenuItem("Slow", "Slow").SetValue(true));
+                EControl.AddItem(new MenuItem("Snare", "Snare").SetValue(true));
+                EControl.AddItem(new MenuItem("Stun", "Stun").SetValue(true));
+                EControl.AddItem(new MenuItem("Suppression", "Suppression").SetValue(true));
+                EControl.AddItem(new MenuItem("Taunt", "Taunt").SetValue(true));
+
+            }
+
+            config.AddSubMenu(EControl);
         }
 
         public override void Drawings(Menu config)
