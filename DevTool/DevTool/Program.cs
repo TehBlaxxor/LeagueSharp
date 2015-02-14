@@ -34,6 +34,7 @@ namespace DevTool
             {
                 Game.PrintChat("<b><font color=\'#ff5500\'>[WRN] DevTool: </font></b>" + msg);
             }
+            else Game.PrintChat("Unexpected type!");
         }
 
         static void Game_OnGameLoad(EventArgs args)
@@ -71,7 +72,7 @@ namespace DevTool
                         Game.PrintChat("<font color=\'#1fdb35\'> Buff Name: </font>" + Buff.Name);
                         Game.PrintChat("<font color=\'#1fdb35\'> Buff Display Name: </font>" + Buff.DisplayName);
                         Game.PrintChat("<font color=\'#1fdb35\'> Buff Type: </font>" + Buff.Type);
-                        Game.PrintChat("__________________________");
+                        Game.PrintChat("--------------------------");
                     }
                 }
 
@@ -83,8 +84,7 @@ namespace DevTool
                         Game.PrintChat("<font color=\'#1fdb35\'> Buff Name: </font>" + Buff.Name);
                         Game.PrintChat("<font color=\'#1fdb35\'> Buff Display Name: </font>" + Buff.DisplayName);
                         Game.PrintChat("<font color=\'#1fdb35\'> Buff Type: </font>" + Buff.Type);
-                        Game.PrintChat("__________________________");
-                    }
+                        Game.PrintChat("--------------------------");                    }
                 }
                 else if (args.Input.ToLowerInvariant().Contains("champname"))
                 {
@@ -111,12 +111,121 @@ namespace DevTool
                         Game.PrintChat("Pet name is: " + pet.Name);
                         Game.PrintChat("Pet position is: " + pet.Position);
                         Game.PrintChat("Pet type is: " + pet.Type);
+                        Game.PrintChat("Pet return radius: " + Player.PetReturnRadius);
+                        Game.PrintChat("Last Pet Spawned ID: " + Player.AI_LastPetSpawnedID);
                     }
                     else print("Pet not found!", "error");
                 }
+                else if (args.Input.ToLowerInvariant().Contains("print iteminfo"))
+                {
+                    if (Player.InventoryItems.Count() > 0)
+                    {
+                        print("Printing items' info:", "normal");
+                        foreach (var Item in Player.InventoryItems)
+                        {
+                            Game.PrintChat("Item Display Name: " + Item.DisplayName);
+                            Game.PrintChat("Item Name: " + Item.Name);
+                            Game.PrintChat("Item ID: " + Item.Id);
+                            Game.PrintChat("Item Stacks: " + Item.Stacks);
+                            Game.PrintChat("--------------------------");
+                        }
+                    }
+                    else print("You do not own any items!", "error");
+                }
+                else if (args.Input.ToLowerInvariant().Contains("print attacktype"))
+                {
+                    if (Player.IsMelee())
+                    {
+                        print("Champion is melee!", "normal");
+                    }
+                    else if (!Player.IsMelee())
+                    {
+                        print("Champion is ranged!", "normal");
+                    }
+                    else print("Unexpected error!", "error");
+                }
+                else if (args.Input.ToLowerInvariant().Contains("print largest critstrike"))
+                {
+                    if (Player.LargestCriticalStrike != 0)
+                    {
+                        print("Your largest critical strike is " + Player.LargestCriticalStrike, "normal");
+                    }
+                    else print("You haven't critically striked yet!", "error");
+                }
+                else if (args.Input.ToLowerInvariant() == "print my info")
+                {
+                    print("Printing info:", "normal");
+                    Game.PrintChat("Armor: " + Player.Armor);
+                    Game.PrintChat("Flat Magic Reduction: " + Player.FlatMagicReduction);
+                    Game.PrintChat("Gold: " + Player.Gold);
+                    Game.PrintChat("Current Gold: " + Player.GoldCurrent);
+                    Game.PrintChat("Gold Earned: " + Player.GoldEarned);
+                    Game.PrintChat("Has Bot AI: " + Player.HasBotAI);
+                    Game.PrintChat("HP: " + Player.Health + "/" + Player.MaxHealth);
+                    Game.PrintChat("HP Percentage: " + Player.HealthPercentage());
+                    Game.PrintChat("Mana: " + Player.Mana + "/" + Player.MaxMana);
+                    Game.PrintChat("Mana Percentage: " + Player.ManaPercentage());
+
+                }
+
+                else if (args.Input.ToLowerInvariant().Contains("print my info 2"))
+                {
+                    Game.PrintChat("HP Regen Rate: " + Player.HPRegenRate); //
+                    Game.PrintChat("Is In Fountain: " + Player.InFountain());
+                    Game.PrintChat("Is In Shop: " + Player.InShop());
+                    Game.PrintChat("Is Bot: " + Player.IsBot);
+                    Game.PrintChat("Is Player Dead?: " + Player.IsDead);
+                    Game.PrintChat("Is Immovable: " + Player.IsImmovable);
+                    Game.PrintChat("Is Invulnerable: " + Player.IsInvulnerable);
+                    Game.PrintChat("Is Moving: " + Player.IsMoving);
+                    Game.PrintChat("Is Pacified: " + Player.IsPacified);
+                    Game.PrintChat("Is Recalling: " + Player.IsRecalling());
+                }
+
+                else if (args.Input.ToLowerInvariant().Contains("print my info 3"))
+                {
+                    Game.PrintChat("Is Rooted: " + Player.IsRooted);//
+                    Game.PrintChat("Is Stunned: " + Player.IsStunned);
+                    Game.PrintChat("Is Targetable: " + Player.IsTargetable);
+                    Game.PrintChat("Is Visible: " + Player.IsVisible);
+                    Game.PrintChat("Is Winding Up: " + Player.IsWindingUp);
+                    Game.PrintChat("Is Zombie: " + Player.IsZombie);
+                    Game.PrintChat("Last Spell Casted: " + Player.LastCastedSpellName());
+                    Game.PrintChat("Last Spell's Target: " + Player.LastCastedSpellTarget());
+                    Game.PrintChat("Last Pause Position: " + Player.LastPausePosition);
+                    Game.PrintChat("Level: " + Player.Level);
+                }
+
+                else if (args.Input.ToLowerInvariant().Contains("print my info 4"))
+                {
+                    Game.PrintChat("Level Cap: " + Player.LevelCap);//
+                    Game.PrintChat("Lifesteal Immune: " + Player.LifestealImmune);
+                    Game.PrintChat("Longest Time Alive: " + Player.LongestTimeSpentLiving);
+                    Game.PrintChat("Magic Immune: " + Player.MagicImmune);
+                    Game.PrintChat("Network ID: " + Player.NetworkId);
+                    Game.PrintChat("Wards Killed: " + Player.WardsKilled);
+                    Game.PrintChat("Wards Placed: " + Player.WardsPlaced);
+
+                }
+                else if (args.Input.ToLowerInvariant().Contains("print game info"))
+                {
+                    print("Printing game info:", "normal");
+                    Game.PrintChat("Clock Time: " + Game.ClockTime);
+                    Game.PrintChat("ID: " + Game.Id);
+                    Game.PrintChat("IP: " + Game.IP);
+                    Game.PrintChat("Map ID: " + Game.MapId);
+                    Game.PrintChat("Mode: " + Game.Mode);
+                    Game.PrintChat("Ping: " + Game.Ping);
+                    Game.PrintChat("Time: " + Game.Time);
+                    Game.PrintChat("Version: " + Game.Version);
+
+                }
+                else if (args.Input.ToLowerInvariant().Contains("ping"))
+                {
+                    print("Ping: " + Game.Ping, "normal");
+                }
 
                 else { print("Command not found!", "error"); }
-                
                 
             }
         }    
