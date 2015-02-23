@@ -32,7 +32,6 @@ namespace Template
                 Methods.ShowNotification(Settings.ASSEMBLY_NAME + Methods.SPACE + Settings.VERSION + " by " + Settings.AUTHOR_NAME + " loaded!");
             }
 
-            Drawings.Initialize();
             Menu.Initialize();
             Spells.Initialize();
         }
@@ -61,7 +60,7 @@ namespace Template
 
         static void Drawing_OnDraw(EventArgs args)
         {
-            throw new NotImplementedException();
+            Drawings.Initialize();
         }
     }
 }
