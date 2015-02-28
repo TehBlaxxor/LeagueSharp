@@ -13,7 +13,7 @@ namespace Template
     class Menu
     {
         public static LeagueSharp.Common.Menu root;
-        private static Orbwalking.Orbwalker Orbwalker;
+        public static Orbwalking.Orbwalker Orbwalker;
 
         public static void Initialize()
         {
@@ -42,10 +42,10 @@ namespace Template
             root.SubMenu("Harass").AddItem(new MenuItem("harassToggler", "Toggle Harass")).SetValue(new KeyBind('H', KeyBindType.Toggle));
 
             root.AddSubMenu(new LeagueSharp.Common.Menu("[Teh] Kill Steal", "KS"));
-            root.SubMenu("Harass").AddItem(new MenuItem("ks", "Try to KillSteal")).SetValue(true);
-            root.SubMenu("Harass").AddItem(new MenuItem("ksQ", "Use Transfusion (Q)")).SetValue(true);
-            root.SubMenu("Harass").AddItem(new MenuItem("ksE", "Use Tides of Blood (E)")).SetValue(true);
-            root.SubMenu("Harass").AddItem(new MenuItem("ksIgnite", "Use Ignite")).SetValue(false);
+            root.SubMenu("KS").AddItem(new MenuItem("ks", "Try to KillSteal")).SetValue(true);
+            root.SubMenu("KS").AddItem(new MenuItem("ksQ", "Use Transfusion (Q)")).SetValue(true);
+            root.SubMenu("KS").AddItem(new MenuItem("ksE", "Use Tides of Blood (E)")).SetValue(true);
+            root.SubMenu("KS").AddItem(new MenuItem("ksIgnite", "Use Ignite")).SetValue(false);
 
             root.AddSubMenu(new LeagueSharp.Common.Menu("[Teh] Lane Clear", "LaneClear"));
             root.SubMenu("LaneClear").AddItem(new MenuItem("laneClearQ", "Use Transfusion (Q)")).SetValue(true);
@@ -62,15 +62,15 @@ namespace Template
             root.SubMenu("LastHit").AddItem(new MenuItem("modE3", "Min. Minions for E")).SetValue(new Slider(1, 1, 10));
 
             root.AddSubMenu(new LeagueSharp.Common.Menu("[Teh] Drawings", "Drawings"));
-            root.SubMenu("LastHit").AddItem(new MenuItem("drawQ", "Draw Transfusion (Q) range")).SetValue(true);
-            root.SubMenu("LastHit").AddItem(new MenuItem("drawW", "Draw Sanguine Pool (W) range")).SetValue(true);
-            root.SubMenu("LastHit").AddItem(new MenuItem("drawE", "Draw Tides of Blood (E) range")).SetValue(true);
-            root.SubMenu("LastHit").AddItem(new MenuItem("drawR", "Draw Hemoplague (R) range")).SetValue(true);
-            root.SubMenu("LastHit").AddItem(new MenuItem("drawOn", "Enable Drawings")).SetValue(true);
+            root.SubMenu("Drawings").AddItem(new MenuItem("drawQ", "Draw Transfusion (Q) range")).SetValue(true);
+            root.SubMenu("Drawings").AddItem(new MenuItem("drawW", "Draw Sanguine Pool (W) range")).SetValue(true);
+            root.SubMenu("Drawings").AddItem(new MenuItem("drawE", "Draw Tides of Blood (E) range")).SetValue(true);
+            root.SubMenu("Drawings").AddItem(new MenuItem("drawR", "Draw Hemoplague (R) range")).SetValue(true);
+            root.SubMenu("Drawings").AddItem(new MenuItem("drawOn", "Enable Drawings")).SetValue(true);
 
             root.AddSubMenu(new LeagueSharp.Common.Menu("[Teh] Misc", "Misc"));
             root.SubMenu("Misc").AddItem(new MenuItem("modHP", "Save Health Percentage for Combo")).SetValue(new Slider(35, 1, 100));
-            root.SubMenu("LastHit").AddItem(new MenuItem("spacer4", " "));
+            root.SubMenu("Misc").AddItem(new MenuItem("spacer4", " "));
             root.SubMenu("Misc").AddItem(new MenuItem("surviveW", "Auto W")).SetValue(true);
             root.SubMenu("Misc").AddItem(new MenuItem("surviveWHP", "Auto W HP Percentage")).SetValue(new Slider(10, 1, 100));
 
@@ -82,10 +82,7 @@ namespace Template
 
         public static bool GetBool(string MenuItemName)
         {
-            if (Menu.root.Item(MenuItemName).GetValue<bool>() == true)
-            { return true; }
-            else
-            { return false; }
+            return Menu.root.Item(MenuItemName).GetValue<bool>();
         }
 
         public static float GetSlider(string MenuItemName)

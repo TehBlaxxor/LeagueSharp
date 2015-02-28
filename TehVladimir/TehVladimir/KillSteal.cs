@@ -22,15 +22,15 @@ namespace Template
 
             foreach (var target in ObjectManager.Get<Obj_AI_Hero>().Where(tg => tg.IsValidTarget(610f)))
             {
-                if (Spells.Q.GetDamage(target) > target.Health + target.HPRegenRate && Spells.Q.IsReady() && target.IsValidTarget(Spells.Q.Range) && !target.HasBuff("UndyingRage") && Menu.GetBool("ksQ"))
+                if (Spells.Q.GetDamage(target) > target.Health + target.HPRegenRate && Spells.Q.IsReady() && target.IsValidTarget(Spells.Q.Range) && Menu.GetBool("ksQ"))
                 {
                     Spells.Q.Cast(target);
                 }
-                else if (Spells.E.GetDamage(target) > target.Health + target.HPRegenRate && Spells.E.IsReady() && target.IsValidTarget(Spells.E.Range) && !target.HasBuff("UndyingRage") && Menu.GetBool("ksE"))
+                else if (Spells.E.GetDamage(target) > target.Health + target.HPRegenRate && Spells.E.IsReady() && target.IsValidTarget(Spells.E.Range) && Menu.GetBool("ksE"))
                 {
                     Spells.E.Cast();
                 }
-                else if (Spells.GetIgniteDamage(target) > target.Health + target.HPRegenRate && target.IsValidTarget(600f) && !target.HasBuff("UndyingRage") && Menu.GetBool("ksIgnite"))
+                else if (Spells.GetIgniteDamage(target) > target.Health + target.HPRegenRate && target.IsValidTarget(600f) && Menu.GetBool("ksIgnite"))
                 {
                     ObjectManager.Player.Spellbook.CastSpell(Spells.summonerdot, target);
                 }

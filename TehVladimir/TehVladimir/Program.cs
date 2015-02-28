@@ -12,7 +12,7 @@ namespace Template
 {
     class Program
     {
-        private static Orbwalking.Orbwalker Orbwalker;
+        
         public static Obj_AI_Hero Player = ObjectManager.Player;
 
         public static void Main(string[] args)
@@ -38,7 +38,7 @@ namespace Template
 
         public static void Game_OnGameUpdate(EventArgs args)
         {
-            switch (Orbwalker.ActiveMode)
+            switch (Menu.Orbwalker.ActiveMode)
             {
                 case Orbwalking.OrbwalkingMode.Combo:
                     Combo.Run();
