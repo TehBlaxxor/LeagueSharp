@@ -108,14 +108,26 @@ namespace TehKatarina
             {
                 QinAir = false;
             }
+
+            if (Environment.TickCount < LastPlaced + 300)
+            {
+                var ward = (Obj_AI_Minion)sender;
+                if (ward.Name.ToLower().Contains("ward") && ward.Distance(LastWardPos) < 500 && E.IsReady() && Config.Item("TK/escape/run").GetValue<KeyBind>().Active && Config.Item("TK/escape/e").GetValue<bool>())
+                {
+                    E.Cast(ward);
+                }
+            }
+
                 
         }
 
         static void Game_OnGameLoad(EventArgs args)
         {
             if (Player.ChampionName != Katarina)
-                return;
-                    
+            { return; }
+
+            Game.PrintChat("Loaded!");
+
             Q = new Spell(SpellSlot.Q, 675);
             W = new Spell(SpellSlot.W, 375);
             E = new Spell(SpellSlot.E, 700);
@@ -208,7 +220,7 @@ namespace TehKatarina
                 DamageIndicator.FillColor = eventArgs.GetNewValue<Circle>().Color;
             };
 
-            //not done
+            //done
             Config.AddSubMenu(new Menu("TehKatarina - Escape", "TK/escape"));
             Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/run", "Escape Active").SetValue(new KeyBind('G', KeyBindType.Press)));
             Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e", "Use Shunpo (E)").SetValue(true));
@@ -221,11 +233,13 @@ namespace TehKatarina
             Config.SubMenu("TK/misc").AddItem(new MenuItem("TK/misc/e/mode/#", "Shunpo (E) Max Enemies").SetValue(new Slider(2, 1, 5)));
 
             Config.AddSubMenu(new Menu("Assembly Info", "TK/info"));
-            Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/author", "TehBlaxxor"));
-            Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/edition", "ALPHA"));
-            Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/version", "1.0.0.0"));
+            Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/author", "Author: TehBlaxxor"));
+            Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/edition", "Edition: BETA"));
+            Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/version", "5.4.1.4"));
 
             //Config.SubMenu("TK/combo").AddItem(new MenuItem("TK/combo/", "").SetValue(true));
+
+            Config.AddToMainMenu();
 
             GameObject.OnCreate += OnCreateObj;
             Drawing.OnDraw += Drawing_OnDraw;
@@ -297,15 +311,15 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
         private static void Escape()
         {
             if (!Config.Item("TK/escape/e").GetValue<bool>()) return;
-            var minions = MinionManager.GetMinions(Game.CursorPos, 200f);
-            if (minions.Count() >= 1 && E.IsReady() && minions[0].IsValidTarget(E.Range))
+            var minions = MinionManager.GetMinions(Game.CursorPos, 200f, MinionTypes.All, MinionTeam.All);
+            if (minions.Count() >= 1 && E.IsReady() && minions[0].Distance(Player.Position) <= E.Range)
             {
                 
                 E.Cast(minions[0]);
             }
             else if (minions.Count() < 1)
             {
-                if (Config.Item("TK/escape/ward").GetValue<bool>())
+                if (Config.Item("TK/escape/ward").GetValue<bool>() && E.IsReady())
                 {
 
             if (Environment.TickCount <= LastPlaced + 3000 || !E.IsReady()) return;
@@ -319,6 +333,8 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
             Items.UseItem((int)invSlot.Id, wardPosition);
             LastWardPos = wardPosition;
             LastPlaced = Environment.TickCount;
+
+            E.Cast();
                 }
             }
         }
