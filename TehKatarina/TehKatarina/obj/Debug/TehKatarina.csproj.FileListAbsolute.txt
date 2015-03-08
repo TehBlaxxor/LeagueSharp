@@ -1,0 +1,12 @@
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Debug\TehKatarina.exe.config
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Debug\TehKatarina.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Debug\TehKatarina.pdb
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Debug\LeagueSharp.Common.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Debug\LeagueSharp.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Debug\SharpDX.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Debug\SharpDX.Direct3D9.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Debug\clipper_library.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Debug\LeagueSharp.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\obj\Debug\TehKatarina.csprojResolveAssemblyReference.cache
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\obj\Debug\TehKatarina.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\obj\Debug\TehKatarina.pdb
