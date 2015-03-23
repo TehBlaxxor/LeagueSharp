@@ -126,7 +126,7 @@ namespace TehKatarina
             if (Player.ChampionName != Katarina)
             { return; }
 
-            Game.PrintChat("Loaded!");
+            Game.PrintChat("TehKatarina Loaded!");
 
             Q = new Spell(SpellSlot.Q, 675);
             W = new Spell(SpellSlot.W, 375);
@@ -522,6 +522,15 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
 
             int selectedindex = Config.Item("TK/misc/combo/mode").GetValue<StringList>().SelectedIndex + 1;
 
+            if ((Player.IsChannelingImportantSpell() || Player.HasBuff("katarinarsound", true)))
+            {
+                if (Player.CountEnemiesInRange(R.Range) < 1)
+                {
+                    Player.IssueOrder(GameObjectOrder.MoveTo, etarget.ServerPosition);
+                }
+                return;
+            }
+
             if (selectedindex == 1)
             {
                 if (Q.IsReady() && qtarget.IsValidTarget(Q.Range) && Config.Item("TK/combo/q").GetValue<bool>() == true)
@@ -556,6 +565,11 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                     if (W.IsReady() && qtarget.IsValidTarget(W.Range) && Config.Item("TK/combo/w").GetValue<bool>() && qtarget.HasBuff("katarinaqmark"))
                     {
                         W.Cast();
+                    }
+                    else if (W.IsReady() && qtarget.IsValidTarget(W.Range) && Config.Item("TK/combo/w").GetValue<bool>() && !qtarget.HasBuff("katarinaqmark") && !QinAir && !Q.IsReady())
+                    {
+                        W.Cast();
+                        
                     }
                 }
 
