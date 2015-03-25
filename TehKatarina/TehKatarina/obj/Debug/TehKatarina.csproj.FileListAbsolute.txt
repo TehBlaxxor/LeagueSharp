@@ -7,6 +7,5 @@ D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Release\Sharp
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Release\SharpDX.Direct3D9.dll
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Release\clipper_library.dll
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\bin\Release\LeagueSharp.xml
-D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\obj\Debug\TehKatarina.csprojResolveAssemblyReference.cache
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\obj\Debug\TehKatarina.exe
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehKatarina\TehKatarina\obj\Debug\TehKatarina.pdb

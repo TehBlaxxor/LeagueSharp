@@ -266,6 +266,17 @@ namespace TehKatarina
 
         static void Game_OnGameUpdate(EventArgs args)
         {
+            if ((Player.IsChannelingImportantSpell() || Player.HasBuff("katarinarsound", true)))
+            {
+                Orbwalker.SetAttack(false);
+                Orbwalker.SetMovement(false);
+            }
+            else
+            {
+                Orbwalker.SetAttack(true);
+                Orbwalker.SetMovement(true);
+            }
+
             switch (Orbwalker.ActiveMode)
             {
                 case Orbwalking.OrbwalkingMode.Combo:
@@ -292,17 +303,6 @@ namespace TehKatarina
             if (Config.Item("TK/ks/system").GetValue<bool>())
             {
                 KillSteal();
-            }
-
-            if ((Player.IsChannelingImportantSpell() || Player.HasBuff("katarinarsound", true)))
-            {
-                Orbwalker.SetAttack(false);
-                Orbwalker.SetMovement(false);
-            }
-            else
-            {
-                Orbwalker.SetAttack(true);
-                Orbwalker.SetMovement(true);
             }
 
             /*if (Ractive)
@@ -417,7 +417,7 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                 {
                     if (enemy.IsValidTarget(R.Range - 50))
                     {
-                        R.Cast();
+                        Utility.DelayAction.Add(100, () => R.Cast());
                     }
                 }
 
@@ -425,7 +425,7 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                 {
                     if (enemy.IsValidTarget(R.Range - 50))
                     {
-                        R.Cast();
+                        Utility.DelayAction.Add(100, () => R.Cast());
                     }
                 }
 
@@ -594,7 +594,7 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                 {
                     Orbwalker.SetMovement(false);
                     Orbwalker.SetAttack(false);
-                    R.Cast();
+                    Utility.DelayAction.Add(100, () => R.Cast());
                 }
                 //katarinaqmark
 
@@ -646,7 +646,7 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                 {
                     Orbwalker.SetMovement(false);
                     Orbwalker.SetAttack(false);
-                    R.Cast();
+                    Utility.DelayAction.Add(100, () => R.Cast());
                 }
             }
         }
