@@ -235,7 +235,7 @@ namespace TehKatarina
             Config.AddSubMenu(new Menu("Assembly Info", "TK/info"));
             Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/author", "Author: TehBlaxxor"));
             Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/edition", "Edition: BETA"));
-            Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/version", "5.4.1.4"));
+            Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/version", "5.6.1.1"));
 
             //Config.SubMenu("TK/combo").AddItem(new MenuItem("TK/combo/", "").SetValue(true));
 
@@ -249,6 +249,12 @@ namespace TehKatarina
 
         static void AntiGapcloser_OnEnemyGapcloser(ActiveGapcloser gapcloser)
         {
+            if ((Player.IsChannelingImportantSpell() || Player.HasBuff("katarinarsound", true)))
+            {
+                Game.PrintChat("Enemy attempted gapcloser during ultimate. Denying gapcloser!");
+                return;
+            }
+
             if (gapcloser.Sender.IsEnemy && E.IsReady() && Config.Item("TK/escape/e/antigapcloser").GetValue<bool>())
             {
                 if (GetFarthestMinion(Player.Position, gapcloser.Sender.Position).IsValidTarget(E.Range))
@@ -288,7 +294,18 @@ namespace TehKatarina
                 KillSteal();
             }
 
-            if (Ractive)
+            if ((Player.IsChannelingImportantSpell() || Player.HasBuff("katarinarsound", true)))
+            {
+                Orbwalker.SetAttack(false);
+                Orbwalker.SetMovement(false);
+            }
+            else
+            {
+                Orbwalker.SetAttack(true);
+                Orbwalker.SetMovement(true);
+            }
+
+            /*if (Ractive)
             {
                 Orbwalker.SetAttack(false);
                 Orbwalker.SetMovement(false);
@@ -297,7 +314,7 @@ namespace TehKatarina
             {
                 Orbwalker.SetAttack(true);
                 Orbwalker.SetMovement(true);
-            }
+            }*/
 
         }
         /*if (Environment.TickCount <= LastPlaced + 3000 || !E.IsReady()) return;
@@ -528,7 +545,7 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                 {
                     Player.IssueOrder(GameObjectOrder.MoveTo, etarget.ServerPosition);
                 }
-                return;
+                else return;
             }
 
             if (selectedindex == 1)
