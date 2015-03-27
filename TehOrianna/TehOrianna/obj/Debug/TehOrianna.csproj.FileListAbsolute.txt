@@ -9,3 +9,4 @@ D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehOrianna\TehOrianna\bin\Debug\clipper_l
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehOrianna\TehOrianna\bin\Debug\LeagueSharp.xml
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehOrianna\TehOrianna\obj\Debug\TehOrianna.exe
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehOrianna\TehOrianna\obj\Debug\TehOrianna.pdb
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehOrianna\TehOrianna\obj\Debug\TehOrianna.csprojResolveAssemblyReference.cache

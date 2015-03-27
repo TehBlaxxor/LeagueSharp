@@ -39,7 +39,7 @@ namespace TehOrianna
             if (E.IsReady())
                 damage += Player.GetSpellDamage(enemy, SpellSlot.E);
             if (R.IsReady())
-                damage += Player.GetSpellDamage(enemy, SpellSlot.R) * 8;
+                damage += Player.GetSpellDamage(enemy, SpellSlot.R);
             if (IS.IsReady() && IS != SpellSlot.Unknown)
                 damage += (float)Player.GetSummonerSpellDamage(enemy, Damage.SummonerSpell.Ignite);
             return (float)damage;
