@@ -36,13 +36,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LeagueSharp">
-      <HintPath>D:\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\\System\LeagueSharp.dll</HintPath>
+      <HintPath>D:\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\System\LeagueSharp.dll</HintPath>
     </Reference>
     <Reference Include="LeagueSharp.Common">
-      <HintPath>D:\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\\System\LeagueSharp.Common.dll</HintPath>
+      <HintPath>D:\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\System\LeagueSharp.Common.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
-      <HintPath>D:\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\\System\SharpDX.dll</HintPath>
+      <HintPath>D:\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\System\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="DamageIndicator.cs" />
     <Compile Include="IgniteHandler.cs" />
+    <Compile Include="Orbwalker.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

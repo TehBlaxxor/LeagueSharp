@@ -19,7 +19,6 @@ namespace TehKatarina
         public const string Katarina = "Katarina";
         public static bool Ractive;
         public static bool QinAir;
-        public static Orbwalking.Orbwalker Orbwalker;
         public static List<Spell> Spells = new List<Spell>();
         public static Spell Q;
         public static Spell W;
@@ -121,6 +120,8 @@ namespace TehKatarina
                 
         }
 
+        private static readonly Menu OrbwalkerMenu = new Menu("Orbwalker", "Orbwalker");
+
         static void Game_OnGameLoad(EventArgs args)
         {
             if (Player.ChampionName != Katarina)
@@ -143,7 +144,9 @@ namespace TehKatarina
             Config = new Menu("TehKatarina", "TehKatarina", true);
 
             Config.AddSubMenu(new Menu("Orbwalking", "Orbwalking"));
-            Orbwalker = new Orbwalking.Orbwalker(Config.SubMenu("Orbwalking"));
+            //Orbwalker = new Orbwalking.Orbwalker(Config.SubMenu("Orbwalking"));
+            Config.AddSubMenu(OrbwalkerMenu);
+            xSLxOrbwalker.AddToMenu(OrbwalkerMenu);
 
             var targetselectormenu = new Menu("Target Selector", "Target Selector");
             TargetSelector.AddToMenu(targetselectormenu);
@@ -237,6 +240,12 @@ namespace TehKatarina
             Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/edition", "Edition: BETA"));
             Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/version", "5.6.1.1"));
 
+            Config.AddSubMenu(new Menu("Keybinds", "TK/keybinds"));
+            Config.SubMenu("TK/info").AddItem(new MenuItem("keybind.combo", "Combo").SetValue(new KeyBind(32, KeyBindType.Press)));
+            Config.SubMenu("TK/info").AddItem(new MenuItem("keybind.lasthit", "Lasthit").SetValue(new KeyBind('X', KeyBindType.Press)));
+            Config.SubMenu("TK/info").AddItem(new MenuItem("keybind.harass", "Harass").SetValue(new KeyBind('C',KeyBindType.Press)));
+
+
             //Config.SubMenu("TK/combo").AddItem(new MenuItem("TK/combo/", "").SetValue(true));
 
             Config.AddToMainMenu();
@@ -266,35 +275,20 @@ namespace TehKatarina
 
         static void Game_OnGameUpdate(EventArgs args)
         {
-            if ((Player.IsChannelingImportantSpell() || Player.HasBuff("katarinarsound", true)))
-            {
-                Orbwalker.SetAttack(false);
-                Orbwalker.SetMovement(false);
-            }
-            else
-            {
-                Orbwalker.SetAttack(true);
-                Orbwalker.SetMovement(true);
-            }
 
-            switch (Orbwalker.ActiveMode)
+            if (Config.Item("keybind.combo").GetValue<KeyBind>().Active)
+                Combo();
+
+            if (Config.Item("keybind.lasthit").GetValue<KeyBind>().Active)
+                LastHit();
+
+            if (Config.Item("keybind.harass").GetValue<KeyBind>().Active)
+                Harass();
+
+            if (Config.Item("TK/escape/run").GetValue<KeyBind>().Active)
             {
-                case Orbwalking.OrbwalkingMode.Combo:
-                    Combo();
-                    break;
-                case Orbwalking.OrbwalkingMode.LastHit:
-                    LastHit();
-                    break;
-                case Orbwalking.OrbwalkingMode.Mixed:
-                    Harass();
-                    break;
-                case Orbwalking.OrbwalkingMode.None:
-                    if (Config.Item("TK/escape/run").GetValue<KeyBind>().Active)
-                    {
-                        Flee();
-                        Escape();
-                    }
-                    break;
+                Flee();
+                Escape();
             }
 
             if (Config.Item("TK/harass/system").GetValue<KeyBind>().Active)
@@ -592,8 +586,6 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
 
                 if (!Q.IsReady() && !W.IsReady() && !E.IsReady() && R.IsReady() && Config.Item("TK/combo/r/mode").GetValue<Slider>().Value >= Player.CountEnemiesInRange(R.Range) && Config.Item("TK/combo/r").GetValue<bool>())
                 {
-                    Orbwalker.SetMovement(false);
-                    Orbwalker.SetAttack(false);
                     Utility.DelayAction.Add(100, () => R.Cast());
                 }
                 //katarinaqmark
@@ -644,8 +636,6 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
 
                 if (!Q.IsReady() && !W.IsReady() && !E.IsReady() && R.IsReady() && Config.Item("TK/combo/r/mode").GetValue<Slider>().Value >= Player.CountEnemiesInRange(R.Range) && Config.Item("TK/combo/r").GetValue<bool>())
                 {
-                    Orbwalker.SetMovement(false);
-                    Orbwalker.SetAttack(false);
                     Utility.DelayAction.Add(100, () => R.Cast());
                 }
             }
