@@ -32,7 +32,7 @@ namespace MAC.Plugin
             R = new Spell(SpellSlot.R, 1150f);
             R.SetSkillshot(0.25f, 150f, 2100, false, SkillshotType.SkillshotLine);
 
-            Game.OnGameUpdate += GameOnOnGameUpdate;
+            Game.OnUpdate += GameOnOnGameUpdate;
             Drawing.OnDraw += DrawingOnOnDraw;
 
             MiscControl.PrintChat(MiscControl.stringColor("Graves Loaded", MiscControl.TableColor.Red));

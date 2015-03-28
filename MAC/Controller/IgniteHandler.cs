@@ -25,7 +25,7 @@ namespace MAC.Controller
             _menu = config;
             _igniteSlot = ObjectManager.Player.GetSpellSlot("SummonerDot");
 
-            Game.OnGameUpdate += GameOnOnGameUpdate;
+            Game.OnUpdate += GameOnOnGameUpdate;
         }
 
         private void GameOnOnGameUpdate(EventArgs args)

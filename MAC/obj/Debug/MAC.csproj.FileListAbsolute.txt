@@ -25,12 +25,8 @@ D:\!!!!!!!GITREPOS\LeagueSharp\MAC\bin\Debug\LeagueSharp.Common.dll
 D:\!!!!!!!GITREPOS\LeagueSharp\MAC\bin\Debug\LeagueSharp.dll
 D:\!!!!!!!GITREPOS\LeagueSharp\MAC\bin\Debug\SharpDX.Direct3D9.dll
 D:\!!!!!!!GITREPOS\LeagueSharp\MAC\bin\Debug\SharpDX.dll
-D:\!!!!!!!GITREPOS\LeagueSharp\MAC\bin\Debug\SharpDX.Toolkit.dll
-D:\!!!!!!!GITREPOS\LeagueSharp\MAC\bin\Debug\SharpDX.Toolkit.Graphics.dll
 D:\!!!!!!!GITREPOS\LeagueSharp\MAC\bin\Debug\clipper_library.dll
 D:\!!!!!!!GITREPOS\LeagueSharp\MAC\bin\Debug\LeagueSharp.xml
-D:\!!!!!!!GITREPOS\LeagueSharp\MAC\bin\Debug\SharpDX.Toolkit.xml
-D:\!!!!!!!GITREPOS\LeagueSharp\MAC\bin\Debug\SharpDX.Toolkit.Graphics.xml
 D:\!!!!!!!GITREPOS\LeagueSharp\MAC\obj\Debug\MAC.csprojResolveAssemblyReference.cache
 D:\!!!!!!!GITREPOS\LeagueSharp\MAC\obj\Debug\MAC.Properties.Resources.resources
 D:\!!!!!!!GITREPOS\LeagueSharp\MAC\obj\Debug\MAC.csproj.GenerateResource.Cache

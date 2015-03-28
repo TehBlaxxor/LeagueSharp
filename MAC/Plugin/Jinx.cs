@@ -32,7 +32,7 @@ namespace MAC.Plugin
             R = new Spell(SpellSlot.R, 25000f);
             R.SetSkillshot(0.6f, 140f, 1700f, false, SkillshotType.SkillshotLine);
 
-            Game.OnGameUpdate += GameOnOnGameUpdate;
+            Game.OnUpdate += GameOnOnGameUpdate;
             Drawing.OnDraw += DrawingOnOnDraw;
 
             MiscControl.PrintChat(MiscControl.stringColor("Jinx Loaded", MiscControl.TableColor.Red));

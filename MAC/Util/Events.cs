@@ -15,7 +15,7 @@ namespace MAC.Util
 
             static Game()
             {
-                LeagueSharp.Game.OnGameProcessPacket += OnGameProcessPacket;
+                LeagueSharp.Game.OnProcessPacket += OnGameProcessPacket;
             }
 
             public static event OnGameStartet OnGameStart;
@@ -25,7 +25,7 @@ namespace MAC.Util
                 if (LeagueSharp.Game.Mode != GameMode.Running || OnGameStart == null)
                     return;
                 OnGameStart(new EventArgs());
-                LeagueSharp.Game.OnGameProcessPacket -= OnGameProcessPacket;
+                LeagueSharp.Game.OnProcessPacket -= OnGameProcessPacket;
             }
         }
     }
