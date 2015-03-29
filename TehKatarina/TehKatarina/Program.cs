@@ -232,13 +232,17 @@ namespace TehKatarina
 
             Config.AddSubMenu(new Menu("TehKatarina - Misc", "TK/misc"));
             Config.SubMenu("TK/misc").AddItem(new MenuItem("TK/misc/combo/mode", "Combo Mode").SetValue(new StringList(new[] { "Q E W", "E Q W" })));
+            Config.SubMenu("TK/misc").AddItem(new MenuItem("TK/misc/q/humanizer", "Q Humanizer").SetValue(new Slider(0, 0, 1000)));
             Config.SubMenu("TK/misc").AddItem(new MenuItem("TK/misc/e/humanizer", "E Humanizer").SetValue(new Slider(0, 0, 1000)));
+            Config.SubMenu("TK/misc").AddItem(new MenuItem("TK/misc/w/humanizer", "W Humanizer").SetValue(new Slider(0, 0, 1000)));
+            Config.SubMenu("TK/misc").AddItem(new MenuItem("TK/misc/r/humanizer", "R Humanizer").SetValue(new Slider(0, 0, 1000)));
+            Config.SubMenu("TK/misc").AddItem(new MenuItem("TK/misc/humanizer", "Use humanizers in KS").SetValue(true));
             Config.SubMenu("TK/misc").AddItem(new MenuItem("TK/misc/e/mode/#", "Shunpo (E) Max Enemies").SetValue(new Slider(2, 1, 5)));
 
             Config.AddSubMenu(new Menu("Assembly Info", "TK/info"));
             Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/author", "Author: TehBlaxxor"));
             Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/edition", "Edition: BETA"));
-            Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/version", "5.6.1.1"));
+            Config.SubMenu("TK/info").AddItem(new MenuItem("TK/info/version", "5.6.3.1"));
 
             Config.AddSubMenu(new Menu("Keybinds", "TK/keybinds"));
             Config.SubMenu("TK/info").AddItem(new MenuItem("keybind.combo", "Combo").SetValue(new KeyBind(32, KeyBindType.Press)));
@@ -359,7 +363,14 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                 {
                     if (enemy.IsValidTarget(Q.Range))
                     {
-                        Q.Cast(enemy);
+                        if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                        {
+                            Utility.DelayAction.Add(Config.Item("TK/misc/q/humanizer").GetValue<Slider>().Value, () => Q.Cast(enemy));
+                        }
+                        else
+                        {
+                            Q.Cast(enemy);
+                        }
                     }
                 }
 
@@ -369,14 +380,28 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                         {
                             if (Config.Item("TK/ks/e").GetValue<bool>())
                             {
-                                E.Cast(GetClosestMinion(Player.Position, enemy.Position)); //E.Cast(qtarget);
+                                if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                                {
+                                    Utility.DelayAction.Add(Config.Item("TK/misc/e/humanizer").GetValue<Slider>().Value, () => E.Cast(GetClosestMinion(Player.Position, enemy.Position)));
+                                }
+                                else
+                                {
+                                    E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                                } //E.Cast(qtarget);
                             }
                         }
                         else if (Config.Item("TK/ks/e/mode").GetValue<StringList>().SelectedIndex == 1)
                         {
                             if (Config.Item("TK/ks/e").GetValue<bool>() && GetClosestMinion(Player.Position, enemy.Position).CountEnemiesInRange(1000f) <= Config.Item("TK/misc/e/mode/#").GetValue<Slider>().Value)
                             {
-                                E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                                if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                                {
+                                    Utility.DelayAction.Add(Config.Item("TK/misc/e/humanizer").GetValue<Slider>().Value, () => E.Cast(GetClosestMinion(Player.Position, enemy.Position)));
+                                }
+                                else
+                                {
+                                    E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                                } 
                             }
                         }
                     }
@@ -385,7 +410,14 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                 {
                     if (enemy.IsValidTarget(W.Range))
                     {
-                        W.Cast();
+                        if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                        {
+                            Utility.DelayAction.Add(Config.Item("TK/misc/w/humanizer").GetValue<Slider>().Value, () => W.Cast());
+                        }
+                        else
+                        {
+                            W.Cast();
+                        } 
                     }
                 }
 
@@ -395,14 +427,28 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                     {
                         if (Config.Item("TK/ks/e").GetValue<bool>())
                         {
-                            E.Cast(GetClosestMinion(Player.Position, enemy.Position)); //E.Cast(qtarget);
+                            if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                            {
+                                Utility.DelayAction.Add(Config.Item("TK/misc/e/humanizer").GetValue<Slider>().Value, () => E.Cast(GetClosestMinion(Player.Position, enemy.Position)));
+                            }
+                            else
+                            {
+                                E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                            }  //E.Cast(qtarget);
                         }
                     }
                     else if (Config.Item("TK/ks/e/mode").GetValue<StringList>().SelectedIndex == 1)
                     {
                         if (Config.Item("TK/ks/e").GetValue<bool>() && GetClosestMinion(Player.Position, enemy.Position).CountEnemiesInRange(1000f) <= Config.Item("TK/misc/e/mode/#").GetValue<Slider>().Value)
                         {
-                            E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                            if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                            {
+                                Utility.DelayAction.Add(Config.Item("TK/misc/e/humanizer").GetValue<Slider>().Value, () => E.Cast(GetClosestMinion(Player.Position, enemy.Position)));
+                            }
+                            else
+                            {
+                                E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                            } 
                         }
                     }
                 }
@@ -411,7 +457,14 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                 {
                     if (enemy.IsValidTarget(R.Range - 50))
                     {
-                        Utility.DelayAction.Add(100, () => R.Cast());
+                        if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                        {
+                            Utility.DelayAction.Add(Config.Item("TK/misc/r/humanizer").GetValue<Slider>().Value, () => R.Cast());
+                        }
+                        else
+                        {
+                            R.Cast();
+                        } 
                     }
                 }
 
@@ -419,7 +472,14 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                 {
                     if (enemy.IsValidTarget(R.Range - 50))
                     {
-                        Utility.DelayAction.Add(100, () => R.Cast());
+                        if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                        {
+                            Utility.DelayAction.Add(Config.Item("TK/misc/r/humanizer").GetValue<Slider>().Value, () => R.Cast());
+                        }
+                        else
+                        {
+                            R.Cast();
+                        } 
                     }
                 }
 
@@ -430,14 +490,28 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                     {
                         if (Config.Item("TK/ks/e").GetValue<bool>())
                         {
-                            E.Cast(GetClosestMinion(Player.Position, enemy.Position)); //E.Cast(qtarget);
+                            if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                            {
+                                Utility.DelayAction.Add(Config.Item("TK/misc/e/humanizer").GetValue<Slider>().Value, () => E.Cast(GetClosestMinion(Player.Position, enemy.Position)));
+                            }
+                            else
+                            {
+                                E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                            }  //E.Cast(qtarget);
                         }
                     }
                 else if (Config.Item("TK/ks/e/mode").GetValue<StringList>().SelectedIndex == 1)
                     {
                         if (Config.Item("TK/ks/e").GetValue<bool>() && GetClosestMinion(Player.Position, enemy.Position).CountEnemiesInRange(1000f) <= Config.Item("TK/misc/e/mode/#").GetValue<Slider>().Value)
                         {
-                            E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                            if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                            {
+                                Utility.DelayAction.Add(Config.Item("TK/misc/e/humanizer").GetValue<Slider>().Value, () => E.Cast(GetClosestMinion(Player.Position, enemy.Position)));
+                            }
+                            else
+                            {
+                                E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                            } 
                         }
                     }
                 }
@@ -448,14 +522,28 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                     {
                         if (Config.Item("TK/ks/e").GetValue<bool>())
                         {
-                            E.Cast(GetClosestMinion(Player.Position, enemy.Position)); //E.Cast(qtarget);
+                            if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                            {
+                                Utility.DelayAction.Add(Config.Item("TK/misc/e/humanizer").GetValue<Slider>().Value, () => E.Cast(GetClosestMinion(Player.Position, enemy.Position)));
+                            }
+                            else
+                            {
+                                E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                            }  //E.Cast(qtarget);
                         }
                     }
                     else if (Config.Item("TK/ks/e/mode").GetValue<StringList>().SelectedIndex == 1)
                     {
                         if (Config.Item("TK/ks/e").GetValue<bool>() && GetClosestMinion(Player.Position, enemy.Position).CountEnemiesInRange(1000f) <= Config.Item("TK/misc/e/mode/#").GetValue<Slider>().Value)
                         {
-                            E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                            if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                            {
+                                Utility.DelayAction.Add(Config.Item("TK/misc/e/humanizer").GetValue<Slider>().Value, () => E.Cast(GetClosestMinion(Player.Position, enemy.Position)));
+                            }
+                            else
+                            {
+                                E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                            } 
                         }
                     }
                 }
@@ -474,14 +562,28 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                     {
                         if (Config.Item("TK/ks/e").GetValue<bool>())
                         {
-                            E.Cast(GetClosestMinion(Player.Position, enemy.Position)); //E.Cast(qtarget);
+                            if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                            {
+                                Utility.DelayAction.Add(Config.Item("TK/misc/e/humanizer").GetValue<Slider>().Value, () => E.Cast(GetClosestMinion(Player.Position, enemy.Position)));
+                            }
+                            else
+                            {
+                                E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                            }  //E.Cast(qtarget);
                         }
                     }
                     else if (Config.Item("TK/ks/e/mode").GetValue<StringList>().SelectedIndex == 1)
                     {
                         if (Config.Item("TK/ks/e").GetValue<bool>() && GetClosestMinion(Player.Position, enemy.Position).CountEnemiesInRange(1000f) <= Config.Item("TK/misc/e/mode/#").GetValue<Slider>().Value)
                         {
-                            E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                            if (Config.Item("TK/misc/humanizer").GetValue<bool>())
+                            {
+                                Utility.DelayAction.Add(Config.Item("TK/misc/e/humanizer").GetValue<Slider>().Value, () => E.Cast(GetClosestMinion(Player.Position, enemy.Position)));
+                            }
+                            else
+                            {
+                                E.Cast(GetClosestMinion(Player.Position, enemy.Position));
+                            } 
                         }
                     }
                 }
@@ -497,11 +599,11 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
 
             if (target.IsValidTarget(Q.Range) && Q.IsReady() && Config.Item("TK/harass/q").GetValue<bool>())
             {
-                Q.Cast(target);
+                Utility.DelayAction.Add(Config.Item("TK/misc/q/humanizer").GetValue<Slider>().Value, () => Q.Cast(target));
             }
             if (target.IsValidTarget(W.Range) && W.IsReady() && Config.Item("TK/harass/w").GetValue<bool>())
             {
-                W.Cast();
+                Utility.DelayAction.Add(Config.Item("TK/misc/w/humanizer").GetValue<Slider>().Value, () => W.Cast());
             }
 
         }
@@ -526,6 +628,27 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                 }
         }
 
+        public static bool CheckForQ()
+        {
+            if (Config.Item("TK/combo/q").GetValue<bool>() && Q.IsReady())
+                return true;
+            else return false;
+        }
+
+        public static bool CheckForW()
+        {
+            if (Config.Item("TK/combo/w").GetValue<bool>() && Q.IsReady())
+                return true;
+            else return false;
+        }
+
+        public static bool CheckForE()
+        {
+            if (Config.Item("TK/combo/e").GetValue<bool>() && Q.IsReady())
+                return true;
+            else return false;
+        }
+
         private static void Combo()
         {
             var etarget = TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Magical);
@@ -546,7 +669,7 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
             {
                 if (Q.IsReady() && qtarget.IsValidTarget(Q.Range) && Config.Item("TK/combo/q").GetValue<bool>() == true)
                 {
-                    Q.Cast(qtarget);
+                    Utility.DelayAction.Add(Config.Item("TK/misc/q/humanizer").GetValue<Slider>().Value, () => Q.Cast(qtarget));
                 }
 
                 if (Config.Item("TK/combo/e/mode").GetValue<StringList>().SelectedIndex == 0)
@@ -568,25 +691,25 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                 {
                     if (W.IsReady() && qtarget.IsValidTarget(W.Range) && Config.Item("TK/combo/w").GetValue<bool>())
                     {
-                        W.Cast();
+                        Utility.DelayAction.Add(Config.Item("TK/misc/w/humanizer").GetValue<Slider>().Value, () => W.Cast());
                     }
                 }
                 else if (Config.Item("TK/combo/w/mode").GetValue<StringList>().SelectedIndex == 1)
                 {
                     if (W.IsReady() && qtarget.IsValidTarget(W.Range) && Config.Item("TK/combo/w").GetValue<bool>() && qtarget.HasBuff("katarinaqmark"))
                     {
-                        W.Cast();
+                        Utility.DelayAction.Add(Config.Item("TK/misc/w/humanizer").GetValue<Slider>().Value, () => W.Cast());
                     }
                     else if (W.IsReady() && qtarget.IsValidTarget(W.Range) && Config.Item("TK/combo/w").GetValue<bool>() && !qtarget.HasBuff("katarinaqmark") && !QinAir && !Q.IsReady())
                     {
-                        W.Cast();
+                        Utility.DelayAction.Add(Config.Item("TK/misc/w/humanizer").GetValue<Slider>().Value, () => W.Cast());
                         
                     }
                 }
 
-                if (!Q.IsReady() && !W.IsReady() && !E.IsReady() && R.IsReady() && Config.Item("TK/combo/r/mode").GetValue<Slider>().Value >= Player.CountEnemiesInRange(R.Range) && Config.Item("TK/combo/r").GetValue<bool>())
+                if (!CheckForQ() && !CheckForE() && !CheckForW() && R.IsReady() && Config.Item("TK/combo/r/mode").GetValue<Slider>().Value >= Player.CountEnemiesInRange(R.Range) && Config.Item("TK/combo/r").GetValue<bool>())
                 {
-                    Utility.DelayAction.Add(100, () => R.Cast());
+                    Utility.DelayAction.Add(Config.Item("TK/misc/r/humanizer").GetValue<Slider>().Value, () => R.Cast());
                 }
                 //katarinaqmark
 
@@ -614,7 +737,7 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
 
                 if (Q.IsReady() && etarget.IsValidTarget(Q.Range) && Config.Item("TK/combo/q").GetValue<bool>() == true)
                 {
-                    Q.Cast(etarget);
+                    Utility.DelayAction.Add(Config.Item("TK/misc/q/humanizer").GetValue<Slider>().Value, () => Q.Cast(etarget));
                 }
 
 
@@ -623,20 +746,21 @@ Config.SubMenu("TK/escape").AddItem(new MenuItem("TK/escape/e/antigapcloser", " 
                 {
                     if (W.IsReady() && etarget.IsValidTarget(W.Range) && Config.Item("TK/combo/w").GetValue<bool>())
                     {
-                        W.Cast();
+                        Utility.DelayAction.Add(Config.Item("TK/misc/w/humanizer").GetValue<Slider>().Value, () => W.Cast());
                     }
                 }
                 else if (Config.Item("TK/combo/w/mode").GetValue<StringList>().SelectedIndex == 1)
                 {
                     if (W.IsReady() && etarget.IsValidTarget(W.Range) && Config.Item("TK/combo/w").GetValue<bool>() && qtarget.HasBuff("katarinaqmark"))
                     {
-                        W.Cast();
+                        Utility.DelayAction.Add(Config.Item("TK/misc/w/humanizer").GetValue<Slider>().Value, () => W.Cast());
                     }
                 }
 
-                if (!Q.IsReady() && !W.IsReady() && !E.IsReady() && R.IsReady() && Config.Item("TK/combo/r/mode").GetValue<Slider>().Value >= Player.CountEnemiesInRange(R.Range) && Config.Item("TK/combo/r").GetValue<bool>())
+                if (!CheckForQ() && !CheckForE() && !CheckForW() 
+                    && R.IsReady() && Config.Item("TK/combo/r/mode").GetValue<Slider>().Value >= Player.CountEnemiesInRange(R.Range) && Config.Item("TK/combo/r").GetValue<bool>())
                 {
-                    Utility.DelayAction.Add(100, () => R.Cast());
+                    Utility.DelayAction.Add(Config.Item("TK/misc/q/humanizer").GetValue<Slider>().Value, () => R.Cast());
                 }
             }
         }
