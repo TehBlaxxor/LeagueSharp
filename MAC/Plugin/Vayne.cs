@@ -43,7 +43,7 @@ namespace MAC.Plugin
             Interrupter2.OnInterruptableTarget += InterrupterOnOnPossibleToInterrupt;
             AntiGapcloser.OnEnemyGapcloser += AntiGapcloserOnOnEnemyGapcloser;
 
-            MiscControl.PrintChat(MiscControl.stringColor("Vayne Loaded", MiscControl.TableColor.Red));
+            Game.PrintChat(MiscControl.stringColor(ObjectManager.Player.ChampionName, MiscControl.TableColor.RoyalBlue) + " loaded, thanks for using MAC.");
         }
 
         private void InterrupterOnOnPossibleToInterrupt(Obj_AI_Hero sender, Interrupter2.InterruptableTargetEventArgs args)

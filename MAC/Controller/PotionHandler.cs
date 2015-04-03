@@ -39,7 +39,7 @@ namespace MAC.Controller
                 return;
             }
 
-            if (useHp && ObjectManager.Player.HealthPercentage() <= _menu.Item("useHPPercent").GetValue<Slider>().Value &&
+            if (useHp && ObjectManager.Player.HealthPercent <= _menu.Item("useHPPercent").GetValue<Slider>().Value &&
                 !HasHealthPotBuff())
             {
                 if (Items.CanUseItem(Hpid) && Items.HasItem(Hpid))
@@ -49,7 +49,7 @@ namespace MAC.Controller
             }
 
             if (!useMp ||
-                !(ObjectManager.Player.ManaPercentage() <= _menu.Item("useMPPercent").GetValue<Slider>().Value) ||
+                !(ObjectManager.Player.ManaPercent <= _menu.Item("useMPPercent").GetValue<Slider>().Value) ||
                 HasMannaPutBuff()) return;
 
             if (Items.CanUseItem(Mpid) && Items.HasItem(Mpid))

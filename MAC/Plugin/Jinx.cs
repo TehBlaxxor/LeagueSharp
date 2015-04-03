@@ -34,8 +34,7 @@ namespace MAC.Plugin
 
             Game.OnUpdate += GameOnOnGameUpdate;
             Drawing.OnDraw += DrawingOnOnDraw;
-
-            MiscControl.PrintChat(MiscControl.stringColor("Jinx Loaded", MiscControl.TableColor.Red));
+            Game.PrintChat(MiscControl.stringColor(ObjectManager.Player.ChampionName, MiscControl.TableColor.RoyalBlue) + " loaded, thanks for using MAC.");
         }
 
         public bool RocketLauncherActive

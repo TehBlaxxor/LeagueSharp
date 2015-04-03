@@ -35,7 +35,7 @@ namespace MAC.Plugin
             Game.OnUpdate += GameOnOnGameUpdate;
             Drawing.OnDraw += DrawingOnOnDraw;
 
-            MiscControl.PrintChat(MiscControl.stringColor("Graves Loaded", MiscControl.TableColor.Red));
+            Game.PrintChat(MiscControl.stringColor(ObjectManager.Player.ChampionName, MiscControl.TableColor.RoyalBlue) + " loaded, thanks for using MAC.");
         }
 
         private void DrawingOnOnDraw(EventArgs args)
