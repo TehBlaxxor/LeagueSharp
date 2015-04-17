@@ -10,3 +10,4 @@ D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehMalzahar\TehMalzahar\bin\Debug\LeagueS
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehMalzahar\TehMalzahar\bin\Debug\LeagueSharp.xml
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehMalzahar\TehMalzahar\obj\Debug\TehMalzahar.exe
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehMalzahar\TehMalzahar\obj\Debug\TehMalzahar.pdb
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehMalzahar\TehMalzahar\obj\Debug\TehMalzahar.csprojResolveAssemblyReference.cache

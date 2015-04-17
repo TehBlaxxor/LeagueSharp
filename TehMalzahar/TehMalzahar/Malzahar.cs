@@ -65,6 +65,7 @@ namespace TehMalzahar
             var farmMenu = new Menu("Lane Clear / Farm", "farmmenu");
             farmMenu.AddItem(new MenuItem("farmq", "Use Call of The Void (Q)").SetValue(true));
             farmMenu.AddItem(new MenuItem("farmw", "Use Null Zone (W)").SetValue(true));
+            farmMenu.AddItem(new MenuItem("farme", "Use Malefic Visions (E)").SetValue(true));
             Config.AddSubMenu(farmMenu);
 
             var interrupterMenu = new Menu("Interrupting Spells", "interruptermenu");
@@ -108,6 +109,11 @@ namespace TehMalzahar
             miscMenu.AddSubMenu(new Menu("Hit Chances", "hitchances"));
             miscMenu.SubMenu("hitchances").AddItem(new MenuItem("qhitchance", "Call of The Void (Q)").SetValue(new StringList(new[] { "Medium", "High", "Very High" })));
             miscMenu.SubMenu("hitchances").AddItem(new MenuItem("whitchance", "Null Zone (W)").SetValue(new StringList(new[] { "Medium", "High", "Very High" })));
+            miscMenu.AddSubMenu(new Menu("Nether Grasp Mode", "nethergraspmode"));
+            foreach (var champion in ObjectManager.Get<Obj_AI_Hero>().Where(x => x.IsEnemy))
+            {
+                miscMenu.SubMenu("nethergraspmode").AddItem(new MenuItem("ng" + champion.Name, "Use Ult On " + champion.Name).SetValue(true));
+            }
             if (Infernus != SpellSlot.Unknown)
                 miscMenu.AddItem(new MenuItem("ignite", "Use Ignite For KS").SetValue(true));
             Config.AddSubMenu(miscMenu);
@@ -139,6 +145,17 @@ namespace TehMalzahar
 
         void Game_OnUpdate(EventArgs args)
         {
+            if (Player.IsChannelingImportantSpell() || Player.IsCastingInterruptableSpell())
+            {
+                Orbwalker.SetMovement(false);
+                Orbwalker.SetAttack(false);
+            }
+            else
+            {
+                Orbwalker.SetMovement(true);
+                Orbwalker.SetAttack(true);
+            }
+
             if (Config.Item("combobind").GetValue<KeyBind>().Active)
             {
                 Combo();
@@ -232,13 +249,16 @@ namespace TehMalzahar
                     || R.IsReady() && target.IsValidTarget(R.Range) && R.GetDamage(target) > (target.Health/4)*3
                     )
                 {
-                    if (Player.UnderTurret() && Config.Item("underturretr").GetValue<bool>())
+                    if (Config.Item("ng" + target.ChampionName).GetValue<bool>())
                     {
-                        R.CastOnUnit(target);
-                    }
-                    else if (!Player.UnderTurret())
-                    {
-                        R.CastOnUnit(target);
+                        if (Player.UnderTurret() && Config.Item("underturretr").GetValue<bool>())
+                        {
+                            R.CastOnUnit(target);
+                        }
+                        else if (!Player.UnderTurret())
+                        {
+                            R.CastOnUnit(target);
+                        }
                     }
                 }
                 
@@ -283,7 +303,7 @@ namespace TehMalzahar
                     || R.IsReady() && target.IsValidTarget(R.Range) && R.GetDamage(target) > (target.Health / 4) * 3
                     )
                 {
-                    if (Config.Item("comboR").GetValue<bool>())
+                    if (Config.Item("comboR").GetValue<bool>() && Config.Item("ng" + target.ChampionName).GetValue<bool>())
                     {
                         if (Player.UnderTurret() && Config.Item("underturretr").GetValue<bool>())
                         {
@@ -346,8 +366,9 @@ namespace TehMalzahar
 
         public static void Farm()
         {
+            Obj_AI_Minion minion = ObjectManager.Get<Obj_AI_Minion>().Where(x => x.IsEnemy && x.IsValidTarget(E.Range)).OrderBy(x => x.Health).FirstOrDefault();
             MinionManager.FarmLocation QFarmLocation =
-                     Q.GetLineFarmLocation(
+                     Q.GetCircularFarmLocation(
                      MinionManager.GetMinionsPredictedPositions(MinionManager.GetMinions(Q.Range),
                      Q.Delay, Q.Width, Q.Speed,
                      Player.Position, Q.Range,
@@ -357,6 +378,10 @@ namespace TehMalzahar
                      W.Delay, W.Width, W.Speed,
                      Player.Position, W.Range,
                      false, SkillshotType.SkillshotLine), Q.Width);
+            if (E.IsReady() && Config.Item("farme").GetValue<bool>())
+            {
+                E.CastOnUnit(minion);
+            }
             if (Q.IsReady() && Config.Item("farmq").GetValue<bool>())
             {
                 Q.Cast(QFarmLocation.Position);
