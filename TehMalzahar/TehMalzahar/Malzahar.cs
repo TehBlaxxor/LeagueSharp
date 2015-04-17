@@ -102,12 +102,12 @@ namespace TehMalzahar
 
             var miscMenu = new Menu("Others", "miscmenu");
             miscMenu.AddSubMenu(new Menu("Keybinds", "keybinds"));
-            miscMenu.SubMenu("keybinds").AddItem(new MenuItem("Combo", "combobind").SetValue(new KeyBind(32, KeyBindType.Press)));
-            miscMenu.SubMenu("keybinds").AddItem(new MenuItem("Harass", "harassbind").SetValue(new KeyBind('C', KeyBindType.Press)));
-            miscMenu.SubMenu("keybinds").AddItem(new MenuItem("Farm", "farmbind").SetValue(new KeyBind('V', KeyBindType.Press)));
+            miscMenu.SubMenu("keybinds").AddItem(new MenuItem("combobind", "Combo").SetValue(new KeyBind(32, KeyBindType.Press)));
+            miscMenu.SubMenu("keybinds").AddItem(new MenuItem("harassbind", "Harass").SetValue(new KeyBind('C', KeyBindType.Press)));
+            miscMenu.SubMenu("keybinds").AddItem(new MenuItem("farmbind", "Farm").SetValue(new KeyBind('V', KeyBindType.Press)));
             miscMenu.AddSubMenu(new Menu("Hit Chances", "hitchances"));
-            miscMenu.SubMenu("hitchances").AddItem(new MenuItem("Call of The Void (Q)", "qhitchance").SetValue(new StringList(new[] { "Medium", "High", "Very High" })));
-            miscMenu.SubMenu("hitchances").AddItem(new MenuItem("Null Zone (W)", "whitchance").SetValue(new StringList(new[] { "Medium", "High", "Very High" })));
+            miscMenu.SubMenu("hitchances").AddItem(new MenuItem("qhitchance", "Call of The Void (Q)").SetValue(new StringList(new[] { "Medium", "High", "Very High" })));
+            miscMenu.SubMenu("hitchances").AddItem(new MenuItem("whitchance", "Null Zone (W)").SetValue(new StringList(new[] { "Medium", "High", "Very High" })));
             if (Infernus != SpellSlot.Unknown)
                 miscMenu.AddItem(new MenuItem("ignite", "Use Ignite For KS").SetValue(true));
             Config.AddSubMenu(miscMenu);
