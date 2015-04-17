@@ -68,8 +68,8 @@ namespace TehMalzahar
             Config.AddSubMenu(farmMenu);
 
             var interrupterMenu = new Menu("Interrupting Spells", "interruptermenu");
-            interrupterMenu.AddItem(new MenuItem("Use Call of The Void (Q)", "interruptq").SetValue(true));
-            interrupterMenu.AddItem(new MenuItem("Use Nether Grasp (R)", "interruptr").SetValue(true));
+            interrupterMenu.AddItem(new MenuItem("interruptq", "Use Call of The Void (Q)").SetValue(true));
+            interrupterMenu.AddItem(new MenuItem("interruptr", "Use Nether Grasp (R)").SetValue(true));
             Config.AddSubMenu(interrupterMenu);
 
             var drawingsMenu = new Menu("Drawings", "drawingsmenu");

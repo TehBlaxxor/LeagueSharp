@@ -8,6 +8,5 @@ D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehMalzahar\TehMalzahar\bin\Debug\SharpDX
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehMalzahar\TehMalzahar\bin\Debug\clipper_library.dll
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehMalzahar\TehMalzahar\bin\Debug\LeagueSharp.Sandbox.dll
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehMalzahar\TehMalzahar\bin\Debug\LeagueSharp.xml
-D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehMalzahar\TehMalzahar\obj\Debug\TehMalzahar.csprojResolveAssemblyReference.cache
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehMalzahar\TehMalzahar\obj\Debug\TehMalzahar.exe
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\TehMalzahar\TehMalzahar\obj\Debug\TehMalzahar.pdb
