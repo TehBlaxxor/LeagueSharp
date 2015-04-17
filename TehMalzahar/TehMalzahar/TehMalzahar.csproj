@@ -2,50 +2,44 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{64663BF1-A6D5-4FC6-AF01-3F5A051CA954}</ProjectGuid>
+    <ProjectGuid>{8B2E1529-D0CE-4A57-AFA3-647C0F81282C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TehOrianna</RootNamespace>
-    <AssemblyName>TehOrianna</AssemblyName>
+    <RootNamespace>TehMalzahar</RootNamespace>
+    <AssemblyName>TehMalzahar</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <PreBuildEvent />
-    <PostBuildEvent />
-    <OutputPath>bin\Release</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LeagueSharp">
-      <HintPath>d:\!!!!!!!!!!!!!!!!!!!!!!!alagabula\leaguesharp\leaguesharp\System\LeagueSharp.dll</HintPath>
+      <HintPath>..\..\..\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\System\LeagueSharp.dll</HintPath>
     </Reference>
     <Reference Include="LeagueSharp.Common">
-      <HintPath>d:\!!!!!!!!!!!!!!!!!!!!!!!alagabula\leaguesharp\leaguesharp\System\LeagueSharp.Common.dll</HintPath>
+      <HintPath>..\..\..\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\System\LeagueSharp.Common.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX">
-      <HintPath>d:\!!!!!!!!!!!!!!!!!!!!!!!alagabula\leaguesharp\leaguesharp\System\SharpDX.dll</HintPath>
-    </Reference>
-    <Reference Include="SharpDX.Direct3D9">
-      <HintPath>d:\!!!!!!!!!!!!!!!!!!!!!!!alagabula\leaguesharp\leaguesharp\System\SharpDX.Direct3D9.dll</HintPath>
+      <HintPath>..\..\..\!!!!!!!!!!!!!!!!!!!!!!!ALAGABULA\LeagueSharp\LeagueSharp\System\SharpDX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,10 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DamageIndicator.cs" />
-    <Compile Include="Menu.cs" />
-    <Compile Include="NotificationManager.cs" />
-    <Compile Include="Orianna.cs" />
-    <Compile Include="OriannasBall Kappa.cs" />
+    <Compile Include="Malzahar.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
