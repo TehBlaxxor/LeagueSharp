@@ -112,7 +112,7 @@ namespace TehMalzahar
             miscMenu.AddSubMenu(new Menu("Nether Grasp Mode", "nethergraspmode"));
             foreach (var champion in ObjectManager.Get<Obj_AI_Hero>().Where(x => x.IsEnemy))
             {
-                miscMenu.SubMenu("nethergraspmode").AddItem(new MenuItem("ng" + champion.Name, "Use Ult On " + champion.Name).SetValue(true));
+                miscMenu.SubMenu("nethergraspmode").AddItem(new MenuItem("ng" + champion.ChampionName, "Use Ult On " + champion.ChampionName).SetValue(true));
             }
             if (Infernus != SpellSlot.Unknown)
                 miscMenu.AddItem(new MenuItem("ignite", "Use Ignite For KS").SetValue(true));
