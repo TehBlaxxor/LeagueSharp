@@ -225,11 +225,12 @@ namespace Rek_Sai
 
         public static void ManageW()
         {
+            var target = TargetSelector.GetTarget(1500f, TargetSelector.DamageType.Physical);
             if (!Player.IsBurrowed())
             {
                 if (menu.Item("reksai.rage.w1").GetValue<bool>()
                         && Program.W1.IsReady()
-                        && Player.HealthPercentage() < 9
+                        && Player.HealthPercent < 9
                         && Player.Mana > 0)
                     {
                         Program.W1.Cast();
@@ -242,6 +243,14 @@ namespace Rek_Sai
                         && Program.W1.IsReady()
                         && menu.Item("reksai.combo.w1").GetValue<bool>()
                         && !Player.QActive())
+                    {
+                        Program.W1.Cast();
+                    }
+
+                    if (!Program.E1.IsInRange(target)
+                        && Player.Distance(target.Position) < Program.E2.Range
+                        && Program.W1.IsReady()
+                        && menu.Item("reksai.combo.w1").GetValue<bool>())
                     {
                         Program.W1.Cast();
                     }
@@ -267,7 +276,6 @@ namespace Rek_Sai
                     Others.Print("Ideal knockup: " + Player.CountEnemiesInRange(Program.W2.Range) + " enemies. Overriding W permissions.", Others.PrintType.Warning);
                 }
 
-                var target = TargetSelector.GetTarget(1500f, TargetSelector.DamageType.Physical);
                 if (menu.Item("reksai.others.keybinds.combo").GetValue<KeyBind>().Active)
                 {
                     if (!Program.Q2.ShouldBeCasted()

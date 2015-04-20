@@ -25,8 +25,11 @@ namespace Rek_Sai
 
         static void Game_OnGameLoad(EventArgs args)
         {
+
             if (!Player.ChampionName.ToLowerInvariant().Contains("rek"))
                 return;
+
+            Utils.ClearConsole();
 
             Others.Print("TehBlaxxor's Rek'Sai successfully loaded!", Others.PrintType.Message);
 

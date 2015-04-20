@@ -113,7 +113,7 @@ namespace Rek_Sai
                 DrawingsMenu.AddItem(new MenuItem("reksai.draw.w2", "Draw Unborrow (W2)").SetValue(true));
                 DrawingsMenu.AddItem(new MenuItem("reksai.draw.e2", "Draw Tunnel (E2)").SetValue(true));
             }
-            Menu.AddSubMenu(RageMenu);
+            Menu.AddSubMenu(DrawingsMenu);
 
             var OthersMenu = new Menu("Others", "reksai.others");
             {
