@@ -20,6 +20,14 @@ namespace Rek_Sai
         {
             Menu = new Menu("Rek'Sai, the Void Deathbringer", "mainmenu", true);
 
+            var orbwalkerMenu = new Menu("Orbwalker", "Orbwalker");
+            Orbwalker = new Orbwalking.Orbwalker(orbwalkerMenu);
+            Menu.AddSubMenu(orbwalkerMenu);
+
+            var targetSelectorMenu = new Menu("Target Selector", "Target Selector");
+            TargetSelector.AddToMenu(targetSelectorMenu);
+            Menu.AddSubMenu(targetSelectorMenu);
+
             var ComboMenu = new Menu("Combo", "reksai.combo");
             {
                 ComboMenu.AddItem(new MenuItem("reksai.combo.q1", "Use Queen's Wrath (Q1)").SetValue(true));
@@ -94,16 +102,16 @@ namespace Rek_Sai
 
             var DrawingsMenu = new Menu("Drawings Manager", "reksai.draw");
             {
-                RageMenu.AddItem(new MenuItem("reksai.draw.draw", "Draw Spells").SetValue(true));
-                RageMenu.AddItem(new MenuItem("reksai.draw.tg", "Draw Target").SetValue(true));
+                DrawingsMenu.AddItem(new MenuItem("reksai.draw.draw", "Draw Spells").SetValue(true));
+                DrawingsMenu.AddItem(new MenuItem("reksai.draw.tg", "Draw Target").SetValue(true));
                 AddSpacerTo(DrawingsMenu);
-                RageMenu.AddItem(new MenuItem("reksai.draw.q1", "Draw Queen's Wrath (Q1)").SetValue(true));
-                RageMenu.AddItem(new MenuItem("reksai.draw.w1", "Draw Burrow (W1)").SetValue(true));
-                RageMenu.AddItem(new MenuItem("reksai.draw.e1", "Draw Furious Bite (E1)").SetValue(true));
+                DrawingsMenu.AddItem(new MenuItem("reksai.draw.q1", "Draw Queen's Wrath (Q1)").SetValue(true));
+                DrawingsMenu.AddItem(new MenuItem("reksai.draw.w1", "Draw Burrow (W1)").SetValue(true));
+                DrawingsMenu.AddItem(new MenuItem("reksai.draw.e1", "Draw Furious Bite (E1)").SetValue(true));
                 AddSpacerTo(DrawingsMenu);
-                RageMenu.AddItem(new MenuItem("reksai.draw.q2", "Draw Prey Seeker (Q2)").SetValue(true));
-                RageMenu.AddItem(new MenuItem("reksai.draw.w2", "Draw Unborrow (W2)").SetValue(true));
-                RageMenu.AddItem(new MenuItem("reksai.draw.e2", "Draw Tunnel (E2)").SetValue(true));
+                DrawingsMenu.AddItem(new MenuItem("reksai.draw.q2", "Draw Prey Seeker (Q2)").SetValue(true));
+                DrawingsMenu.AddItem(new MenuItem("reksai.draw.w2", "Draw Unborrow (W2)").SetValue(true));
+                DrawingsMenu.AddItem(new MenuItem("reksai.draw.e2", "Draw Tunnel (E2)").SetValue(true));
             }
             Menu.AddSubMenu(RageMenu);
 
