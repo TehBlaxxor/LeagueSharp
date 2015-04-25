@@ -1,0 +1,13 @@
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\bin\Release\The Masterpiece.exe.config
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\bin\Release\The Masterpiece.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\bin\Release\The Masterpiece.pdb
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\bin\Release\LeagueSharp.Common.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\bin\Release\LeagueSharp.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\bin\Release\SharpDX.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\bin\Release\SharpDX.Direct3D9.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\bin\Release\clipper_library.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\bin\Release\LeagueSharp.Sandbox.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\bin\Release\LeagueSharp.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\obj\Debug\The Masterpiece.csprojResolveAssemblyReference.cache
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\obj\Debug\The Masterpiece.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\obj\Debug\The Masterpiece.pdb
