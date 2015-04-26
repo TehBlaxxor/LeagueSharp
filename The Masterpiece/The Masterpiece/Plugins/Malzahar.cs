@@ -206,8 +206,8 @@ namespace The_Masterpiece.Plugins
 
         private void DoCombo()
         {
-            UseItems();
-            UseSummoners();
+            /*UseItems();
+            UseSummoners();*/
             var ComboModeSelectedIndex = Menu.Item("themp.combo.mode").GetValue<StringList>().SelectedIndex;
             var QHitChance = Menu.Item("themp.hitchance.q").GetValue<StringList>().SelectedIndex;
             var WHitChance = Menu.Item("themp.hitchance.w").GetValue<StringList>().SelectedIndex;
@@ -358,15 +358,15 @@ namespace The_Masterpiece.Plugins
                      W.Delay, W.Width, W.Speed,
                      Player.Position, W.Range,
                      false, SkillshotType.SkillshotLine), Q.Width);
-            if (E.IsReady() && Menu.Item("themp.laneclear.e").GetValue<bool>())
+            if (E.IsReady() && Menu.Item("themp.laneclear.E").GetValue<bool>())
             {
                 E.CastOnUnit(minion);
             }
-            if (Q.IsReady() && Menu.Item("themp.laneclear.q").GetValue<bool>())
+            if (Q.IsReady() && Menu.Item("themp.laneclear.Q").GetValue<bool>())
             {
                 Q.Cast(QFarmLocation.Position);
             }
-            if (W.IsReady() && Menu.Item("themp.laneclear.w").GetValue<bool>())
+            if (W.IsReady() && Menu.Item("themp.laneclear.W").GetValue<bool>())
             {
                 W.Cast(WFarmLocation.Position);
             }
