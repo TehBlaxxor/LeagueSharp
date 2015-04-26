@@ -87,13 +87,13 @@ namespace The_Masterpiece.Plugins
 
         public bool ManaManager()
         {
-            return Player.Mana >= Player.MaxMana * (GetValue<Slider>("saveMana").Value / 100);
+            return Player.Mana >= Player.MaxMana * (GetValue<Slider>("themp.manamanager.percentage").Value / 100);
         }
 
         private void DoCombo()
         {
             Obj_AI_Hero target = TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Physical);
-            Items();
+            UseItems();
         }
 
         private void DoLaneClear()
@@ -111,7 +111,7 @@ namespace The_Masterpiece.Plugins
 
         }
 
-        private void Items()
+        private void UseItems()
         {
 
         }

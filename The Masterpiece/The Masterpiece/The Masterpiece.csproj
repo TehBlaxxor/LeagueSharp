@@ -61,6 +61,7 @@
     <Compile Include="Handlers\SpellHandler.cs" />
     <Compile Include="Plugins\BaseChampion.cs" />
     <Compile Include="Plugins\ChampionStartingPoint.cs" />
+    <Compile Include="Plugins\Malzahar.cs" />
     <Compile Include="Plugins\Vayne.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

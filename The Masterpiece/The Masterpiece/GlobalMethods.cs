@@ -23,9 +23,15 @@ namespace The_Masterpiece
                         GlobalMethods.Print("Vayne loaded! Enjoy your experience!", GlobalEnums.MessageType.NORMAL);
                     }
                     break;
+                case "malzahar":
+                    {
+                        new Plugins.Malzahar();
+                        GlobalMethods.Print("Malzahar loaded! Enjoy your experience!", GlobalEnums.MessageType.NORMAL);
+                    }
+                    break;
                 default:
                     {
-                       GlobalMethods.Print("Champion not supported! Loading orbwalker!", GlobalEnums.MessageType.WARNING);
+                       GlobalMethods.Print("Champion not supported! If you believe this is in error, please report on the forums.", GlobalEnums.MessageType.WARNING);
                     }
                     break;
             }

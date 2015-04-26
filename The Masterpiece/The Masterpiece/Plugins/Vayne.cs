@@ -276,6 +276,7 @@ namespace The_Masterpiece.Plugins
         {
             Obj_AI_Hero target = TargetSelector.GetTarget(1000, TargetSelector.DamageType.Physical);
             UseItems();
+            UseSummoners();
             if (target == null)
                 return;
 
@@ -508,21 +509,21 @@ namespace The_Masterpiece.Plugins
 
         public override void Combo(Menu config)
         {
-            config.AddItem(new MenuItem("themp.combo.q", "Use Q").SetValue(true));
-            config.AddItem(new MenuItem("themp.combo.e", "Use E").SetValue(true));
-            config.AddItem(new MenuItem("themp.combo.r", "Use R").SetValue(true));
+            config.AddItem(new MenuItem("themp.combo.q", "Use Tumble (Q)").SetValue(true));
+            config.AddItem(new MenuItem("themp.combo.e", "Use Condemn (E)").SetValue(true));
+            config.AddItem(new MenuItem("themp.combo.r", "Use Final Hour (R)").SetValue(true));
             config.AddItem(new MenuItem("themp.combo.minenemiesr", "Min. enemies in range to cast Ultimate").SetValue(new Slider(2, 1, 5)));
         }
 
         public override void Harass(Menu config)
         {
-            config.AddItem(new MenuItem("themp.harass.q", "Use Q").SetValue(true));
-            config.AddItem(new MenuItem("themp.harass.e", "Use E").SetValue(false));
+            config.AddItem(new MenuItem("themp.harass.q", "Use Tumble (Q)").SetValue(true));
+            config.AddItem(new MenuItem("themp.harass.e", "Use Condemn (E)").SetValue(false));
         }
 
         public override void Laneclear(Menu config)
         {
-            config.AddItem(new MenuItem("themp.laneclear.q", "Use Q").SetValue(true));
+            config.AddItem(new MenuItem("themp.laneclear.q", "Use Tumble (Q)").SetValue(true));
         }
 
         public override void Misc(Menu config)
@@ -533,8 +534,8 @@ namespace The_Masterpiece.Plugins
 
         public override void Escape(Menu menu)
         {
-            menu.AddItem(new MenuItem("themp.escape.q", "Use Q").SetValue(true));
-            menu.AddItem(new MenuItem("themp.escape.e", "Use E").SetValue(true));
+            menu.AddItem(new MenuItem("themp.escape.q", "Use Tumble (Q)").SetValue(true));
+            menu.AddItem(new MenuItem("themp.escape.e", "Use Condemn (E)").SetValue(true));
         }
 
         public override void ItemMenu(Menu menu)
@@ -587,8 +588,8 @@ namespace The_Masterpiece.Plugins
 
         public override void Drawings(Menu config)
         {
-            config.AddItem(new MenuItem("themp.drawings.q", "Draw Q").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
-            config.AddItem(new MenuItem("themp.drawings.e", "Draw E").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            config.AddItem(new MenuItem("themp.drawings.q", "Draw Tumble (Q)").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            config.AddItem(new MenuItem("themp.drawings.e", "Draw Condemn (E)").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
             config.AddItem(new MenuItem("themp.drawings.target", "Draw Target").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
             config.AddItem(new MenuItem("themp.drawings.condemn", "Show Best Condemn position").SetValue(true));
 
