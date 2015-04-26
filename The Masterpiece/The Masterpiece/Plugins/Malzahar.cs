@@ -533,10 +533,10 @@ namespace The_Masterpiece.Plugins
         public override void Drawings(Menu config)
         {
             config.AddItem(new MenuItem("themp.drawings.draw", "Drawings").SetValue(true));
-            config.AddItem(new MenuItem("themp.drawings.q", "Draw Q").SetValue(true));
-            config.AddItem(new MenuItem("themp.drawings.w", "Draw W").SetValue(true));
-            config.AddItem(new MenuItem("themp.drawings.e", "Draw E").SetValue(true));
-            config.AddItem(new MenuItem("themp.drawings.r", "Draw R").SetValue(true));
+            config.AddItem(new MenuItem("themp.drawings.q", "Draw Q").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            config.AddItem(new MenuItem("themp.drawings.w", "Draw W").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            config.AddItem(new MenuItem("themp.drawings.e", "Draw E").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            config.AddItem(new MenuItem("themp.drawings.r", "Draw R").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
             config.AddItem(new MenuItem("themp.drawings.target", "Draw Target").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 0, 255, 255))));
         }
     }
