@@ -207,7 +207,7 @@ namespace The_Masterpiece.Plugins
                 Render.Circle.DrawCircle(target.Position, 75f, Menu.Item("themp.drawings.target").GetValue<Circle>().Color);
             }
 
-            foreach (var x in Spells.Where(y => Menu.Item("themp.drawings." + y.Slot.ToString().ToLowerInvariant()).GetValue<Circle>().Active))
+            foreach (Spell x in Spells.Where(y => Menu.Item("themp.drawings." + y.Slot.ToString().ToLowerInvariant()).GetValue<Circle>().Active))
             {
                 Render.Circle.DrawCircle(Player.Position, x.Range, x.IsReady()
                 ? System.Drawing.Color.Green
@@ -275,11 +275,16 @@ namespace The_Masterpiece.Plugins
         private void DoCombo()
         {
             Obj_AI_Hero target = TargetSelector.GetTarget(1000, TargetSelector.DamageType.Physical);
-            UseItems();
-            UseSummoners();
-            if (target == null)
-                return;
-
+           /* try
+            {
+                UseItems();
+                UseSummoners();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+            }
+            */
             if (R.IsReady() && GetValue<bool>("themp.combo.r") && Player.Distance(target.Position) < Player.AttackRange && GetValue<Slider>("themp.combo.minenemiesr").Value >= enemiesInRange(Player, Player.AttackRange))
             {
                 R.Cast();
