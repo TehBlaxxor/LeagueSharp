@@ -206,8 +206,8 @@ namespace The_Masterpiece.Plugins
 
         private void DoCombo()
         {
-            UseItems();
-            UseSummoners();
+            //UseItems();
+            //UseSummoners();
             var ComboModeSelectedIndex = Menu.Item("themp.combo.mode").GetValue<StringList>().SelectedIndex;
             var QHitChance = Menu.Item("themp.hitchance.q").GetValue<StringList>().SelectedIndex;
             var WHitChance = Menu.Item("themp.hitchance.w").GetValue<StringList>().SelectedIndex;
@@ -430,19 +430,19 @@ namespace The_Masterpiece.Plugins
                 && Player.CountEnemiesInRange(Q.Range) >= 3)
                 ItemHandler.Zhonya.Instance.Cast();
 
-            if (ItemHandler.Gunblade.CanCast()
+            if (ItemHandler.Gunblade.CanCast(target)
                 && Menu.Item("themp.items.hextech").GetValue<bool>()
                 && Player.HealthPercent <= 90
                 && target.IsValidTarget(ItemHandler.Revolver.Range))
                 ItemHandler.Gunblade.Instance.Cast(target);
 
-            if (ItemHandler.Revolver.CanCast()
+            if (ItemHandler.Revolver.CanCast(target)
                 && Menu.Item("themp.items.hextech").GetValue<bool>()
                 && Player.HealthPercent <= 90
                 && target.IsValidTarget(ItemHandler.Revolver.Range))
                 ItemHandler.Revolver.Instance.Cast(target);
 
-            if (ItemHandler.Seraph.CanCast()
+            if (ItemHandler.Seraph.CanCast(Player)
                 && Menu.Item("themp.items.seraph").GetValue<bool>()
                 && Player.HealthPercent <= 30
                 && Player.ManaPercent >= 60
@@ -528,6 +528,7 @@ namespace The_Masterpiece.Plugins
                     MiscNetherGraspSubMenu.AddItem(new MenuItem("ng" + champion.ChampionName, "Use Ult On " + champion.ChampionName).SetValue(true));
                 }
             }
+            config.AddSubMenu(MiscNetherGraspSubMenu);
         }
 
         public override void Drawings(Menu config)
