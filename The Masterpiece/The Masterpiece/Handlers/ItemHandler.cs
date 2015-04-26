@@ -127,12 +127,12 @@ namespace The_Masterpiece.Handlers
         #region Application Programming Interface [API]
         public static bool CanCast(this CustomItem item)
         {
-            return item.Instance.IsReady() && item.Instance.IsOwned();
+            return LeagueSharp.Common.Items.HasItem(item.Instance.Id, ObjectManager.Player) && item.Instance.IsReady();
         }
 
         public static bool CanCast(this CustomItem item, Obj_AI_Hero player)
         {
-            return item.Instance.IsOwned() && item.Instance.IsReady() && item.Instance.IsInRange(player);
+            return LeagueSharp.Common.Items.HasItem(item.Instance.Id, ObjectManager.Player) && item.Instance.IsReady() && item.Instance.IsInRange(player);
         }
         #endregion
     }

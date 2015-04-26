@@ -78,7 +78,7 @@ namespace The_Masterpiece.Handlers
         public static bool IsReady(this SSpell summoner)
         {
             return (summoner.SSpellSlot != SpellSlot.Unknown 
-                && ObjectManager.Player.Spellbook.CanUseSpell(summoner.SSpellSlot) == SpellState.Ready);
+                && ObjectManager.Player.Spellbook.GetSpell(summoner.SSpellSlot).IsReady());
         }
 
         public static bool Exists(this SSpell summoner)
