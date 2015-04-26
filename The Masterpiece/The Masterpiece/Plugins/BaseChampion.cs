@@ -62,7 +62,6 @@ namespace The_Masterpiece.Plugins
             Menu.AddSubMenu(laneclearMenu);
 
             var escapeMenu = new Menu("Escape", "themp.escape");
-            escapeMenu.AddItem(new MenuItem("themp.escape.active", "Enabled").SetValue(new KeyBind('G', KeyBindType.Press)));
             Escape(escapeMenu);
             Menu.AddSubMenu(escapeMenu);
 

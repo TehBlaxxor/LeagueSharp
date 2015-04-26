@@ -151,9 +151,9 @@ namespace The_Masterpiece.Plugins
             var MiscKeybindsSubMenu = new Menu("Misc - Keybinds", "themp.kb");
             {
                 MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.combo", "Combo").SetValue(new KeyBind(32, KeyBindType.Press)));
-                MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.harass", "Harass").SetValue(new KeyBind(32, KeyBindType.Press)));
-                MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.laneclear", "LaneClear").SetValue(new KeyBind(32, KeyBindType.Press)));
-                MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.escape", "Escape").SetValue(new KeyBind(32, KeyBindType.Press)));
+                MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.harass", "Harass").SetValue(new KeyBind('C', KeyBindType.Press)));
+                MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.laneclear", "LaneClear").SetValue(new KeyBind('V', KeyBindType.Press)));
+                MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.escape", "Escape").SetValue(new KeyBind('G', KeyBindType.Press)));
             }
             config.AddSubMenu(MiscKeybindsSubMenu);
 

@@ -221,13 +221,13 @@ namespace The_Masterpiece.Plugins
             if (!GetValue<bool>("themp.misc.interrupte") || args.DangerLevel != Interrupter2.DangerLevel.High || sender.Distance(ObjectManager.Player.Position) <= E.Range)
                 return;
 
-            E.Cast(sender);
+            E.Cast();
         }
 
         void AntiGapcloser_OnEnemyGapcloser(ActiveGapcloser gapcloser)
         {
             if (E.IsReady() && GetValue<bool>("themp.misc.gapclosere"))
-                E.Cast(gapcloser.Sender);
+                E.Cast(Game.CursorPos);
         }
 
         public override void OnAfterAttack(AttackableUnit unit, AttackableUnit target)
@@ -314,7 +314,7 @@ namespace The_Masterpiece.Plugins
                 target == lastObjectAttacked &&
                 Q.IsInRange(target.Position) && GetValue<bool>("themp.combo.q"))
             {
-                Q.Cast(target);
+                Q.Cast(target.Position);
             }
 
             if (E.IsReady() && GetValue<bool>("themp.combo.e"))
@@ -336,7 +336,6 @@ namespace The_Masterpiece.Plugins
                 }
             }
 
-            /* End of Manual Combo Mode */
         }
 
         private void DoHarass()
@@ -560,9 +559,9 @@ namespace The_Masterpiece.Plugins
             var MiscKeybindsSubMenu = new Menu("Misc - Keybinds", "themp.kb");
             {
                 MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.combo", "Combo").SetValue(new KeyBind(32, KeyBindType.Press)));
-                MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.harass", "Harass").SetValue(new KeyBind(32, KeyBindType.Press)));
-                MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.laneclear", "LaneClear").SetValue(new KeyBind(32, KeyBindType.Press)));
-                MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.escape", "Escape").SetValue(new KeyBind(32, KeyBindType.Press)));
+                MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.harass", "Harass").SetValue(new KeyBind('C', KeyBindType.Press)));
+                MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.laneclear", "LaneClear").SetValue(new KeyBind('V', KeyBindType.Press)));
+                MiscKeybindsSubMenu.AddItem(new MenuItem("themp.kb.escape", "Escape").SetValue(new KeyBind('G', KeyBindType.Press)));
             }
             config.AddSubMenu(MiscKeybindsSubMenu);
 
