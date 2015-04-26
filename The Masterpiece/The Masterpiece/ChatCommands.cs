@@ -30,12 +30,32 @@ namespace The_Masterpiece
             {
                 case "rundev":
                     {
-                        if (arguments[1] == Game.Time.ToString())
-                        {
-                            Program.Permission = GlobalEnums.RunningMode.DEVELOPER;
-                        }
-                        break;
+                        Program.Permission = GlobalEnums.RunningMode.DEVELOPER;
                     }
+                    break;
+                case "load":
+                    {
+                        var champion = arguments[1].ToString();
+                        if (champion != null && Program.Permission == GlobalEnums.RunningMode.DEVELOPER)
+                        {
+                            switch (champion.ToLowerInvariant())
+                            {
+                                case "vayne":
+                                    {
+                                        new Plugins.Vayne();
+                                        Game.PrintChat("load");
+                                    }
+                                    break;
+                                case "malzahar":
+                                    {
+                                        new Plugins.Malzahar();
+                                        Game.PrintChat("load");
+                                    }
+                                    break;
+                            }
+                        }
+                    }
+                    break;
                 case "version":
                     Game.PrintChat("Version is: " + Assembly.GetExecutingAssembly().GetName().Version, GlobalEnums.MessageType.NORMAL);
                     break;

@@ -48,13 +48,13 @@ namespace The_Masterpiece.Plugins
                 Orbwalker.SetAttack(true);
             }
 
-            if (Menu.Item("themp.kb.combo").GetValue<bool>())
+            if (Menu.Item("themp.kb.combo").GetValue<KeyBind>().Active)
                 DoCombo();
-            if (Menu.Item("themp.kb.harass").GetValue<bool>())
+            if (Menu.Item("themp.kb.harass").GetValue<KeyBind>().Active)
                 DoHarass();
-            if (Menu.Item("themp.kb.laneclear").GetValue<bool>())
+            if (Menu.Item("themp.kb.laneclear").GetValue<KeyBind>().Active)
                 DoLaneClear();
-            if (Menu.Item("themp.kb.escape").GetValue<bool>())
+            if (Menu.Item("themp.kb.escape").GetValue<KeyBind>().Active)
             {
                 GlobalMethods.Flee();
             }

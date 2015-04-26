@@ -173,11 +173,11 @@ namespace The_Masterpiece.Plugins
 
         void Game_OnUpdate(EventArgs args)
         {
-            if (Menu.Item("themp.kb.combo").GetValue<bool>())
+            if (Menu.Item("themp.kb.combo").GetValue<KeyBind>().Active)
                 DoCombo();
-            if (Menu.Item("themp.kb.harass").GetValue<bool>())
+            if (Menu.Item("themp.kb.harass").GetValue<KeyBind>().Active)
                 DoHarass();
-            if (Menu.Item("themp.kb.escape").GetValue<bool>())
+            if (Menu.Item("themp.kb.escape").GetValue<KeyBind>().Active)
             {
                 GlobalMethods.Flee();
                 DoEscape();
