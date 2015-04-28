@@ -673,6 +673,7 @@ namespace The_Masterpiece.Plugins
             config.AddItem(new MenuItem("themp.drawings.target", "Draw Target").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
             config.AddItem(new MenuItem("themp.drawings.q", "Draw Piercing Light (Q)").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
             config.AddItem(new MenuItem("themp.drawings.w", "Draw Ardent Blaze (W)").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            config.AddItem(new MenuItem("themp.drawings.e", "Draw Relentless Pursuit (E)").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
             config.AddItem(new MenuItem("themp.drawings.r", "Draw The Culling (R)").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
         }
     }
