@@ -59,8 +59,10 @@
     <Compile Include="Handlers\ItemHandler.cs" />
     <Compile Include="Handlers\PotionHandler.cs" />
     <Compile Include="Handlers\SpellHandler.cs" />
+    <Compile Include="MathUtils.cs" />
     <Compile Include="Plugins\BaseChampion.cs" />
     <Compile Include="Plugins\ChampionStartingPoint.cs" />
+    <Compile Include="Plugins\Lucian.cs" />
     <Compile Include="Plugins\Malzahar.cs" />
     <Compile Include="Plugins\Vayne.cs" />
     <Compile Include="Program.cs" />

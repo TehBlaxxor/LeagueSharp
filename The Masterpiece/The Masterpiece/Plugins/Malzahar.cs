@@ -486,8 +486,8 @@ namespace The_Masterpiece.Plugins
 
         public override void Misc(Menu config)
         {
-            config.AddItem(new MenuItem("themp.interrupt.q", "Use Call of The Void (Q)").SetValue(true));
-            config.AddItem(new MenuItem("themp.interrupt.r", "Use Nether Grasp (R)").SetValue(true));
+            config.AddItem(new MenuItem("themp.interrupt.q", "Interrupt with Call of The Void (Q)").SetValue(true));
+            config.AddItem(new MenuItem("themp.interrupt.r", "Interrupt with Nether Grasp (R)").SetValue(true));
         }
 
         public override void Escape(Menu menu)

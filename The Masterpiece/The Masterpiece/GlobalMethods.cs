@@ -29,6 +29,12 @@ namespace The_Masterpiece
                         GlobalMethods.Print("Malzahar loaded! Enjoy your experience!", GlobalEnums.MessageType.NORMAL);
                     }
                     break;
+                case "lucian":
+                    {
+                        new Plugins.Lucian();
+                        GlobalMethods.Print("Lucian loaded! Enjoy your experience!", GlobalEnums.MessageType.NORMAL);
+                    }
+                    break;
                 default:
                     {
                        GlobalMethods.Print("Champion not supported! If you believe this is in error, please report on the forums.", GlobalEnums.MessageType.WARNING);

@@ -14,7 +14,8 @@ namespace The_Masterpiece.Plugins
 {
     internal class Vayne : BaseChampion
     {
-        public static Spell Q, W, E, R;
+        public static Spell Q, W, R;
+        public static Spell E;
 
         public static List<Spell> Spells = new List<Spell>();
         private AttackableUnit lastObjectAttacked = null;
@@ -207,7 +208,7 @@ namespace The_Masterpiece.Plugins
                 Render.Circle.DrawCircle(target.Position, 75f, Menu.Item("themp.drawings.target").GetValue<Circle>().Color);
             }
 
-            foreach (Spell x in Spells.Where(y => Menu.Item("themp.drawings." + y.Slot.ToString().ToLowerInvariant()).GetValue<Circle>().Active))
+            foreach (Spell x in Spells.Where(y => Menu.Item("themp.drawings." + y.Slot.ToString().ToLowerInvariant()) != null && Menu.Item("themp.drawings." + y.Slot.ToString().ToLowerInvariant()).GetValue<Circle>().Active))
             {
                 Render.Circle.DrawCircle(Player.Position, x.Range, x.IsReady()
                 ? System.Drawing.Color.Green
@@ -594,10 +595,10 @@ namespace The_Masterpiece.Plugins
         public override void Drawings(Menu config)
         {
             config.AddItem(new MenuItem("themp.drawings.q", "Draw Tumble (Q)").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
-            config.AddItem(new MenuItem("themp.drawings.e", "Draw Condemn (E)").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            config.AddItem(new MenuItem("themp.drawings.e", "Draw Condemn (E)").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 254))));
             config.AddItem(new MenuItem("themp.drawings.target", "Draw Target").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
             config.AddItem(new MenuItem("themp.drawings.condemn", "Show Best Condemn position").SetValue(true));
-
+            
         }
     }
 }
