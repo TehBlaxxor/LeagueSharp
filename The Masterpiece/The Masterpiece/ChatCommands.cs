@@ -52,6 +52,12 @@ namespace The_Masterpiece
                                         Game.PrintChat("load");
                                     }
                                     break;
+                                case "lucian":
+                                        {
+                                            new Plugins.Lucian();
+                                            Game.PrintChat("load");
+                                        }
+                                    break;
                             }
                         }
                     }

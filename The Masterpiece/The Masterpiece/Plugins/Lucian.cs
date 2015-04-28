@@ -368,7 +368,7 @@ namespace The_Masterpiece.Plugins
             if (Q.IsInRange(target)
                 && Menu.Item("themp.combo.q").GetValue<bool>()
                 && Q.IsReady())
-                Q.CastOnUnit(target);
+                useQonTarg(target, QhitChance.medium);
 
             if ((!Passive()
                 && Menu.Item("themp.combo.w").GetValue<bool>()
@@ -414,7 +414,7 @@ namespace The_Masterpiece.Plugins
                     && minions[0].Health < Q.GetDamage(minions[0])
                     && Q.IsInRange(minions[0]))
                 {
-                    Q.CastOnUnit(minions[0]);
+                    useQonTarg(minions[0], QhitChance.medium);
                 }
 
 
@@ -435,7 +435,7 @@ namespace The_Masterpiece.Plugins
                     else
                     {
                         if (Q.IsInRange(target))
-                            Q.CastOnUnit(target);
+                            useQonTarg(target, QhitChance.medium);
                     }
                 }
                 if (Menu.Item("themp.harass.w").GetValue<bool>() && W.IsReady() && W.IsInRange(target))
