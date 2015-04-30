@@ -1,0 +1,13 @@
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\bin\Release\WASD Controls.exe.config
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\bin\Release\WASD Controls.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\bin\Release\WASD Controls.pdb
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\bin\Release\LeagueSharp.Common.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\bin\Release\LeagueSharp.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\bin\Release\SharpDX.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\bin\Release\SharpDX.Direct3D9.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\bin\Release\clipper_library.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\bin\Release\LeagueSharp.Sandbox.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\bin\Release\LeagueSharp.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\obj\Debug\WASD Controls.csprojResolveAssemblyReference.cache
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\obj\Debug\WASD Controls.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\WASD Controls\WASD Controls\obj\Debug\WASD Controls.pdb
