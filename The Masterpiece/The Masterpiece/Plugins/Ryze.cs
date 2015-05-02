@@ -101,10 +101,11 @@ namespace The_Masterpiece.Plugins
             Config.AddSubMenu(MExtra);
 
             var MDrawings = new Menu("Drawings", "drawings");
-            MDrawings.AddItem(new MenuItem("draw.q", "Draw Overload (Q)").SetValue(true));
-            MDrawings.AddItem(new MenuItem("draw.w", "Draw Rune Prison (W)").SetValue(true));
-            MDrawings.AddItem(new MenuItem("draw.e", "Draw Spell Flux (E)").SetValue(true));
-            MDrawings.AddItem(new MenuItem("draw.target", "Draw Target").SetValue(true));
+            MDrawings.AddItem(new MenuItem("draw", "Use Drawings").SetValue(true));
+            MDrawings.AddItem(new MenuItem("draw.q", "Draw Overload (Q)").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            MDrawings.AddItem(new MenuItem("draw.w", "Draw Rune Prison (W)").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            MDrawings.AddItem(new MenuItem("draw.e", "Draw Spell Flux (E)").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
+            MDrawings.AddItem(new MenuItem("draw.target", "Draw Target").SetValue(new Circle(true, System.Drawing.Color.FromArgb(255, 255, 255, 255))));
             MDrawings.AddItem(new MenuItem("draw.dmg", "Draw Damage").SetValue(true));
             Config.AddSubMenu(MDrawings);
             #endregion
@@ -115,6 +116,7 @@ namespace The_Masterpiece.Plugins
             Game.OnUpdate += Game_OnUpdate;
             Drawing.OnDraw += Drawing_OnDraw;
             AntiGapcloser.OnEnemyGapcloser += AntiGapcloser_OnEnemyGapcloser;
+            
 
         }
 
@@ -131,16 +133,39 @@ namespace The_Masterpiece.Plugins
                     Q.CastIfHitchanceEquals(noob, HitChance.Immobile);
                 }
                     
+                if (W.IsReady())
+                {
+                    if ((!noob.HasBuffOfType(BuffType.SpellShield)
+                    && !noob.HasBuffOfType(BuffType.SpellImmunity))
+                        || W.GetDamage(noob) > noob.Health + 50)
+                        W.Cast(noob);
+                }
             }
         }
 
         void Drawing_OnDraw(EventArgs args)
         {
-            throw new NotImplementedException();
+            if (!Config.Item("draw").GetValue<bool>())
+                return;
+
+            var target = TargetSelector.GetTarget(W.Range, TargetSelector.DamageType.Magical);
+            if (Config.Item("draw.target").GetValue<Circle>().Active && target != null)
+            {
+                Render.Circle.DrawCircle(target.Position, 75f, Config.Item("draw.target").GetValue<Circle>().Color);
+            }
+
+            foreach (var x in SpellList.Where(y => Config.Item("draw." + y.Slot.ToString().ToLowerInvariant()).GetValue<Circle>().Active))
+            {
+                Render.Circle.DrawCircle(Player.Position, x.Range, x.IsReady()
+                ? System.Drawing.Color.Green
+                : System.Drawing.Color.Red
+                );
+            }
         }
 
         void Game_OnUpdate(EventArgs args)
         {
+            SetBestTarget();
             if (Config.Item("extra.ks").GetValue<bool>())
                 KS();
             if (Config.Item("extra.kb.combo").GetValue<bool>())
@@ -161,17 +186,52 @@ namespace The_Masterpiece.Plugins
 
         public static void KS()
         {
-
+            var tg = (Obj_AI_Hero)Target;
+            var realhp = tg.Health + 50;
+            if (W.IsReady()
+                && W.IsInRange(tg)
+                && W.GetDamage(tg) > realhp)
+                W.Cast(tg);
+            else if (E.IsReady()
+                && E.IsInRange(tg)
+                && E.GetDamage(tg) > realhp)
+                E.CastOnUnit(tg);
+            else if (Q.IsReady()
+                && Q.IsInRange(tg)
+                && Q.GetDamage(tg) > realhp)
+                Q.CastIfHitchanceEquals(tg, HitChance.High);
         }
 
         public static void Harass()
         {
+            if (Target == null)
+                return;
 
+            if (Config.Item("harass.q").GetValue<bool>()
+                && Q.IsReady())
+                Q.CastIfHitchanceEquals(Target, QHC);
+            if (Config.Item("harass.w").GetValue<bool>()
+                && W.IsReady()
+                && W.IsInRange(Target))
+                W.Cast(Target);
+            if (Config.Item("harass.e").GetValue<bool>()
+                && E.IsReady()
+                && E.IsInRange(Target))
+                E.CastOnUnit(Target);
         }
 
         public static void Escape()
         {
-
+            var closestmfer = HeroManager.Enemies.OrderBy(x => x.Distance(Player.Position)).FirstOrDefault();
+            if (W.IsReady()
+                && closestmfer.IsValidTarget(W.Range)
+                && Config.Item("escape.w").GetValue<bool>())
+                W.Cast(closestmfer);
+            if (R.IsReady()
+                && Player.CountEnemiesInRange(Q.Range + 100) >= 1
+                && Config.Item("escape.r").GetValue<bool>()
+                && closestmfer.MoveSpeed > Player.MoveSpeed)
+                R.Cast();
         }
 
         public static void Lane()

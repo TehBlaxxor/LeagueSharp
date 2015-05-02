@@ -359,13 +359,19 @@ namespace The_Masterpiece.Plugins
 
         private void DoCombo()
         {
-            Obj_AI_Hero target = TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Physical);
+            Obj_AI_Hero target = TargetSelector.GetTarget(R.Range, TargetSelector.DamageType.Physical);
             //UseItems();
             //UseSummoners();
 
             ManageE(target, false);
 
-            if (Q.IsInRange(target)
+            if (!Passive()
+                && Q.IsInRange(target)
+                && Menu.Item("themp.combo.q").GetValue<bool>()
+                && Q.IsReady())
+                useQonTarg(target, QhitChance.medium);
+            else if (target.Distance(Player.Position) > 750
+                && !Player.IsDashing()
                 && Menu.Item("themp.combo.q").GetValue<bool>()
                 && Q.IsReady())
                 useQonTarg(target, QhitChance.medium);
@@ -425,18 +431,24 @@ namespace The_Masterpiece.Plugins
         {
             if (ManaManager())
             {
-                Obj_AI_Hero target = TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Physical);
+                Obj_AI_Hero target = TargetSelector.GetTarget(R.Range, TargetSelector.DamageType.Physical);
                 if (Menu.Item("themp.harass.q").GetValue<bool>() && Q.IsReady())
                 {
                     if (Menu.Item("themp.harass.q.smart").GetValue<bool>())
                     {
                         useQonTarg(target, QhitChance.medium);
                     }
+                    else if (target.Distance(Player.Position) > 750
+                         && !Player.IsDashing()
+                         && Menu.Item("themp.harass.q").GetValue<bool>()
+                         && Q.IsReady())
+                        useQonTarg(target, QhitChance.medium);
                     else
                     {
                         if (Q.IsInRange(target))
                             useQonTarg(target, QhitChance.medium);
                     }
+                    
                 }
                 if (Menu.Item("themp.harass.w").GetValue<bool>() && W.IsReady() && W.IsInRange(target))
                 {
