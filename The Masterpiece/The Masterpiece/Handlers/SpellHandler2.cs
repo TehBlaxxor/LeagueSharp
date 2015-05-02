@@ -81,12 +81,12 @@ namespace The_Masterpiece.Handlers
                 Flash.Range = 425f;
             }
 
-         public static bool Exists(this Spell summoner)
-        {
-            return summoner. != SpellSlot.Unknown;
-        }
+     //    public static bool Exists(this Spell summoner)
+     //   {
+    //        return summoner. != SpellSlot.Unknown;
+    //    }
 
-        }
+    //    }
 
 
 
