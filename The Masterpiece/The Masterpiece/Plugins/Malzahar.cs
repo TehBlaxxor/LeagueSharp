@@ -206,7 +206,7 @@ namespace The_Masterpiece.Plugins
 
         private void DoCombo()
         {
-            try
+            /*try
             {
                 UseItems();
                 UseSummoners();
@@ -214,7 +214,7 @@ namespace The_Masterpiece.Plugins
             catch (Exception e)
             {
                 Console.Write(e);
-            }
+            }*/
             var ComboModeSelectedIndex = Menu.Item("themp.combo.mode").GetValue<StringList>().SelectedIndex;
             var QHitChance = Menu.Item("themp.hitchance.q").GetValue<StringList>().SelectedIndex;
             var WHitChance = Menu.Item("themp.hitchance.w").GetValue<StringList>().SelectedIndex;

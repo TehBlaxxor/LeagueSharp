@@ -8,6 +8,7 @@ using LeagueSharp;
 using LeagueSharp.Common;
 using SharpDX;
 using Color = System.Drawing.Color;
+using Item = LeagueSharp.Common.Items.Item;
 
 namespace The_Masterpiece
 {
@@ -20,27 +21,45 @@ namespace The_Masterpiece
                 case "vayne":
                     {
                         new Plugins.Vayne();
-                        GlobalMethods.Print("Vayne loaded! Enjoy your experience!", GlobalEnums.MessageType.NORMAL);
+                        Messages.OnAssemblyLoad();
                     }
                     break;
                 case "malzahar":
                     {
                         new Plugins.Malzahar();
-                        GlobalMethods.Print("Malzahar loaded! Enjoy your experience!", GlobalEnums.MessageType.NORMAL);
+                        Messages.OnAssemblyLoad();
                     }
                     break;
                 case "lucian":
                     {
                         new Plugins.Lucian();
-                        GlobalMethods.Print("Lucian loaded! Enjoy your experience!", GlobalEnums.MessageType.NORMAL);
+                        Messages.OnAssemblyLoad();
                     }
                     break;
+                //case "ryze":
+                //    {
+                        //new Plugins.Ryze();
+                        //Messages.OnAssemblyLoad();
+                //    }
+                //    break;
                 default:
                     {
                        GlobalMethods.Print("Champion not supported! If you believe this is in error, please report on the forums.", GlobalEnums.MessageType.WARNING);
                     }
                     break;
             }
+        }
+
+        public static Item Tear = new Item(3070);
+        public static Item ScarTear = new Item(3073);
+        public static Item Archangel = new Item(3003);
+        public static Item ScarArchangel = new Item(3007);
+        public static Item Manamune = new Item(3004);
+        public static Item ScarManamune = new Item(3008);
+        public static bool StackingItemOwned(Obj_AI_Hero Hero)
+        {
+            return Tear.IsOwned(Hero) || Archangel.IsOwned(Hero) || Manamune.IsOwned(Hero)
+                    || ScarTear.IsOwned(Hero) || ScarArchangel.IsOwned(Hero) || ScarManamune.IsOwned(Hero);
         }
 
         private static readonly Random RandomPos = new Random(DateTime.Now.Millisecond);
@@ -52,7 +71,6 @@ namespace The_Masterpiece
         {
             MoveTo(Game.CursorPos);
         }
-
 
         internal static void Print(string message, GlobalEnums.MessageType messagetype)
         {

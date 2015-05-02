@@ -58,6 +58,12 @@ namespace The_Masterpiece
                                             Game.PrintChat("load");
                                         }
                                     break;
+                                case "ryze":
+                                    {
+                                        new Plugins.Ryze();
+                                        Game.PrintChat("load");
+                                    }
+                                    break;
                             }
                         }
                     }

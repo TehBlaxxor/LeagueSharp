@@ -360,8 +360,8 @@ namespace The_Masterpiece.Plugins
         private void DoCombo()
         {
             Obj_AI_Hero target = TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Physical);
-            UseItems();
-            UseSummoners();
+            //UseItems();
+            //UseSummoners();
 
             ManageE(target, false);
 

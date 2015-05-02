@@ -47,6 +47,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,13 +58,18 @@
     <Compile Include="ChatCommands.cs" />
     <Compile Include="GlobalMethods.cs" />
     <Compile Include="Handlers\ItemHandler.cs" />
+    <Compile Include="Handlers\NewItemHandler.cs" />
     <Compile Include="Handlers\PotionHandler.cs" />
     <Compile Include="Handlers\SpellHandler.cs" />
+    <Compile Include="Handlers\SpellHandler2.cs" />
     <Compile Include="MathUtils.cs" />
+    <Compile Include="Messages.cs" />
     <Compile Include="Plugins\BaseChampion.cs" />
     <Compile Include="Plugins\ChampionStartingPoint.cs" />
+    <Compile Include="Plugins\CustomUtility.cs" />
     <Compile Include="Plugins\Lucian.cs" />
     <Compile Include="Plugins\Malzahar.cs" />
+    <Compile Include="Plugins\Ryze.cs" />
     <Compile Include="Plugins\Vayne.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
