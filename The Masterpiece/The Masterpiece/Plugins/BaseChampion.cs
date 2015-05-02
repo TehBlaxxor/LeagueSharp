@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -74,24 +74,12 @@ namespace The_Masterpiece.Plugins
             Menu.AddSubMenu(extraMenu);
 
             var itemMenu = new Menu("Items", "themp.items");
-            ItemMenu(itemMenu);
+            NewItemHandler.AddToMenu(itemMenu);
             Menu.AddSubMenu(itemMenu);
 
             var summonersMenu = new Menu("Summoner Spells", "themp.summoners");
-            if (SpellHandler.Ghost.Exists())
+            if (SpellHandler2.Ghost.Exists())
                 summonersMenu.AddItem(new MenuItem("themp.ghost", "Use Ghost").SetValue(true));
-            if (SpellHandler.Barrier.Exists())
-                summonersMenu.AddItem(new MenuItem("themp.barrier", "Use Barrier").SetValue(true));
-            if (SpellHandler.Cleanse.Exists())
-                summonersMenu.AddItem(new MenuItem("themp.clarity", "Use Clarity").SetValue(true));
-            if (SpellHandler.Exhaust.Exists())
-                summonersMenu.AddItem(new MenuItem("themp.exhaust", "Use Exhaust").SetValue(true));
-            if (SpellHandler.Flash.Exists())
-                summonersMenu.AddItem(new MenuItem("themp.flash", "Use Flash").SetValue(true));
-            if (SpellHandler.Heal.Exists())
-                summonersMenu.AddItem(new MenuItem("themp.heal", "Use Heal").SetValue(true));
-            if (SpellHandler.Ignite.Exists())
-                summonersMenu.AddItem(new MenuItem("themp.ignite", "Use Ignite").SetValue(true));
             Menu.AddSubMenu(summonersMenu);
 
             var pm = new Menu("Potion Control", "themp.pm");
