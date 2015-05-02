@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -230,6 +230,7 @@ namespace The_Masterpiece.Plugins
 
         #endregion
 
+
         void Drawing_OnDraw(EventArgs args)
         {
             if (!Menu.Item("themp.drawings.draw").GetValue<bool>())
@@ -360,8 +361,6 @@ namespace The_Masterpiece.Plugins
         private void DoCombo()
         {
             Obj_AI_Hero target = TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Physical);
-            UseItems();
-            UseSummoners();
 
             ManageE(target, false);
 
@@ -385,7 +384,9 @@ namespace The_Masterpiece.Plugins
                 else if (Menu.Item("themp.hc.w").GetValue <StringList>().SelectedIndex == 1)
                     W.CastIfHitchanceEquals(target, HitChance.High);
             }
-                
+           // UseItems();
+            UseSummoners(); 
+   
         }
 
 
@@ -453,76 +454,77 @@ namespace The_Masterpiece.Plugins
             ManageE(TargetSelector.GetTarget(E.Range, TargetSelector.DamageType.Physical), false);
         }
 
-        private void UseItems()
-        {
-            var target = TargetSelector.GetTarget(1000, TargetSelector.DamageType.Physical);
+        //private void UseItems()
+        //{
+        //    var target = TargetSelector.GetTarget(1000, TargetSelector.DamageType.Physical);
 
-            if (ItemHandler.BotRK.CanCast(target)
-                && Menu.Item("themp.botrk").GetValue<bool>()
-                && Player.HealthPercent <= 99)
-                ItemHandler.BotRK.Instance.Cast(target);
+        //    if (ItemHandler.BotRK.CanCast(target)
+        //        && Menu.Item("themp.botrk").GetValue<bool>()
+        //        && Player.HealthPercent <= 99)
+        //        ItemHandler.BotRK.Instance.Cast(target);
+            
 
-            if (ItemHandler.Randuin.CanCast(target)
-                && Menu.Item("themp.randuin").GetValue<bool>())
-            {
-                if (target.IsFacing(Player)
-                    && !Player.IsFacing(target))
-                    ItemHandler.Randuin.Instance.Cast();
-                else if (!target.IsFacing(Player)
-                    && Player.IsFacing(target))
-                    ItemHandler.Randuin.Instance.Cast();
-            }
+        //    if (ItemHandler.Randuin.CanCast(target)
+        //        && Menu.Item("themp.randuin").GetValue<bool>())
+        //    {
+        //        if (target.IsFacing(Player)
+        //            && !Player.IsFacing(target))
+        //            ItemHandler.Randuin.Instance.Cast();
+        //        else if (!target.IsFacing(Player)
+        //            && Player.IsFacing(target))
+        //            ItemHandler.Randuin.Instance.Cast();
+        //    }
 
-            if (ItemHandler.Righteous.CanCast()
-                && Menu.Item("themp.righteous").GetValue<bool>())
-            {
-                if (Player.CountAlliesInRange(ItemHandler.Righteous.Range) >= 2
-                    && target != null
-                    && !target.IsFacing(Player))
-                    ItemHandler.Righteous.Instance.Cast();
-            }
+        //    if (ItemHandler.Righteous.CanCast()
+        //        && Menu.Item("themp.righteous").GetValue<bool>())
+        //    {
+        //        if (Player.CountAlliesInRange(ItemHandler.Righteous.Range) >= 2
+        //            && target != null
+        //            && !target.IsFacing(Player))
+        //            ItemHandler.Righteous.Instance.Cast();
+        //    }
 
-            if (ItemHandler.Mikael.CanCast()
-                && Menu.Item("themp.mikael").GetValue<bool>())
-            {
-                if (Player.HasBuffOfType(BuffType.Charm)
-                    || Player.HasBuffOfType(BuffType.Stun)
-                    || Player.HasBuffOfType(BuffType.Suppression)
-                    || Player.HasBuffOfType(BuffType.Taunt)
-                    || Player.HasBuffOfType(BuffType.Fear)
-                    || Player.HasBuffOfType(BuffType.Blind)
-                    || Player.HasBuffOfType(BuffType.Snare))
-                    ItemHandler.Mikael.Instance.Cast();
-            }
+        //    if (ItemHandler.Mikael.CanCast()
+        //        && Menu.Item("themp.mikael").GetValue<bool>())
+        //    {
+        //        if (Player.HasBuffOfType(BuffType.Charm)
+        //            || Player.HasBuffOfType(BuffType.Stun)
+        //            || Player.HasBuffOfType(BuffType.Suppression)
+        //            || Player.HasBuffOfType(BuffType.Taunt)
+        //            || Player.HasBuffOfType(BuffType.Fear)
+        //            || Player.HasBuffOfType(BuffType.Blind)
+        //            || Player.HasBuffOfType(BuffType.Snare))
+        //            ItemHandler.Mikael.Instance.Cast();
+        //    }
 
-            if (ItemHandler.QSS.CanCast()
-                && Menu.Item("themp.qss").GetValue<bool>())
-            {
-                if (Player.HasBuffOfType(BuffType.Charm)
-                    || Player.HasBuffOfType(BuffType.Stun)
-                    || Player.HasBuffOfType(BuffType.Suppression)
-                    || Player.HasBuffOfType(BuffType.Taunt)
-                    || Player.HasBuffOfType(BuffType.Fear)
-                    || Player.HasBuffOfType(BuffType.Blind)
-                    || Player.HasBuffOfType(BuffType.Snare))
-                    ItemHandler.QSS.Instance.Cast();
+        //    if (ItemHandler.QSS.CanCast()
+        //        && Menu.Item("themp.qss").GetValue<bool>())
+        //    {
+        //        if (Player.HasBuffOfType(BuffType.Charm)
+        //            || Player.HasBuffOfType(BuffType.Stun)
+        //            || Player.HasBuffOfType(BuffType.Suppression)
+        //            || Player.HasBuffOfType(BuffType.Taunt)
+        //            || Player.HasBuffOfType(BuffType.Fear)
+        //            || Player.HasBuffOfType(BuffType.Blind)
+        //            || Player.HasBuffOfType(BuffType.Snare))
+        //            ItemHandler.QSS.Instance.Cast();
 
-            }
+        //    }
 
-            if (ItemHandler.Scimitar.CanCast()
-                 && Menu.Item("themp.scimitar").GetValue<bool>())
-            {
-                if (Player.HasBuffOfType(BuffType.Charm)
-                    || Player.HasBuffOfType(BuffType.Stun)
-                    || Player.HasBuffOfType(BuffType.Suppression)
-                    || Player.HasBuffOfType(BuffType.Taunt)
-                    || Player.HasBuffOfType(BuffType.Fear)
-                    || Player.HasBuffOfType(BuffType.Blind)
-                    || Player.HasBuffOfType(BuffType.Snare))
-                    ItemHandler.Scimitar.Instance.Cast();
+        //    if (ItemHandler.Scimitar.CanCast()
+        //         && Menu.Item("themp.scimitar").GetValue<bool>())
+        //    {
+        //        if (Player.HasBuffOfType(BuffType.Charm)
+        //            || Player.HasBuffOfType(BuffType.Stun)
+        //            || Player.HasBuffOfType(BuffType.Suppression)
+        //            || Player.HasBuffOfType(BuffType.Taunt)
+        //            || Player.HasBuffOfType(BuffType.Fear)
+        //            || Player.HasBuffOfType(BuffType.Blind)
+        //            || Player.HasBuffOfType(BuffType.Snare))
+        //            ItemHandler.Scimitar.Instance.Cast();
 
-            }
-        }
+        //    }
+        //}
 
         private void UseSummoners()
         {
