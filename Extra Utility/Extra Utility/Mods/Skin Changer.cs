@@ -16,6 +16,7 @@ namespace Extra_Utility.Mods
         public override string ModVersion { get { return "1.0.0"; } }
         public static string Model;
         public static int Skin;
+        public static Menu Config;
 
         #region Models - Credit to Trees
         public static List<string> ModelList = new List<string>
@@ -506,16 +507,21 @@ namespace Extra_Utility.Mods
         {
             Notifications.OnModLoaded(ModName);
         }
-        public override void LoadSettings(Menu menu)
+        public override void LoadMenu()
         {
-            menu.AddItem(new MenuItem("eu.Skin Changer.enabled", "Enabled").SetValue(true));
+            Config = new Menu("EU - " + ModName, "eu." + ModName.Replace(" ", string.Empty).ToLowerInvariant() + new Random().Next(0, 133333337), true);
+            Config.AddItem(new MenuItem("eu.Skin Changer.enabled", "Enabled").SetValue(new StringList(new[] {" Disabled "})));
+            Config.AddItem(new MenuItem("version" + new Random().Next(0, 133333337), "Version: " + ModVersion));
+            Config.AddItem(new MenuItem("site" + new Random().Next(0, 133333337), "Visit joduska.me!"));
+            Config.AddToMainMenu();
+
         }
 
         public static bool ModEnabled { get { return Config.Item("eu.Skin Changer.enabled").GetValue<bool>(); } }
 
         public override void Game_OnInput(LeagueSharp.GameInputEventArgs args)
         {
-            if (!ModEnabled || args.Input != string.Empty)
+            /*if (!Config.Item("eu.Skin Changer.enabled").GetValue<bool>() || args.Input != string.Empty)
             {
                 Notifications.OnModelChanged("nob");
                 foreach (var item in Config.Items)
@@ -524,165 +530,175 @@ namespace Extra_Utility.Mods
                 }
                 return;
             }
-
-            if (args.Input.StartsWith("#"))
+            */
+            try
             {
-                args.Process = false;
-                string[] cmdargs = args.Input.Split(' ');
-
-                if (cmdargs[0].Equals("#setskin"))
+                var trial = args.Input + " ";
+                if (args.Input.StartsWith("#"))
                 {
-                    if (cmdargs[2] != null)
-                    {
-                        foreach (var hero in HeroManager.AllHeroes)
-                        {
-                            if (cmdargs[2].ToLowerInvariant() == hero.ChampionName.ToLowerInvariant()
-                                || hero.Name.ToLowerInvariant().StartsWith(cmdargs[2].ToLowerInvariant()))
-                            {
-                                hero.SetSkin(hero.BaseSkinName, Convert.ToInt32(cmdargs[1]));
-                                Notifications.OnSkinChanged(Convert.ToInt32(cmdargs[1]).ToString());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        Player.SetSkin(Player.BaseSkinName, Convert.ToInt32(cmdargs[1]));
-                        Model = Player.BaseSkinName;
-                        Skin = Convert.ToInt32(cmdargs[1]);
-                        Notifications.OnSkinChanged(Convert.ToInt32(cmdargs[1]).ToString());
-                    }
+                    args.Process = false;
+                    string[] cmdargs = trial.Split(' ');
 
-                }
-
-                else if (cmdargs[0].Equals("#setmodel"))
-                {
-                    if (ModelList.Contains(cmdargs[1]))
+                    if (cmdargs[0].Equals("#setskin"))
                     {
-                        if (cmdargs[2] != null)
+                        if (cmdargs[2] != string.Empty)
                         {
                             foreach (var hero in HeroManager.AllHeroes)
                             {
                                 if (cmdargs[2].ToLowerInvariant() == hero.ChampionName.ToLowerInvariant()
                                     || hero.Name.ToLowerInvariant().StartsWith(cmdargs[2].ToLowerInvariant()))
                                 {
-                                    hero.SetSkin(cmdargs[1], 0);
-                                    Notifications.OnModelChanged(cmdargs[1]);
+                                    hero.SetSkin(hero.BaseSkinName, Convert.ToInt32(cmdargs[1]));
+                                    Notifications.OnSkinChanged(Convert.ToInt32(cmdargs[1]).ToString());
                                 }
                             }
                         }
                         else
                         {
-                            Model = cmdargs[1];
+                            Player.SetSkin(Player.BaseSkinName, Convert.ToInt32(cmdargs[1]));
+                            Model = Player.BaseSkinName;
+                            Skin = Convert.ToInt32(cmdargs[1]);
+                            Notifications.OnSkinChanged(Convert.ToInt32(cmdargs[1]).ToString());
+                        }
+
+                    }
+
+                    else if (cmdargs[0].Equals("#setmodel"))
+                    {
+                        if (ModelList.Contains(cmdargs[1]))
+                        {
+                            if (cmdargs[2] != string.Empty)
+                            {
+                                foreach (var hero in HeroManager.AllHeroes)
+                                {
+                                    if (cmdargs[2].ToLowerInvariant() == hero.ChampionName.ToLowerInvariant()
+                                        || hero.Name.ToLowerInvariant().StartsWith(cmdargs[2].ToLowerInvariant()))
+                                    {
+                                        hero.SetSkin(cmdargs[1], 0);
+                                        Notifications.OnModelChanged(cmdargs[1]);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Model = cmdargs[1];
+                                Skin = 0;
+                                Player.SetSkin(cmdargs[1], 0);
+                            }
+                        }
+                        else { Notifications.OnFailedModel(); }
+                    }
+                    else if (cmdargs[0].Equals("#baron"))
+                    {
+                        if (args.Input.Contains("old"))
+                        {
+                            Model = "Worm";
                             Skin = 0;
-                            Player.SetSkin(cmdargs[1], 0);
+                            Player.SetSkin("Worm", 0);
+                            Notifications.OnModelChanged("Worm");
+                        }
+                        else
+                        {
+                            Model = "SRU_Baron";
+                            Skin = 0;
+                            Player.SetSkin("SRU_Baron", 0);
+                            Notifications.OnModelChanged("SRU_Baron");
                         }
                     }
-                    else { Notifications.OnFailedModel(); }
-                }
-                else if (cmdargs[0].Equals("#baron"))
-                {
-                    if (cmdargs[1] != null && cmdargs[1].Equals("old"))
+                    else if (cmdargs[0].Equals("#dragon"))
                     {
-                        Model = "Worm";
-                        Skin = 0;
-                        Player.SetSkin("Worm", 0);
-                        Notifications.OnModelChanged("Worm");
+                        if (args.Input.Contains("old"))
+                        {
+                            Model = "Dragon";
+                            Skin = 0;
+                            Player.SetSkin("Dragon", 0);
+                            Notifications.OnModelChanged("Dragon");
+                        }
+                        else 
+                        {
+                            Model = "SRU_Dragon";
+                            Skin = 0;
+                            Player.SetSkin("SRU_Dragon", 0);
+                            Notifications.OnModelChanged("SRU_Dragon");
+                        }
                     }
-                    else
+                    else if (cmdargs[0].Equals("#spider"))
                     {
-                        Model = "SRU_Baron";
+                        Model = "TT_Spiderboss";
                         Skin = 0;
-                        Player.SetSkin("SRU_Baron", 0);
-                        Notifications.OnModelChanged("SRU_Baron");
+                        Player.SetSkin("TT_Spiderboss", 0);
+                        Notifications.OnModelChanged("TT_Spiderboss");
                     }
-                }
-                else if (cmdargs[0].Equals("#dragon"))
-                {
-                    if (cmdargs[1] != null && cmdargs[1].Equals("old"))
+                    else if (cmdargs[0].Equals("#red"))
                     {
-                        Model = "Dragon";
-                        Skin = 0;
-                        Player.SetSkin("Dragon", 0);
-                        Notifications.OnModelChanged("Dragon");
+                        if (args.Input.Contains("mini"))
+                        {
+                            Model = "SRU_RedMini";
+                            Skin = 0;
+                            Player.SetSkin("SRU_RedMini", 0);
+                            Notifications.OnModelChanged("SRU_RedMini");
+                        }
+                        else
+                        {
+                            Model = "SRU_Red";
+                            Skin = 0;
+                            Player.SetSkin("SRU_Red", 0);
+                            Notifications.OnModelChanged("SRU_Red");
+                        }
                     }
-                    else
+                    else if (cmdargs[0].Equals("#blue"))
                     {
-                        Model = "SRU_Dragon";
-                        Skin = 0;
-                        Player.SetSkin("SRU_Dragon", 0);
-                        Notifications.OnModelChanged("SRU_Dragon");
+                        if (args.Input.Contains("mini"))
+                        {
+                            Model = "SRU_BlueMini";
+                            Skin = 0;
+                            Player.SetSkin("SRU_BlueMini", 0);
+                            Notifications.OnModelChanged("SRU_BlueMini");
+                        }
+                        else
+                        {
+                            Model = "SRU_Blue";
+                            Skin = 0;
+                            Player.SetSkin("SRU_Blue", 0);
+                            Notifications.OnModelChanged("SRU_Blue");
+                        }
                     }
-                }
-                else if (cmdargs[0].Equals("#spider"))
-                {
-                    Model = "TT_Spiderboss";
-                    Skin = 0;
-                    Player.SetSkin("TT_Spiderboss", 0);
-                    Notifications.OnModelChanged("TT_Spiderboss");
-                }
-                else if (cmdargs[0].Equals("#red"))
-                {
-                    if (cmdargs[1] != null && cmdargs[1].Equals("mini"))
+                    else if (cmdargs[0].Equals("#shroom") || cmdargs[0].Equals("#teemoshroom") || cmdargs[0].Equals("#mushroom"))
                     {
-                        Model = "SRU_RedMini";
+                        Model = "TeemoMushroom";
                         Skin = 0;
-                        Player.SetSkin("SRU_RedMini", 0);
-                        Notifications.OnModelChanged("SRU_RedMini");
+                        Player.SetSkin("TeemoMushroom", 0);
+                        Notifications.OnModelChanged("TeemoMushroom");
                     }
-                    else
+                    else if (cmdargs[0].Equals("#duck"))
                     {
-                        Model = "SRU_Red";
+                        Model = "Sru_Duck";
                         Skin = 0;
-                        Player.SetSkin("SRU_Red", 0);
-                        Notifications.OnModelChanged("SRU_Red");
+                        Player.SetSkin("Sru_Duck", 0);
+                        Notifications.OnModelChanged("Sru_Duck");
                     }
-                }
-                else if (cmdargs[0].Equals("#blue"))
-                {
-                    if (cmdargs[1] != null && cmdargs[1].Equals("mini"))
+                    else if (cmdargs[0].Equals("#crab"))
                     {
-                        Model = "SRU_BlueMini";
+                        Model = "Sru_Crab";
                         Skin = 0;
-                        Player.SetSkin("SRU_BlueMini", 0);
-                        Notifications.OnModelChanged("SRU_BlueMini");
+                        Player.SetSkin("Sru_Crab", 0);
+                        Notifications.OnModelChanged("Sru_Crab");
                     }
-                    else
+                    else if (cmdargs[0].Equals("#urf"))
                     {
-                        Model = "SRU_Blue";
+                        Model = "Urf";
                         Skin = 0;
-                        Player.SetSkin("SRU_Blue", 0);
-                        Notifications.OnModelChanged("SRU_Blue");
+                        Player.SetSkin("Urf", 0);
+                        Notifications.OnModelChanged("Urf");
+                    }
+                    else { Notifications.OnFakeInput();
+                    args.Process = false;
                     }
                 }
-                else if (cmdargs[0].Equals("#shroom") || cmdargs[0].Equals("#teemoshroom") || cmdargs[0].Equals("#mushroom"))
-                {
-                    Model = "TeemoMushroom";
-                    Skin = 0;
-                    Player.SetSkin("TeemoMushroom", 0);
-                    Notifications.OnModelChanged("TeemoMushroom");
-                }
-                else if (cmdargs[0].Equals("#duck"))
-                {
-                    Model = "Sru_Duck";
-                    Skin = 0;
-                    Player.SetSkin("Sru_Duck", 0);
-                    Notifications.OnModelChanged("Sru_Duck");
-                }
-                else if (cmdargs[0].Equals("#crab"))
-                {
-                    Model = "Sru_Crab";
-                    Skin = 0;
-                    Player.SetSkin("Sru_Crab", 0);
-                    Notifications.OnModelChanged("Sru_Crab");
-                }
-                else if (cmdargs[0].Equals("#urf"))
-                {
-                    Model = "Urf";
-                    Skin = 0;
-                    Player.SetSkin("Urf", 0);
-                    Notifications.OnModelChanged("Urf");
-                }
-                else { Notifications.OnFakeInput(); }
+            }
+            catch (NullReferenceException e)
+            {
+                Console.Write(e.StackTrace + " || " + e.Message + " || " + e.Source);
             }
         }
 

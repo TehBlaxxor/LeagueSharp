@@ -13,6 +13,7 @@ namespace Extra_Utility.Mods
     {
         public override string ModName { get { return "Anti Flame"; } }
         public override string ModVersion { get { return "1.0.0"; } }
+        public static Menu Config;
         public Anti_Flame()
         {
             Notifications.OnModLoaded(ModName);
@@ -20,9 +21,15 @@ namespace Extra_Utility.Mods
 
         public static bool ModEnabled { get { return Config.Item("eu.Anti Flame.enabled").GetValue<bool>(); } }
 
-        public override void LoadSettings(Menu menu)
+        public override void LoadMenu()
         {
-            menu.AddItem(new MenuItem("eu.Anti Flame.enabled", "Enabled").SetValue(true));
+            Config = new Menu("EU - " + ModName, "eu." + ModName.Replace(" ", string.Empty).ToLowerInvariant() + new Random().Next(0, 133333337), true);
+            Config.AddItem(new MenuItem("eu.Anti Flame.enabled", "Enabled [DISABLED FEATURE]"));
+            Config.AddItem(new MenuItem("caps", "Filter Caps").SetValue(true));
+            Config.AddItem(new MenuItem("version" + new Random().Next(0, 133333337), "Version: " + ModVersion));
+            Config.AddItem(new MenuItem("site" + new Random().Next(0, 133333337), "Visit joduska.me!"));
+            Config.AddToMainMenu();
+
         }
 
         public override void Game_OnInput(LeagueSharp.GameInputEventArgs args)
@@ -68,10 +75,10 @@ namespace Extra_Utility.Mods
                 args.Process = false;
                 Game.Say("hi guys");
             }
-            else if (args.Input.ToUpperInvariant() == args.Input)
+            else if (args.Input.ToUpperInvariant() == args.Input && Config.Item("caps").GetValue<bool>())
             {
                 args.Process = false;
-                Game.Say(args.Input.Substring(0, 1).ToUpperInvariant() + args.Input.Substring(1).ToLowerInvariant());
+                Game.Say(args.Input.ToLowerInvariant());
             }
         }
     }

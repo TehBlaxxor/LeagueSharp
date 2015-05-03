@@ -20,8 +20,15 @@ namespace Extra_Utility
 
         static void Game_OnGameLoad(EventArgs args)
         {
-            new Mods.Skin_Changer();
-            new Mods.Anti_Flame();
+            try
+            {
+                new Mods.Skin_Changer();
+                new Mods.Anti_Flame();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Data); Console.Write(e.StackTrace); Console.Write(e.Source); Console.Write(e.Message);
+            }  
         }
     }
 }
