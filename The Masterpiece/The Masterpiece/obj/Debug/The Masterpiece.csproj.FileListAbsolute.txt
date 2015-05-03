@@ -10,4 +10,3 @@ D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\bin\Relea
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\bin\Release\LeagueSharp.xml
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\obj\Debug\The Masterpiece.exe
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\obj\Debug\The Masterpiece.pdb
-D:\!!!!!!!!LIGA ASCUTITA 2015555555555\The Masterpiece\The Masterpiece\obj\Debug\The Masterpiece.csprojResolveAssemblyReference.cache

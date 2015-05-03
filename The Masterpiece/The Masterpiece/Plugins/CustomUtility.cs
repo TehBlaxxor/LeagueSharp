@@ -30,13 +30,13 @@ namespace The_Masterpiece.Plugins
         {
             float EnemyGoldEarned = 0;
             float AllyGoldEarned = 0;
-            foreach (var hero in HeroManager.Enemies.Where(x => x.GoldEarned > 0))
+            foreach (var hero in HeroManager.Enemies.Where(x => x.GoldTotal > 0))
             {
-                EnemyGoldEarned += hero.GoldEarned;
+                EnemyGoldEarned += hero.GoldTotal;
             }
-            foreach (var hero in HeroManager.Allies.Where(x => x.GoldEarned > 0))
+            foreach (var hero in HeroManager.Allies.Where(x => x.GoldTotal > 0))
             {
-                AllyGoldEarned += hero.GoldEarned;
+                AllyGoldEarned += hero.GoldTotal;
             }
             if (EnemyGoldEarned + 10000 > AllyGoldEarned)
                 return true;

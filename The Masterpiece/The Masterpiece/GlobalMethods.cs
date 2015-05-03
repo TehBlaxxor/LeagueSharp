@@ -36,30 +36,18 @@ namespace The_Masterpiece
                         Messages.OnAssemblyLoad();
                     }
                     break;
-                //case "ryze":
-                //    {
-                        //new Plugins.Ryze();
-                        //Messages.OnAssemblyLoad();
-                //    }
-                //    break;
+                case "ryze":
+                    {
+                        new Plugins.Ryze();
+                        Messages.OnAssemblyLoad();
+                    }
+                   break;
                 default:
                     {
                        GlobalMethods.Print("Champion not supported! If you believe this is in error, please report on the forums.", GlobalEnums.MessageType.WARNING);
                     }
                     break;
             }
-        }
-
-        public static Item Tear = new Item(3070);
-        public static Item ScarTear = new Item(3073);
-        public static Item Archangel = new Item(3003);
-        public static Item ScarArchangel = new Item(3007);
-        public static Item Manamune = new Item(3004);
-        public static Item ScarManamune = new Item(3008);
-        public static bool StackingItemOwned(Obj_AI_Hero Hero)
-        {
-            return Tear.IsOwned(Hero) || Archangel.IsOwned(Hero) || Manamune.IsOwned(Hero)
-                    || ScarTear.IsOwned(Hero) || ScarArchangel.IsOwned(Hero) || ScarManamune.IsOwned(Hero);
         }
 
         private static readonly Random RandomPos = new Random(DateTime.Now.Millisecond);
