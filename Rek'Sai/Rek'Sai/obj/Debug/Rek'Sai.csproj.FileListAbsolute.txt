@@ -1,0 +1,12 @@
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\bin\Release\RekSai.exe.config
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\bin\Release\RekSai.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\bin\Release\RekSai.pdb
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\bin\Release\LeagueSharp.Common.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\bin\Release\LeagueSharp.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\bin\Release\SharpDX.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\bin\Release\SharpDX.Direct3D9.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\bin\Release\clipper_library.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\bin\Release\LeagueSharp.Sandbox.dll
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\bin\Release\LeagueSharp.xml
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\obj\Debug\RekSai.exe
+D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\obj\Debug\RekSai.pdb

@@ -34,7 +34,7 @@ namespace Rek_Sai
             {
                 Program.Q1.Cast();
             }
-            else if (menu.Item("reksai.combo.q2").GetValue<bool>()
+            if (menu.Item("reksai.combo.q2").GetValue<bool>()
                 && Player.IsBurrowed()
                 && target.IsValidTarget(Program.Q2.Range)
                 && Program.Q2.IsReady())
@@ -48,20 +48,7 @@ namespace Rek_Sai
                     Program.Q2.CastIfHitchanceEquals(target, HitChance.High);
                 }
             }
-            else if (menu.Item("reksai.combo.e1").GetValue<bool>()
-                && !Player.IsBurrowed()
-                && target.IsValidTarget(Program.E1.Range)
-                && Program.E1.IsReady()
-                || menu.Item("reksai.rage.e1").GetValue<bool>()
-                && !Player.IsBurrowed()
-                && target.IsValidTarget(Program.E1.Range)
-                && Program.E1.IsReady()
-                && Player.ManaPercent == 100)
-            {
-                if (!Player.QActive() || Player.ManaPercent == 100)
-                    Program.E1.CastOnUnit(target);
-            }
-            else if (menu.Item("reksai.combo.e2").GetValue<bool>()
+            if (menu.Item("reksai.combo.e2").GetValue<bool>()
                 && Player.IsBurrowed()
                 && target.IsValidTarget(Program.E2.Range)
                 && Program.E2.IsReady())
@@ -130,16 +117,45 @@ namespace Rek_Sai
             {
                 Program.Q1.Cast();
             }
+        }
+
+        public static void Orbwalking_AfterAttack(AttackableUnit unit, AttackableUnit target)
+        {
             if (menu.Item("reksai.lane.e1").GetValue<bool>()
+                && menu.Item("reksai.others.keybinds.lane").GetValue<KeyBind>().Active
                 && !Player.IsBurrowed()
                 && Program.E1.IsReady()
-                && minions.OrderBy(x => x.Health).FirstOrDefault() != null
-                && minions.OrderBy(x => x.Health).FirstOrDefault().IsValidTarget(Program.E1.Range)
-                && minions.OrderBy(x => x.Health).FirstOrDefault().Health < Program.E1.GetDamage(minions.OrderBy(x => x.Health).FirstOrDefault())
-                && Player.IsWindingUp)
+                && target != null
+                && target.IsValidTarget(Program.E1.Range))
             {
-                Program.E1.CastOnUnit(minions.OrderBy(x => x.Health).FirstOrDefault());
+                Program.E1.CastOnUnit((Obj_AI_Base)target);
             }
+
+            if (menu.Item("reksai.jungle.e1").GetValue<bool>()
+                && !Player.IsBurrowed()
+                    && Program.E1.IsReady()
+                    && target.IsValidTarget(Program.E1.Range)
+                && menu.Item("reksai.others.keybinds.jungle").GetValue<KeyBind>().Active)
+            {
+                if (!Player.QActive() || Player.ManaPercent == 100)
+                    Program.E1.CastOnUnit((Obj_AI_Base)target);
+            }
+
+            if (menu.Item("reksai.combo.e1").GetValue<bool>()
+                && menu.Item("reksai.others.keybinds.combo").GetValue<KeyBind>().Active
+                && !Player.IsBurrowed()
+                && target.IsValidTarget(Program.E1.Range)
+                && Program.E1.IsReady()
+                || menu.Item("reksai.rage.e1").GetValue<bool>()
+                && !Player.IsBurrowed()
+                && target.IsValidTarget(Program.E1.Range)
+                && Program.E1.IsReady()
+                && Player.ManaPercent == 100)
+            {
+                if (!Player.QActive() || Player.ManaPercent == 100)
+                    Program.E1.CastOnUnit((Obj_AI_Base)target);
+            }
+
         }
 
         public static void JungleClear()
@@ -159,14 +175,6 @@ namespace Rek_Sai
                     && Program.Q1.IsReady()
                     && badmonster.IsValidTarget(Program.Q1.Range))
                     Program.Q1.Cast();
-
-                if (menu.Item("reksai.jungle.e1").GetValue<bool>()
-                    && Program.E1.IsReady()
-                    && badmonster.IsValidTarget(Program.E1.Range))
-                {
-                    if (!Player.QActive() || Player.ManaPercent == 100)
-                        Program.E1.CastOnUnit(badmonster);
-                }
             }
         }
 
