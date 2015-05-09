@@ -32,7 +32,13 @@ namespace The_Masterpiece.ChampionAssets.BaseChampionInstance
         {
             if (Player.IsChannelingImportantSpell() || Player.IsCastingInterruptableSpell())
             {
-                
+                Menu.Orbwalker.SetMovement(false);
+                Menu.Orbwalker.SetAttack(false);
+            }
+            else
+            {
+                Menu.Orbwalker.SetMovement(true);
+                Menu.Orbwalker.SetAttack(true);
             }
         }
 
