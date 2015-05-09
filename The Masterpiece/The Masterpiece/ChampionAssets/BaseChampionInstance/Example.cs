@@ -21,6 +21,7 @@ namespace The_Masterpiece.ChampionAssets.BaseChampionInstance
         {
 
             Messages.OnAssemblyLoad();
+            Menu.Load("Example", "menu.example");
             Game.OnUpdate += Game_OnUpdate;
             Drawing.OnDraw += Drawing_OnDraw;
 
