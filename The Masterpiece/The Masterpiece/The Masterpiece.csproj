@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChampionAssets\BaseChampionInstance\BaseChamp.cs" />
     <Compile Include="ChampionAssets\BaseChampionInstance\Example.cs" />
     <Compile Include="ChampionAssets\BaseChampionInstance\Menu.cs" />
     <Compile Include="ChampionAssets\BaseChampionInstance\Spells.cs" />

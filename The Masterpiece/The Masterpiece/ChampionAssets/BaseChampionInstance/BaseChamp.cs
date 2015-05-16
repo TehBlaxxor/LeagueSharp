@@ -1,4 +1,4 @@
-﻿using System;
+/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,41 +11,30 @@ using LMenu = LeagueSharp.Common.Menu;
 
 namespace The_Masterpiece.ChampionAssets.BaseChampionInstance
 {
-    public class Example
+    abstract class BaseChamp
     {
-        public static LMenu Config = Menu.Config;
-        public static List<Spell> SpellList = Spells.SpellList;
-        public static Obj_AI_Hero Player = ObjectManager.Player;
-        public static Spell Q = Spells.Q, W = Spells.W, E = Spells.E, R = Spells.R;
-        public Example()
-        {
+        public LMenu Config = Menu.Config;
+        public List<Spell> SpellList = Spells.SpellList;//Dont rly like spell arrays!
+        public Obj_AI_Hero Player = ObjectManager.Player;
+        public Spell Q = Spells.Q, W = Spells.W, E = Spells.E, R = Spells.R;
 
+        protected BaseChamp(String name)
+        {
             Messages.OnAssemblyLoad();
-            Menu.Load("Example", "menu.example");
+            Menu.Load(name, "menu." + name);
             Spells.Load();
             Game.OnUpdate += Game_OnUpdate;
             Drawing.OnDraw += Drawing_OnDraw;
 
-            Utility.HpBarDamageIndicator.DamageToUnit = GetDamageTo;
+            //Later add all other callbacks so they would be accesable to champ plugins
+
+            Utility.HpBarDamageIndicator.DamageToUnit = Player.GetDamageTo;
             Utility.HpBarDamageIndicator.Enabled = Config.GetValue<bool>("draw.dmg");
         }
 
-        public static float GetDamageTo(Obj_AI_Hero hero)
-        {
-            double damage = 0d;
-            if (Q.IsReady() && Config.GetValue<bool>("combo.r"))
-                damage += Q.GetDamage(hero);
-            if (W.IsReady() && Config.GetValue<bool>("combo.r"))
-                damage += W.GetDamage(hero);
-            if (E.IsReady() && Config.GetValue<bool>("combo.r"))
-                damage += E.GetDamage(hero);
-            if (R.IsReady() && Config.GetValue<bool>("combo.r"))
-                damage += R.GetDamage(hero);
+        
 
-            return (float)damage;
-        }
-
-        void Drawing_OnDraw(EventArgs args)
+        private void Drawing_OnDraw(EventArgs args)
         {
             if (!Config.Item("draw").GetValue<bool>())
                 return;
@@ -56,7 +45,7 @@ namespace The_Masterpiece.ChampionAssets.BaseChampionInstance
                 Render.Circle.DrawCircle(target.Position, 75f, Config.GetValue<Circle>("draw.target").Color);
             }
 
-            foreach (var x in SpellList.Where(y => Config.Item("draw." + y.Slot.ToString().ToLowerInvariant()) != null 
+            foreach (var x in SpellList.Where(y => Config.Item("draw." + y.Slot.ToString().ToLowerInvariant()) != null
                 && Config.GetValue<Circle>("draw." + y.Slot.ToString().ToLowerInvariant()).Active))
             {
                 Render.Circle.DrawCircle(Player.Position, x.Range, x.IsReady()
@@ -64,12 +53,15 @@ namespace The_Masterpiece.ChampionAssets.BaseChampionInstance
                 : System.Drawing.Color.Red
                 );
             }
+
+            Draw();
         }
 
-        void Game_OnUpdate(EventArgs args)
+        private void Game_OnUpdate(EventArgs args)
         {
+            CalcPerFrame();
             if (Config.Item("extra.ks").GetValue<bool>())
-                KS();
+                KillSteal();
             if (Config.Item("extra.kb.combo").GetValue<bool>())
                 Combo();
             if (Config.Item("extra.kb.harass").GetValue<bool>())
@@ -80,16 +72,21 @@ namespace The_Masterpiece.ChampionAssets.BaseChampionInstance
                 GlobalMethods.Flee();
             }
             if (Config.Item("extra.kb.lane").GetValue<bool>())
-                Lane();
+                LaneClear();
             if (Config.Item("extra.kb.last").GetValue<bool>())
-                Last();
+                LastHit();
         }
 
-        public static void KS() { }
-        public static void Combo() { }
-        public static void Harass() { }
-        public static void Escape() { }
-        public static void Lane() { }
-        public static void Last() { }
+
+        public abstract void KillSteal();
+        public abstract void Combo();
+        public abstract void Harass();
+        public abstract void Escape();
+        public abstract void LaneClear();
+        public abstract void LastHit();
+
+        public abstract void Draw();
+        public abstract void CalcPerFrame();
     }
 }
+*/
