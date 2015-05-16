@@ -25,5 +25,10 @@ namespace Jinx
         {
             Notifications.AddNotification("JINX: Menu initialized successfully!", 500);
         }
+
+        public static void OnWrongChampion()
+        {
+            Notifications.AddNotification("JINX: Wrong champion. Denied loading.", 500);
+        }
     }
 }

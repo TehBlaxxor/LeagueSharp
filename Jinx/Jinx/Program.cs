@@ -23,6 +23,11 @@ namespace Jinx
 
         static void Game_OnGameLoad(EventArgs args)
         {
+            if (Player.ChampionName != "Jinx")
+            {
+                return;
+                Messages.OnWrongChampion();
+            }
             Utils.ClearConsole();
 
             MenuUtils.Create();
