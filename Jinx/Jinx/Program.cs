@@ -25,8 +25,8 @@ namespace Jinx
         {
             if (Player.ChampionName != "Jinx")
             {
-                return;
                 Messages.OnWrongChampion();
+                return;
             }
             Utils.ClearConsole();
 
@@ -85,7 +85,7 @@ namespace Jinx
         static void Orbwalking_BeforeAttack(Orbwalking.BeforeAttackEventArgs args)
         {
             //Fishbones && Pow-Pow Switch
-            var tg = args.Target;
+            var tg = (Obj_AI_Minion)args.Target;
             if (tg != null)
             {
                 if (GetMode() == Modes.LaneClear)
