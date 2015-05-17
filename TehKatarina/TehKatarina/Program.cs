@@ -29,6 +29,7 @@ namespace TehKatarina
         public static Obj_AI_Hero Player = ObjectManager.Player;
         public static int LastPlaced;
         public static Vector3 LastWardPos;
+        public static Orbwalking.Orbwalker Orbwalker;
         static void Main(string[] args)
         {
             CustomEvents.Game.OnGameLoad += Game_OnGameLoad;
@@ -144,9 +145,8 @@ namespace TehKatarina
             Config = new Menu("TehKatarina", "TehKatarina", true);
 
             Config.AddSubMenu(new Menu("Orbwalking", "Orbwalking"));
-            //Orbwalker = new Orbwalking.Orbwalker(Config.SubMenu("Orbwalking"));
-            Config.AddSubMenu(OrbwalkerMenu);
-            xSLxOrbwalker.AddToMenu(OrbwalkerMenu);
+            Orbwalker = new Orbwalking.Orbwalker(Config.SubMenu("Orbwalking"));
+
 
             var targetselectormenu = new Menu("Target Selector", "Target Selector");
             TargetSelector.AddToMenu(targetselectormenu);
@@ -258,6 +258,16 @@ namespace TehKatarina
             Drawing.OnDraw += Drawing_OnDraw;
             Game.OnUpdate += Game_OnGameUpdate;
             AntiGapcloser.OnEnemyGapcloser += AntiGapcloser_OnEnemyGapcloser;
+            Obj_AI_Hero.OnProcessSpellCast += Obj_AI_Hero_OnProcessSpellCast;
+        }
+
+        static void Obj_AI_Hero_OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
+        {
+            if (args.SData.Name.ToUpperInvariant() == "KATARINAR" && sender.IsMe)
+            {
+                Orbwalker.SetMovement(false);
+                Orbwalker.SetAttack(false);
+            }
         }
 
         static void AntiGapcloser_OnEnemyGapcloser(ActiveGapcloser gapcloser)
@@ -277,8 +287,31 @@ namespace TehKatarina
             }
         }
 
+        public static void Cancel()
+        {
+            if (Player.CountEnemiesInRange(R.Range + 50) < 1)
+                Player.IssueOrder(GameObjectOrder.MoveTo, Game.CursorPos);
+        }
+
         static void Game_OnGameUpdate(EventArgs args)
         {
+
+            if (Config.Item("TK/ks/system").GetValue<bool>())
+            {
+                KillSteal();
+            }
+
+            if (Player.IsChannelingImportantSpell() 
+                || Player.HasBuff("katarinarsound", true) 
+                || Player.HasBuff("KatarinaR"))
+            {
+                Orbwalker.SetAttack(false);
+                Orbwalker.SetMovement(false);
+
+                Cancel();
+
+                return;
+            }
 
             if (Config.Item("keybind.combo").GetValue<KeyBind>().Active)
                 Combo();
@@ -297,11 +330,6 @@ namespace TehKatarina
 
             if (Config.Item("TK/harass/system").GetValue<KeyBind>().Active)
             { Harass(); }
-
-            if (Config.Item("TK/ks/system").GetValue<bool>())
-            {
-                KillSteal();
-            }
 
             /*if (Ractive)
             {
