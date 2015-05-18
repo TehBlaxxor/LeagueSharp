@@ -312,6 +312,8 @@ namespace TehKatarina
 
                 return;
             }
+            Orbwalker.SetMovement(true);
+            Orbwalker.SetAttack(true);
 
             if (Config.Item("keybind.combo").GetValue<KeyBind>().Active)
                 Combo();
