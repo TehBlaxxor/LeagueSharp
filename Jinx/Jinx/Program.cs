@@ -33,6 +33,9 @@ namespace Jinx
             MenuUtils.Create();
             Spells.Initiate();
 
+            Utility.HpBarDamageIndicator.Enabled = false;
+
+
             AntiGapcloser.OnEnemyGapcloser += AntiGapcloser_OnEnemyGapcloser;
             Orbwalking.BeforeAttack += Orbwalking_BeforeAttack;
             Game.OnUpdate += Game_OnUpdate;
