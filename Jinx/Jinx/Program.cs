@@ -185,8 +185,6 @@ namespace Jinx
 
         static void Game_OnUpdate(EventArgs args)
         {
-            var orbwalkingMode = MenuUtils.Orbwalker.ActiveMode;
-
             if (Z.GetValue<bool>("killsecure"))
                 KillSecure();
 
@@ -201,6 +199,7 @@ namespace Jinx
                 case Modes.Harass:
                     Harass();
                     break;
+                default: return;
             }
         }
 
