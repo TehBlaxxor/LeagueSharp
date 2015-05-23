@@ -85,8 +85,8 @@ namespace Jinx
         static void Orbwalking_BeforeAttack(Orbwalking.BeforeAttackEventArgs args)
         {
             //Fishbones && Pow-Pow Switch
-            var tg = (Obj_AI_Minion)args.Target;
-            if (tg != null)
+            var tg = (Obj_AI_Base)args.Target;
+            if (tg.IsValidTarget())
             {
                 if (GetMode() == Modes.LaneClear)
                 {
