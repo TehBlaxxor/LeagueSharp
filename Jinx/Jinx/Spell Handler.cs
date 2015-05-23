@@ -40,6 +40,7 @@ namespace Jinx
             Messages.OnSpellInitializationSequence(2);
          }
 
+
         static void Game_OnUpdate(EventArgs args)
         {
             if (Player.IsDead)

@@ -33,9 +33,6 @@ namespace Jinx
             MenuUtils.Create();
             Spells.Initiate();
 
-            Utility.HpBarDamageIndicator.Enabled = true;
-            Utility.HpBarDamageIndicator.DamageToUnit = DMG;
-
             AntiGapcloser.OnEnemyGapcloser += AntiGapcloser_OnEnemyGapcloser;
             Orbwalking.BeforeAttack += Orbwalking_BeforeAttack;
             Game.OnUpdate += Game_OnUpdate;
@@ -45,15 +42,7 @@ namespace Jinx
             Messages.OnLoad();
         }
 
-        public static float DMG(Obj_AI_Hero unit)
-        {
-            double dmg = 0d;
-            if (W.IsReady() && Z.GetValue<bool>("spells.w"))
-                dmg += W.GetDamage(unit);
-            dmg += Player.GetAutoAttackDamage(unit) * 5;
-
-            return (float)dmg;
-        }
+        
 
         public enum Modes
         {
@@ -206,18 +195,10 @@ namespace Jinx
                 case Modes.Combo:
                     Combo();
                     break;
-                case Modes.LaneClear:
-                    Lane();
-                    break;
                 case Modes.Harass:
                     Harass();
                     break;
             }
-        }
-
-        public static void Lane()
-        {
-
         }
 
         public static Obj_AI_Hero GetMostDamageTarget()

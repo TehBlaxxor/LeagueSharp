@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DI.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Messages.cs" />
     <Compile Include="Program.cs" />
