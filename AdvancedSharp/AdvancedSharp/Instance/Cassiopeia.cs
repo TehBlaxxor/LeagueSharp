@@ -539,7 +539,8 @@ namespace AdvancedSharp.Instance
             {
                 if ((targets.Count() >= rminhitSpell
                     || facing.Count() >= rfaceSpell)
-                    && R.IsReady())
+                    && R.IsReady()
+                    && rTarget.Health >= (Q.GetDamage(rTarget) + 2*E.GetDamage(rTarget) + R.GetDamage(rTarget)))
                 {
                     R.Cast(rTarget);
                 }

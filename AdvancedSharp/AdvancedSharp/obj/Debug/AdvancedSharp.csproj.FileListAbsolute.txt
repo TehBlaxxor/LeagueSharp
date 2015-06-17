@@ -1,0 +1,13 @@
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\AdvancedSharp.exe.config
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\AdvancedSharp.exe
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\AdvancedSharp.pdb
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\LeagueSharp.Common.dll
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\LeagueSharp.dll
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\SharpDX.dll
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\clipper_library.dll
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\LeagueSharp.Sandbox.dll
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\LeagueSharp.xml
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\obj\Debug\AdvancedSharp.csprojResolveAssemblyReference.cache
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\obj\Debug\AdvancedSharp.exe
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\obj\Debug\AdvancedSharp.pdb
