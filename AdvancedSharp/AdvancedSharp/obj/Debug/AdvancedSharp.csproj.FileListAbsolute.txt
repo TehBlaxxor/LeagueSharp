@@ -8,6 +8,6 @@ C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\
 C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\clipper_library.dll
 C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\LeagueSharp.Sandbox.dll
 C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\bin\Release\LeagueSharp.xml
-C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\obj\Debug\AdvancedSharp.csprojResolveAssemblyReference.cache
 C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\obj\Debug\AdvancedSharp.exe
 C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\obj\Debug\AdvancedSharp.pdb
+C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\obj\Debug\AdvancedSharp.csprojResolveAssemblyReference.cache

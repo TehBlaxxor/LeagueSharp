@@ -57,6 +57,7 @@
     <Compile Include="Core.cs" />
     <Compile Include="Instance\Cassiopeia.cs" />
     <Compile Include="Instance\Orbwalker.cs" />
+    <Compile Include="Instance\Soraka.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

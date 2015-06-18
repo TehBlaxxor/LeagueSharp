@@ -231,7 +231,8 @@ namespace AdvancedSharp.Instance
 
         private void Drawing_OnDraw(EventArgs args)
         {
-            if (!Enabled || _damageToUnit == null)
+            if (!Enabled 
+                || _damageToUnit == null)
             {
                 return;
             }
@@ -552,37 +553,36 @@ namespace AdvancedSharp.Instance
             var srSpell = Z.Item("combo.r.smart").GetValue<bool>();
             var rTarget = TargetSelector.GetTarget(R.Range, TargetSelector.DamageType.Magical);
 
+            if (Player.CountEnemiesInRange(1200) == 1)
+
+                return;
+
             if (srSpell)
             {
-                if (Player.CountEnemiesInRange(2000) == 1
-                    && !rTarget.HasBuffOfType(BuffType.Poison))
-                    return;
-
                 if (rTarget.IsValidTarget(500))
                 {
                     if (rTarget.IsFacing(Player))
                     {
                         if (Player.HealthPercent + 25 <= rTarget.HealthPercent
-                            && R.IsReady()
-                            && rTarget.IsFacing(Player))
+                            && R.IsReady())
                         {
                             R.Cast(rTarget);
                         }
+
                         if (rTarget.HasBuffOfType(BuffType.Poison)
                             && E.IsReady() && R.IsReady()
                             && Player.Mana >= (2*E.Instance.ManaCost + R.Instance.ManaCost)
-                            && rTarget.Health < (E.GetDamage(rTarget)*5 + R.GetDamage(rTarget)))
+                            && rTarget.Health < (E.GetDamage(rTarget)*4 + R.GetDamage(rTarget)))
                         {
                             R.Cast(rTarget);
                         }
                         if (!rTarget.HasBuffOfType(BuffType.Poison)
                             && Q.IsReady() && E.IsReady() && R.IsReady()
-                            && rTarget.Health < (Q.GetDamage(rTarget) + E.GetDamage(rTarget)*5 + R.GetDamage(rTarget))
+                            && rTarget.Health < (Q.GetDamage(rTarget) + E.GetDamage(rTarget)*4 + R.GetDamage(rTarget))
                             && Player.Mana >= (Q.Instance.ManaCost + 2*E.Instance.ManaCost + R.Instance.ManaCost))
                         {
                             R.Cast(rTarget);
-                        }
-                        
+                        }    
                     }
                 }
             }
@@ -638,6 +638,7 @@ namespace AdvancedSharp.Instance
             }
             
         }
+
         private static void TearStack()
         {
 
