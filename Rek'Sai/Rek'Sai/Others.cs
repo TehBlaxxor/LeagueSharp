@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using LeagueSharp;
 using LeagueSharp.Common;
 using SharpDX;
-
+using ItemData = LeagueSharp.Common.Data.ItemData;
 namespace Rek_Sai
 {
     public static class Others

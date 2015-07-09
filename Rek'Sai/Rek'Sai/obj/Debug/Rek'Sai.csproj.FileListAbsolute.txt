@@ -10,3 +10,13 @@ D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\bin\Release\LeagueSharp.S
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\bin\Release\LeagueSharp.xml
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\obj\Debug\RekSai.exe
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\Rek'Sai\Rek'Sai\obj\Debug\RekSai.pdb
+C:\Users\Dima\Desktop\Blaxxor\LeagueSharp\Rek'Sai\Rek'Sai\bin\Release\RekSai.exe.config
+C:\Users\Dima\Desktop\Blaxxor\LeagueSharp\Rek'Sai\Rek'Sai\obj\Debug\RekSai.exe
+C:\Users\Dima\Desktop\Blaxxor\LeagueSharp\Rek'Sai\Rek'Sai\obj\Debug\RekSai.pdb
+C:\Users\Dima\Desktop\Blaxxor\LeagueSharp\Rek'Sai\Rek'Sai\bin\Release\RekSai.exe
+C:\Users\Dima\Desktop\Blaxxor\LeagueSharp\Rek'Sai\Rek'Sai\bin\Release\RekSai.pdb
+C:\Users\Dima\Desktop\Blaxxor\LeagueSharp\Rek'Sai\Rek'Sai\bin\Release\SharpDX.Direct3D9.dll
+C:\Users\Dima\Desktop\Blaxxor\LeagueSharp\Rek'Sai\Rek'Sai\bin\Release\clipper_library.dll
+C:\Users\Dima\Desktop\Blaxxor\LeagueSharp\Rek'Sai\Rek'Sai\bin\Release\LeagueSharp.Sandbox.dll
+C:\Users\Dima\Desktop\Blaxxor\LeagueSharp\Rek'Sai\Rek'Sai\bin\Release\LeagueSharp.xml
+C:\Users\Dima\Desktop\Blaxxor\LeagueSharp\Rek'Sai\Rek'Sai\obj\Debug\Rek'Sai.csprojResolveAssemblyReference.cache
