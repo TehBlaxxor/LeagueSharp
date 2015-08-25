@@ -11,3 +11,9 @@ C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\
 C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\obj\Debug\AdvancedSharp.exe
 C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\obj\Debug\AdvancedSharp.pdb
 C:\Users\Dima\Desktop\TehBlaxxor Github\LeagueSharp\AdvancedSharp\AdvancedSharp\obj\Debug\AdvancedSharp.csprojResolveAssemblyReference.cache
+I:\Visual Studio Projects\AdvancedSharp\AdvancedSharp\bin\Release\AdvancedSharp.exe.config
+I:\Visual Studio Projects\AdvancedSharp\AdvancedSharp\obj\Debug\AdvancedSharp.exe
+I:\Visual Studio Projects\AdvancedSharp\AdvancedSharp\obj\Debug\AdvancedSharp.pdb
+I:\Visual Studio Projects\AdvancedSharp\AdvancedSharp\bin\Release\AdvancedSharp.exe
+I:\Visual Studio Projects\AdvancedSharp\AdvancedSharp\bin\Release\AdvancedSharp.pdb
+I:\Visual Studio Projects\AdvancedSharp\AdvancedSharp\bin\Release\LeagueSharp.xml

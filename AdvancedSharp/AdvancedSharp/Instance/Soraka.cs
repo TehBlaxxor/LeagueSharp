@@ -98,6 +98,8 @@ namespace AdvancedSharp.Instance
                 }
             }
 
+            Z.AddItem(new MenuItem("credits1", "Credits:"));
+            Z.AddItem(new MenuItem("credits3", "Hoes - Coding"));
 
             Z.AddToMainMenu();
 

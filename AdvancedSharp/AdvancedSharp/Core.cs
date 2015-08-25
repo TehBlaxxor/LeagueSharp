@@ -19,6 +19,12 @@ namespace AdvancedSharp
                 case "cassiopeia":
                     new Instance.Cassiopeia();
                     break;
+                case "soraka":
+                    new Instance.Soraka();
+                    break;
+                case "malzahar":
+                    new Instance.Malzahar();
+                    break;
                 default:
                     new Instance.Orbwalker();
                     break;
