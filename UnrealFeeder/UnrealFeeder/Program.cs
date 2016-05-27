@@ -51,11 +51,11 @@ namespace UnrealFeeder
             )));
             A.AddItem(new MenuItem("hehehe1", " "));
             A.AddItem(new MenuItem("root.chat", "Chat at Baron/Dragon").SetValue(false));
-            A.AddItem(new MenuItem("root.chat.delay", "Baron/Dragon Chat Delay").SetValue(new Slider(2000, 0, 10000)));
+            A.AddItem(new MenuItem("root.chat.delay", "Baron/Dragon Chat Delay").SetValue(new Slider(10, 0, 120)));
             A.AddItem(new MenuItem("root.chat2", "Chat on Death").SetValue(true));
             A.AddItem(new MenuItem("hehehe2", " "));
             A.AddItem(new MenuItem("root.laugh", "Laugh").SetValue(true));
-            A.AddItem(new MenuItem("root.laugh.delay", "Laugh Delay").SetValue(new Slider(500, 0, 10000)));
+            A.AddItem(new MenuItem("root.laugh.delay", "Laugh Delay").SetValue(new Slider(5, 0, 10)));
             A.AddItem(new MenuItem("hehehe3", " "));
             A.AddItem(new MenuItem("root.items", "Buy Items").SetValue(true));
             A.AddItem(new MenuItem("hehehe4", " "));
