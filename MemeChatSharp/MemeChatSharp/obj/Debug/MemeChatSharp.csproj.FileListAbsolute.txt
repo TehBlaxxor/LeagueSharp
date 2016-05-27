@@ -1,0 +1,14 @@
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\bin\Debug\MemeChatSharp.exe.config
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\bin\Debug\MemeChatSharp.exe
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\bin\Debug\MemeChatSharp.pdb
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\bin\Debug\LeagueSharp.Common.dll
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\bin\Debug\LeagueSharp.dll
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\bin\Debug\SharpDX.dll
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\bin\Debug\SharpDX.Direct3D9.dll
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\bin\Debug\LeagueSharp.Data.dll
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\bin\Debug\clipper_library.dll
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\bin\Debug\LeagueSharp.Sandbox.dll
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\bin\Debug\Newtonsoft.Json.dll
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\obj\Debug\MemeChatSharp.csprojResolveAssemblyReference.cache
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\obj\Debug\MemeChatSharp.exe
+I:\Visual Studio Projects\MemeChatSharp\MemeChatSharp\obj\Debug\MemeChatSharp.pdb
