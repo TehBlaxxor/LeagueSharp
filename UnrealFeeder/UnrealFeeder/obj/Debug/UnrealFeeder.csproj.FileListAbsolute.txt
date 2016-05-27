@@ -16,3 +16,4 @@ I:\LeagueSharp-master\UnrealFeeder\UnrealFeeder\obj\Debug\UnrealFeeder.exe
 I:\LeagueSharp-master\UnrealFeeder\UnrealFeeder\obj\Debug\UnrealFeeder.pdb
 I:\LeagueSharp-master\UnrealFeeder\UnrealFeeder\bin\Release\UnrealFeeder.exe
 I:\LeagueSharp-master\UnrealFeeder\UnrealFeeder\bin\Release\UnrealFeeder.pdb
+I:\LeagueSharp-master\UnrealFeeder\UnrealFeeder\obj\Debug\UnrealFeeder.csprojResolveAssemblyReference.cache

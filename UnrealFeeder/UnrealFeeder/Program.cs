@@ -362,7 +362,8 @@ namespace UnrealFeeder
                     case 4:
                         {
                             if ((LastChat == 0 || LastChat < Game.Time) && A.Item("root.chat").GetValue<bool>()
-                                 && Player.Distance(Dragon) <= 300)
+                                 && Player.Distance(Dragon) <= 300
+                                 && !Player.IsDead)
                             {
                                 LastChat = Game.Time + A.Item("root.chat.delay").GetValue<Slider>().Value;
                                 Game.Say("/all Come to dragon!");
@@ -374,7 +375,8 @@ namespace UnrealFeeder
                     case 5:
                         {
                             if ((LastChat == 0 || LastChat < Game.Time) && A.Item("root.chat").GetValue<bool>()
-                                && Player.Distance(Baron) <= 300)
+                                && Player.Distance(Baron) <= 300
+                                && !Player.IsDead)
                             {
                                 LastChat = Game.Time + A.Item("root.chat.delay").GetValue<Slider>().Value;
                                 Game.Say("/all Come to baron!");
