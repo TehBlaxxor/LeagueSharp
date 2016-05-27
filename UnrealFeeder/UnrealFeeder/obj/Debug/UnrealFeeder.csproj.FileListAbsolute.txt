@@ -11,3 +11,9 @@ D:\!!!!!!!!LIGA ASCUTITA 2015555555555\UnrealFeeder\UnrealFeeder\bin\Release\Lea
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\UnrealFeeder\UnrealFeeder\obj\Debug\UnrealFeeder.exe
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\UnrealFeeder\UnrealFeeder\obj\Debug\UnrealFeeder.pdb
 D:\!!!!!!!!LIGA ASCUTITA 2015555555555\UnrealFeeder\UnrealFeeder\obj\Debug\UnrealFeeder.csprojResolveAssemblyReference.cache
+I:\LeagueSharp-master\UnrealFeeder\UnrealFeeder\bin\Release\UnrealFeeder.exe.config
+I:\LeagueSharp-master\UnrealFeeder\UnrealFeeder\obj\Debug\UnrealFeeder.exe
+I:\LeagueSharp-master\UnrealFeeder\UnrealFeeder\obj\Debug\UnrealFeeder.pdb
+I:\LeagueSharp-master\UnrealFeeder\UnrealFeeder\bin\Release\UnrealFeeder.exe
+I:\LeagueSharp-master\UnrealFeeder\UnrealFeeder\bin\Release\UnrealFeeder.pdb
+I:\LeagueSharp-master\UnrealFeeder\UnrealFeeder\bin\Release\LeagueSharp.xml

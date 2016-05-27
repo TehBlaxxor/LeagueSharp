@@ -17,13 +17,14 @@ namespace UnrealFeeder
         public static Obj_AI_Hero Player = ObjectManager.Player;
         public static Menu A;
 
-        public static readonly bool[] CheckForBoughtItem = { false, false, false, false, false };
+        public static bool[] CheckForBoughtItem = { false, false, false, false, false };
 
         public static bool Point1Reached;
         public static bool Point2Reached;
         public static bool CycleStarted;
 
         public static SpellSlot Ghost;
+        public static SpellSlot Heal;
 
         public static bool IsDead;
         public static bool SaidDeadStuff;
@@ -56,16 +57,17 @@ namespace UnrealFeeder
             A.AddItem(new MenuItem("root.laugh", "Laugh").SetValue(true));
             A.AddItem(new MenuItem("root.laugh.delay", "Laugh Delay").SetValue(new Slider(500, 0, 10000)));
             A.AddItem(new MenuItem("hehehe3", " "));
-            A.AddItem(new MenuItem("root.items", "Buy Speed Items").SetValue(true));
+            A.AddItem(new MenuItem("root.items", "Buy Items").SetValue(true));
             A.AddItem(new MenuItem("hehehe4", " "));
             A.AddItem(new MenuItem("root.ghost", "Use Ghost").SetValue(false));
-            A.AddItem(new MenuItem("hehehe8", " "));
+            A.AddItem(new MenuItem("root.heal", "Use Heal").SetValue(false));
+            A.AddItem(new MenuItem("hehehe7", " "));
             A.AddItem(new MenuItem("hehehe5", "Made by TehBlaxxor"));
-            A.AddItem(new MenuItem("hehehe6", "v1.0.0.0"));
-            A.AddItem(new MenuItem("hehehe7", "Site: joduska.me"));
+            A.AddItem(new MenuItem("hehehe6", "Site: joduska.me"));
             A.AddToMainMenu();
 
             Ghost = Player.GetSpellSlot("summonerhaste");
+            Heal = Player.GetSpellSlot("summonerheal");
 
             Game.OnInput += Game_OnInput;
             Game.OnUpdate += Game_OnUpdate;
@@ -105,8 +107,8 @@ namespace UnrealFeeder
 
             string[] MsgList = new[] { "wat", "how?", "What?", "how did you manage to do that?", "mate..", "-_-",
                 "why?", "lag", "laaaaag", "oh my god this lag is unreal", "rito pls 500 ping", "god bless my ping",
-                "if my ping was my iq i'd be smarter than einstein", "what's up with this lag?", "is the server lagging again?",
-            "i call black magic" };
+                "if my ping was my iq i'd be 5 times smarter than einstein", "what's up with this lag?", "is the server lagging again?",
+            "i call black magic", "( ͡° ͜ʖ ͡°)", "ツ" };
 
             if (IsDead)
             {
@@ -142,7 +144,6 @@ namespace UnrealFeeder
                     Point1Reached = true;
                 if (Player.Distance(BotTurningPoint2) <= 300 || Player.Distance(TopTurningPoint2) <= 300)
                     Point2Reached = true;
-;
             }
 
             if (A.Item("root.shouldfeed").GetValue<bool>())
@@ -159,46 +160,72 @@ namespace UnrealFeeder
                     && Player.InFountain())
                     Player.Spellbook.CastSpell(Ghost);
 
+                if (Heal != SpellSlot.Unknown
+                    && Player.Spellbook.CanUseSpell(Heal) == SpellState.Ready
+                    && A.Item("root.heal").GetValue<bool>()
+                    && Player.IsMoving
+                    && Player.CountEnemiesInRange(1000) == 0)
+                    Player.Spellbook.CastSpell(Heal);
+
                 if (A.Item("root.items").GetValue<bool>() && Player.InShop())
                 {
-                    if (Player.Gold >= 325
+                    foreach (var item in Player.InventoryItems)
+                    {
+                        if (item.Id != ItemId.Boots_of_Speed &&
+                            item.Id != ItemId.Boots_of_Mobility &&
+                            //item.Id != ItemId.Boots_of_Mobility_Enchantment_Homeguard && -> apparently this shiet's been rekt since 5.23 rip D:
+                            item.Id != ItemId.Amplifying_Tome &&
+                            item.Id != ItemId.Aether_Wisp &&
+                            item.Id != ItemId.Zeal &&
+                            item.Id != ItemId.Runaans_Hurricane_Ranged_Only) // lol almost forgot this; that would've been fun
+                            Player.SellItem(item.Slot);
+                    }
+
+                    if (Player.Gold >= 300
                         && !CheckForBoughtItem[0])
                     {
                         Player.BuyItem(ItemId.Boots_of_Speed);
                         CheckForBoughtItem[0] = true;
                     }
-                    if (Player.Gold >= 475
+                    if (Player.Gold >= 600
                         && CheckForBoughtItem[0]
                         && !CheckForBoughtItem[1])
                     {
                         Player.BuyItem(ItemId.Boots_of_Mobility);
                         CheckForBoughtItem[1] = true;
                     }
-                    if (Player.Gold >= 475
+                    /*if (Player.Gold >= 475
                         && CheckForBoughtItem[1]
                         && !CheckForBoughtItem[2])
                     {
                         Player.BuyItem(ItemId.Boots_of_Mobility_Enchantment_Homeguard);
                         CheckForBoughtItem[2] = true;
-                    } 
+                    }*/ 
                     if (Player.Gold >= 435
+                         && CheckForBoughtItem[1]
+                         && !CheckForBoughtItem[2])
+                    {
+                        Player.BuyItem(ItemId.Amplifying_Tome);
+                        CheckForBoughtItem[2] = true;
+                    }
+                    if (Player.Gold >= (415)
                          && CheckForBoughtItem[2]
                          && !CheckForBoughtItem[3])
                     {
-                        Player.BuyItem(ItemId.Amplifying_Tome);
+                        Player.BuyItem(ItemId.Aether_Wisp);
                         CheckForBoughtItem[3] = true;
                     }
-                    if (Player.Gold >= (850-435)
-                         && CheckForBoughtItem[3]
-                         && !CheckForBoughtItem[4])
-                    {
-                        Player.BuyItem(ItemId.Aether_Wisp);
-                        CheckForBoughtItem[4] = true;
-                    }
-                    if (Player.Gold > 1100 
-                        && CheckForBoughtItem[4])
+                    if (Player.Gold >= 1300 
+                        && CheckForBoughtItem[3]
+                        && !Items.HasItem((int)ItemId.Zeal, Player))
                     {
                         Player.BuyItem(ItemId.Zeal);
+                    }
+                    if (Player.Gold >= 1300
+                        && CheckForBoughtItem[3]
+                        && Items.HasItem((int)ItemId.Zeal, Player))
+                    {
+                        Player.BuyItem(ItemId.Runaans_Hurricane_Ranged_Only);
                     }
 
                 }
@@ -430,12 +457,12 @@ namespace UnrealFeeder
                     case 7:
                         {
                             if (HeroManager.Enemies.Where(x => x.IsValidTarget() && !x.IsDead
-                                && (x.ChampionName == "Katarina" || x.ChampionName == "Fiora" || x.ChampionName == "Jinx" || x.ChampionName == "Vayne")
+                                && (x.ChampionName == "Katarina" || x.ChampionName == "Jhin" || x.ChampionName == "Vayne" || x.ChampionName == "Jinx" || x.ChampionName == "Xerath")
                                 ).FirstOrDefault().IsValidTarget())
                             {
                                 Player.IssueOrder(GameObjectOrder.MoveTo,
                                     HeroManager.Enemies.Where(x => x.IsValidTarget() && !x.IsDead
-                                && (x.ChampionName == "Katarina" || x.ChampionName == "Fiora" || x.ChampionName == "Jinx" || x.ChampionName == "Vayne")
+                                && (x.ChampionName == "Katarina" || x.ChampionName == "Jhin" || x.ChampionName == "Vayne" || x.ChampionName == "Jinx" || x.ChampionName == "Xerath")
                                 ).FirstOrDefault());
                             }
                             else
